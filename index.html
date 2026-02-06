@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ===== ADVANCED SEO TAGS ===== -->
+    <title>PDFSmartCore | All-in-One PDF Tools Suite</title>
+    
+    <meta name="description" content="100% Free PDF Tools: Merge PDF files, Split PDF pages, Compress PDF size, Convert Word to PDF, Convert JPG to PDF, Extract images from PDF, Resize images online. No uploads, works locally in browser.">
+    
+    <meta name="keywords" content="
+        merge pdf, merge pdf online, merge pdf files, combine pdf, pdf merger, pdf combiner,
+        split pdf, split pdf online, split pdf pages, separate pdf, pdf splitter,
+        compress pdf, compress pdf online, reduce pdf size, pdf compressor, pdf size reducer, 
+        word to pdf, word to pdf converter, docx to pdf, convert word to pdf online,
+        jpg to pdf, image to pdf, jpg to pdf converter, convert images to pdf,
+        pdf to jpg, pdf to image, extract images from pdf, save pdf as jpg,
+        image resize, resize image, resize image online, change image size, image size reducer,
+        free pdf tools, online pdf editor, pdf tools online, no watermark pdf tools,
+        pdfsmartcore, pdf tools 2026, secure pdf tools, local pdf processing
+    ">
+    
+    <meta name="author" content="PDFSmartCore">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pdfsmartcore.com/">  <!-- Apna domain daal dena -->
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="PDFSmartCore - Free Online PDF Tools Suite">
+    <meta property="og:description" content="Merge, split, compress, convert PDF files online. 100% free, secure, no uploads required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pdfsmartcore.com">
+    <meta property="og:image" content="https://pdfsmartcore.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="PDFSmartCore">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PDFSmartCore - Free PDF Tools">
+    <meta name="twitter:description" content="All PDF tools in one place. 100% free, no registration required.">
+    <meta name="twitter:image" content="https://pdfsmartcore.com/twitter-card.png">
+    
+    <!-- Structured Data for Google (rating removed) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDFSmartCore",
+      "url": "https://pdfsmartcore.com",
+      "description": "Free online PDF tools suite: Merge PDF files, Split PDF pages, Compress PDF size, Convert Word documents to PDF, Convert JPG images to PDF, Extract images from PDF, Resize images online. All tools work locally in your browser.",
+      "applicationCategory": ["BusinessApplication", "UtilityApplication"],
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Merge multiple PDF files into one",
+        "Split PDF into separate pages",
+        "Compress PDF to reduce file size",
+        "Convert Word DOCX to PDF format",
+        "Convert JPG/PNG images to PDF",
+        "Extract images from PDF as JPG",
+        "Resize images with precise control"
+      ],
+      "applicationSubCategory": "PDF Software",
+      "screenshot": "https://pdfsmartcore.com/screenshot.png",
+      "softwareVersion": "2.0",
+      "releaseNotes": "Added 7 new PDF tools with local processing",
+      "countriesSupported": ["IN", "US", "UK", "CA", "AU", "DE", "FR", "ES", "IT"],
+      "processorRequirements": "Modern web browser",
+      "memoryRequirements": "512 MB RAM",
+      "storageRequirements": "No storage required",
+      "permissions": "None - works entirely in browser"
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are these PDF tools really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all 7 PDF tools are 100% free with no hidden charges, no watermarks, and no usage limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my files uploaded to any server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, all processing happens locally in your browser. Your files never leave your computer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What file formats are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PDF, DOCX, JPG, PNG, GIF, BMP for input. Output depends on the tool being used."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there any file size limit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, there are no file size restrictions. Process as large files as your browser can handle."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Sitemap Link -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    
+    <!-- Favicon - Generate kar le bhai favicon.io se "PDFSmartCore" text + PDF icon (red/orange theme best lagega) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- CDN Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.21/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --primary-glow: rgba(99, 102, 241, 0.15);
+            --success: #10b981;
+            --success-dark: #0da271;
+            --success-glow: rgba(16, 185, 129, 0.15);
+            --danger: #ef4444;
+            --danger-dark: #dc2626;
+            --warning: #f59e0b;
+            --warning-glow: rgba(245, 158, 11, 0.15);
+            --info: #3b82f6;
+            --info-glow: rgba(59, 130, 246, 0.15);
+            --sidebar: #0f172a;
+            --sidebar-light: #1e293b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== GLOBAL RESETS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-primary);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: var(--sidebar);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .logo {
+            padding: 24px 20px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            border-bottom: 1px solid var(--sidebar-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            filter: drop-shadow(0 2px 4px rgba(255, 107, 107, 0.3));
+            transition: var(--transition);
+        }
+
+        .nav-group {
+            padding: 20px 0;
+            flex: 1;
+        }
+
+        .nav-item {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--text-light);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin: 4px 12px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .nav-item:hover {
+            background: var(--sidebar-light);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--sidebar-light), rgba(99, 102, 241, 0.1));
+            color: white;
+            border-left: 4px solid var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-item i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover i {
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-item.active i {
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5));
+        }
+
+        /* ===== MOBILE OVERLAY ===== */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 0;
+            position: relative;
+        }
+
+        /* ===== HOME/DASHBOARD VIEW ===== */
+        #home-view {
+            padding: 40px 48px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+
+        .dashboard-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            text-shadow: 0 4px 10px rgba(255, 107, 107, 0.15);
+        }
+
+        .dashboard-header p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 35px 20px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05), rgba(255, 167, 38, 0.05));
+            z-index: 1;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa726, #4ade80);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #ffa726;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .card i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 6px rgba(255, 107, 107, 0.2));
+            transition: var(--transition);
+        }
+
+        .card:hover i {
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin: 8px 0 6px;
+            color: var(--text-primary);
+            font-weight: 700;
+            position: relative;
+            z-index: 3;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            line-height: 1.4;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* ===== SOFTWARE INFO BOXES ===== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        .info-box {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 35px 30px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(16, 185, 129, 0.05));
+            z-index: 1;
+        }
+
+        .info-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .info-box i {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 6px rgba(255, 107, 107, 0.2));
+            transition: var(--transition);
+        }
+
+        .info-box:hover i {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== FOOTER SECTION ===== */
+        .footer-section {
+            width: 100%;
+            padding: 40px 24px 30px 24px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-second-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+            max-width: 1400px;
+            margin: 40px auto 0 auto;
+        }
+
+        .privacy-box, .copyright-box, .about-box, .contact-box {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+
+        .about-box, .contact-box {
+            padding: 25px;
+        }
+
+        .privacy-box:hover, .copyright-box:hover, .about-box:hover, .contact-box:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-box .section-title, .contact-box .section-title {
+            font-size: 1.2rem;
+        }
+
+        .section-title i {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .privacy-content ul, .copyright-content ul, .about-content p, .contact-content p {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .privacy-content li, .copyright-content li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .privacy-content li:last-child, .copyright-content li:last-child {
+            border-bottom: none;
+        }
+
+        .privacy-content li i, .copyright-content li i {
+            color: var(--success);
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            flex-shrink: 0;
+        }
+
+        .about-content p, .contact-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .made-with-love {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .made-with-love i {
+            color: #ff6b6b;
+            margin: 0 5px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .tool-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+            
+            .footer-grid, .footer-second-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            body {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto;
+            }
+            
+            .sidebar {
+                width: 280px;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: -280px;
+                z-index: 100;
+                transition: left 0.3s ease;
+                box-shadow: 3px 0 15px rgba(0, 0, 0, 0.15);
+            }
+            
+            .sidebar.show {
+                left: 0;
+            }
+            
+            .logo {
+                padding: 20px;
+                font-size: 1.5rem;
+                justify-content: center;
+            }
+            
+            .nav-group {
+                display: flex;
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .nav-item {
+                margin: 5px 15px;
+                padding: 14px 20px;
+            }
+            
+            .content {
+                margin-top: 0;
+                padding-top: 80px;
+                height: calc(100vh - 80px);
+            }
+            
+            #home-view {
+                padding: 20px 15px;
+            }
+            
+            .footer-section {
+                padding: 30px 20px;
+            }
+            
+            .footer-grid, .footer-second-row {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .dashboard-header p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #home-view {
+                padding: 15px;
+            }
+            
+            .tool-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .card {
+                padding: 25px 15px;
+            }
+            
+            .card i {
+                font-size: 2.8rem;
+            }
+            
+            .card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .card p {
+                font-size: 0.85rem;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 2rem;
+            }
+            
+            .info-box {
+                padding: 25px 20px;
+            }
+            
+            .footer-section {
+                padding: 25px 16px;
+            }
+            
+            .privacy-box, .copyright-box, .about-box, .contact-box {
+                padding: 20px;
+            }
+            
+            .footer-grid, .footer-second-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-menu-btn {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .tool-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .privacy-box, .copyright-box, .about-box, .contact-box {
+                padding: 16px;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .privacy-content li, .copyright-content li {
+                font-size: 0.9rem;
+                padding: 8px 0;
+            }
+            
+            .about-content p, .contact-content p {
+                font-size: 0.9rem;
+            }
+            
+            .dashboard-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .dashboard-header p {
+                font-size: 1rem;
+            }
+            
+            .made-with-love {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- MOBILE OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fas fa-file-pdf"></i> PDFSmartCore
+        </div>
+        <div class="nav-group">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="pdf-merge.html" class="nav-item">
+                <i class="fas fa-layer-group"></i> Merge PDF
+            </a>
+            <a href="pdf-split.html" class="nav-item">
+                <i class="fas fa-cut"></i> Split & Organize
+            </a>
+            <a href="word-to-pdf.html" class="nav-item">
+                <i class="fas fa-file-word"></i> Word to PDF
+            </a>
+            <a href="pdf-size.html" class="nav-item">
+                <i class="fas fa-compress-arrows-alt"></i> PDF Size
+            </a>
+            <a href="jpg-to-pdf.html" class="nav-item">
+                <i class="fas fa-image"></i> JPG to PDF
+            </a>
+            <a href="pdf-to-jpg.html" class="nav-item">
+                <i class="fas fa-file-image"></i> PDF to JPG
+            </a>
+            <a href="image-size.html" class="nav-item">
+                <i class="fas fa-expand-arrows-alt"></i> Image Size
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="content">
+        <!-- HOME/DASHBOARD VIEW -->
+        <div id="home-view">
+            <div class="dashboard-header">
+                <h1>Professional PDF Suite</h1>
+                <p>Every tool is 100% free, secure, and works locally on your device. No uploads, no limits, no watermarks.</p>
+            </div>
+            
+            <div class="tool-grid">
+                <a href="pdf-merge.html" class="card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDFs into one document</p>
+                </a>
+                <a href="pdf-split.html" class="card">
+                    <i class="fas fa-cut"></i>
+                    <h3>Split & Organize</h3>
+                    <p>Extract or rearrange pages from PDF files</p>
+                </a>
+                <a href="word-to-pdf.html" class="card">
+                    <i class="fas fa-file-word"></i>
+                    <h3>Word to PDF</h3>
+                    <p>Convert DOCX documents to PDF format</p>
+                </a>
+                <a href="pdf-size.html" class="card">
+                    <i class="fas fa-compress-arrows-alt"></i>
+                    <h3>PDF Size</h3>
+                    <p>Reduce or increase PDF file size</p>
+                </a>
+                <a href="jpg-to-pdf.html" class="card">
+                    <i class="fas fa-image"></i>
+                    <h3>JPG to PDF</h3>
+                    <p>Convert images to PDF documents</p>
+                </a>
+                <a href="pdf-to-jpg.html" class="card">
+                    <i class="fas fa-file-image"></i>
+                    <h3>PDF to JPG</h3>
+                    <p>Extract images from PDF pages</p>
+                </a>
+                <a href="image-size.html" class="card">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                    <h3>Image Size</h3>
+                    <p>Resize images with precise control</p>
+                </a>
+            </div>
+
+            <!-- SOFTWARE INFO BOXES -->
+            <div class="info-grid">
+                <div class="info-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>100% Secure & Private</h3>
+                    <p>All processing happens locally in your browser. No files are uploaded to any server. Your documents never leave your computer.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Experience blazing fast processing with our optimized algorithms. Handle large files instantly without waiting.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-infinity"></i>
+                    <h3>No Limits</h3>
+                    <p>Unlimited usage, no file size restrictions, no watermarks, and completely free. Process as many files as you want.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Browser Based</h3>
+                    <p>No installation required. Works on any device with a modern browser - Windows, Mac, Linux, or mobile.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== FOOTER SECTION ===== -->
+        <div class="footer-section">
+            <!-- FIRST ROW: Privacy & Terms -->
+            <div class="footer-grid">
+                <div class="privacy-box">
+                    <h3 class="section-title"><i class="fas fa-user-shield"></i> Privacy Policy</h3>
+                    <div class="privacy-content">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>100% Local Processing:</strong> All files are processed directly in your browser</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>No Server Uploads:</strong> Your files never leave your computer</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Auto Data Deletion:</strong> Uploaded files are automatically deleted after processing</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>No Tracking:</strong> We don't collect any personal information or usage data</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>No Cookies:</strong> We don't use tracking cookies or analytics</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Session Storage:</strong> Files are only stored temporarily in browser memory</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="copyright-box">
+                    <h3 class="section-title"><i class="fas fa-copyright"></i> Copyright & Terms</h3>
+                    <div class="copyright-content">
+                        <ul>
+                            <li><i class="fas fa-code"></i> <strong>Software:</strong> PDFSmartCore v2.0</li>
+                            <li><i class="fas fa-calendar"></i> <strong>Copyright:</strong> © 2026 PDFSmartCore. All rights reserved.</li>
+                            <li><i class="fas fa-heart"></i> <strong>Free to Use:</strong> This software is completely free for personal and commercial use</li>
+                            <li><i class="fas fa-gavel"></i> <strong>Open Source:</strong> Built using open-source libraries (pdf-lib, pdf.js, jspdf)</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> <strong>Disclaimer:</strong> For personal use only. Not responsible for misuse.</li>
+                            <li><i class="fas fa-sync-alt"></i> <strong>Updates:</strong> Regular updates and feature additions planned</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECOND ROW: About Us & Contact Us -->
+            <div class="footer-second-row">
+                <div class="about-box">
+                    <h3 class="section-title"><i class="fas fa-info-circle"></i> About Us</h3>
+                    <div class="about-content">
+                        <p>Welcome to <strong>PDFSmartCore</strong> - your all-in-one PDF solution. We're dedicated to providing 100% free, secure, and powerful PDF tools that work entirely in your browser.</p>
+                        <p>Our mission is to make PDF editing accessible to everyone without compromising on security or quality.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-box">
+                    <h3 class="section-title"><i class="fas fa-envelope"></i> Contact Us</h3>
+                    <div class="contact-content">
+                        <p>We're here to help! If you have any questions, suggestions, or feedback, please feel free to reach out to us.</p>
+                        <p><strong>Email:</strong> support@pdfsmartcore.com</p>
+                        <p><strong>Community:</strong> Join our community for help and discussions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MADE WITH LOVE SECTION -->
+            <div class="made-with-love">
+                Made with <i class="fas fa-heart"></i> for the Community
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const sidebar = document.getElementById('sidebar');
+        
+        let isSidebarOpen = false;
+        
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+        
+        mobileOverlay.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeSidebar();
+        });
+        
+        function toggleSidebar() {
+            if (window.innerWidth <= 992) {
+                if (!isSidebarOpen) {
+                    sidebar.classList.add('show');
+                    mobileOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    isSidebarOpen = true;
+                } else {
+                    closeSidebar();
+                }
+            }
+        }
+        
+        function closeSidebar() {
+            sidebar.classList.remove('show');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            isSidebarOpen = false;
+        }
+    </script>
+</body>
+</html>

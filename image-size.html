@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- ===== ADVANCED SEO TAGS ===== -->
+    <title>Image Size | Resize Image Online | Image Resizer | Compress Images | Change Image Size - PDFSmartCore</title>
+   
+    <meta name="description" content="100% Free Image Size Tool: Resize images online with precise control. Compress or increase image size while maintaining quality. No uploads, works locally in browser.">
+   
+    <meta name="keywords" content="
+        resize image, image resizer, change image size, compress image, reduce image size,
+        image size tool, online image resizer, resize photo, image compressor,
+        increase image size, enlarge image, make image smaller, image optimization,
+        free image resizer, local image processing, no watermark, image tools,
+        pdfsmartcore, pdf tools 2026, secure image tools, local image processing
+    ">
+   
+    <meta name="author" content="PDFSmartCore">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+   
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pdfsmartcore.com/image-size.html">
+   
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Image Size Tool - Resize Images Online">
+    <meta property="og:description" content="Resize images with precise control. Compress or increase image size while maintaining quality. 100% free, secure, no uploads required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pdfsmartcore.com/image-size.html">
+    <meta property="og:image" content="https://pdfsmartcore.com/image-size-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="PDFSmartCore">
+   
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Image Size Tool - Free Online Image Resizer">
+    <meta name="twitter:description" content="Resize images with one click. 100% free, no registration required.">
+    <meta name="twitter:image" content="https://pdfsmartcore.com/image-size-twitter.png">
+   
+    <!-- CDN Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+   
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --primary-glow: rgba(99, 102, 241, 0.15);
+            --success: #10b981;
+            --success-dark: #0da271;
+            --success-glow: rgba(16, 185, 129, 0.15);
+            --danger: #ef4444;
+            --danger-dark: #dc2626;
+            --warning: #f59e0b;
+            --warning-glow: rgba(245, 158, 11, 0.15);
+            --info: #3b82f6;
+            --info-glow: rgba(59, 130, 246, 0.15);
+            --sidebar: #0f172a;
+            --sidebar-light: #1e293b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* ===== GLOBAL RESETS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text-primary);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: var(--sidebar);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+        .mobile-menu-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            z-index: 100;
+        }
+        .logo {
+            padding: 24px 20px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            border-bottom: 1px solid var(--sidebar-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+        .logo i {
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            filter: drop-shadow(0 2px 4px rgba(255, 107, 107, 0.3));
+            transition: var(--transition);
+        }
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-group {
+            padding: 20px 0;
+            flex: 1;
+        }
+        .nav-item {
+            padding: 16px 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--text-light);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin: 4px 12px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        .nav-item:hover {
+            background: var(--sidebar-light);
+            color: white;
+            transform: translateX(4px);
+        }
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--sidebar-light), rgba(99, 102, 241, 0.1));
+            color: white;
+            border-left: 4px solid var(--primary);
+            font-weight: 600;
+        }
+        .nav-item i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+        .nav-item:hover i {
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-item.active i {
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5));
+        }
+        /* ===== MOBILE OVERLAY ===== */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+        .mobile-overlay.active {
+            display: block;
+        }
+        /* ===== MAIN CONTENT ===== */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 0;
+            position: relative;
+        }
+        /* ===== TOOL WORKSPACE ===== */
+        #tool-view {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            flex: 1;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin: 20px;
+            position: relative;
+            min-height: calc(100vh - 40px);
+            flex-direction: column;
+        }
+        /* TOOL PAGE HEADER */
+        .tool-page-header {
+            text-align: center;
+            padding: 25px 30px 15px 30px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, #f9fafb, #f1f5f9);
+        }
+        .tool-page-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            text-shadow: 0 4px 10px rgba(255, 107, 107, 0.15);
+        }
+        .tool-page-header p {
+            font-size: 0.95rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        .tool-workspace {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        .editor-side {
+            flex: 1.2;
+            padding: 25px;
+            background: linear-gradient(135deg, #f9fafb, #f1f5f9);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            position: relative;
+        }
+        .result-side {
+            flex: 1;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            position: relative;
+        }
+        /* FIXED: Better scrollbar for mobile */
+        .editor-side::-webkit-scrollbar {
+            width: 8px;
+        }
+        .editor-side::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .editor-side::-webkit-scrollbar-thumb {
+            background: #ff6b6b;
+            border-radius: 10px;
+            min-height: 40px;
+        }
+        .editor-side::-webkit-scrollbar-thumb:hover {
+            background: #ff5252;
+        }
+        .back-btn {
+            background: rgba(255, 107, 107, 0.1);
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        .back-btn:hover {
+            background: rgba(255, 107, 107, 0.2);
+            transform: translateX(-4px);
+        }
+        /* HOW TO USE BUTTON */
+        .help-btn {
+            background: rgba(59, 130, 246, 0.1);
+            border: none;
+            color: #3b82f6;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-left: 10px;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        .help-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+        }
+        /* TOOL TITLE COMPACT */
+        .tool-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+        .tool-subtitle {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        /* ===== UPLOAD ZONE ===== */
+        #upload-zone {
+            border: 3px dashed var(--border);
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: var(--radius);
+            cursor: pointer;
+            background: var(--card-bg);
+            transition: var(--transition);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        #upload-zone:hover {
+            border-color: #ffa726;
+            background: rgba(255, 167, 38, 0.02);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+        #upload-zone i {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(255, 107, 107, 0.2));
+            transition: var(--transition);
+        }
+        #upload-zone:hover i {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #upload-zone h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        #upload-zone p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 3px;
+        }
+        .upload-hint {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+        /* ===== PAGE THUMBNAILS GRID ===== */
+        .page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        .page-grid::-webkit-scrollbar {
+            width: 10px;
+        }
+        .page-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .page-grid::-webkit-scrollbar-thumb {
+            background: #ff6b6b;
+            border-radius: 10px;
+            min-height: 50px;
+        }
+        .page-grid::-webkit-scrollbar-thumb:hover {
+            background: #ff5252;
+        }
+        .page-item {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 8px;
+            position: relative;
+            text-align: center;
+            transition: var(--transition);
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        .page-item:hover {
+            border-color: #ff6b6b;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+        .page-item img {
+            width: 100%;
+            border-radius: 6px;
+            display: block;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            background: #f8fafc;
+            pointer-events: none;
+        }
+        .page-ctrl {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+        .c-btn {
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 700;
+            transition: var(--transition);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            min-height: 36px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .c-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-del {
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+        }
+        .btn-del:hover {
+            background: linear-gradient(135deg, #ff5252, #ff4444);
+        }
+        /* ===== IMAGE SIZE CONTROLS ===== */
+        .image-size-tool-container {
+            display: none;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-top: 20px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .size-display-box {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+        }
+        .size-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .size-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .size-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .size-label i {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .size-value {
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+        .change-positive {
+            color: var(--success);
+        }
+        .change-negative {
+            color: var(--danger);
+        }
+        .size-percentage-display {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 10px rgba(255, 107, 107, 0.2);
+        }
+        .slider-container {
+            margin: 25px 0;
+        }
+        .simple-slider {
+            width: 100%;
+            height: 12px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #4ade80, #ffa726, #ff6b6b);
+            outline: none;
+            -webkit-appearance: none;
+            margin: 12px 0;
+        }
+        .simple-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            border: 3px solid #ff6b6b;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .size-quick-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .quick-size-btn {
+            padding: 16px 10px;
+            border: 2px solid #ff6b6b;
+            background: white;
+            color: #ff6b6b;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            min-height: 54px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .quick-size-btn:hover {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            color: white;
+            transform: translateY(-3px);
+        }
+        .quick-size-btn i {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .quick-size-btn:hover i {
+            background: linear-gradient(135deg, white, white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .size-note {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 15px;
+            padding: 14px;
+            background: rgba(255, 107, 107, 0.05);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid #ff6b6b;
+        }
+        .size-note i {
+            margin-right: 6px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* ===== RESIZED IMAGES PREVIEW ===== */
+        .resized-images-preview {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            max-height: 250px;
+            overflow-y: auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        .resized-image-item {
+            background: var(--card-bg);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .resized-image-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        .resized-image-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: white;
+            padding: 6px;
+        }
+        .resized-image-name {
+            font-size: 0.8rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .resized-image-size {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        /* ===== ACTION BUTTONS ===== */
+        .btn-main {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            color: white;
+            border: none;
+            padding: 18px 25px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+            min-height: 56px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-main:hover {
+            background: linear-gradient(135deg, #ffa726, #ff6b6b);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+        }
+        .btn-outline {
+            background: white;
+            color: #ff6b6b;
+            border: 2px solid #ff6b6b;
+            padding: 16px 25px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 12px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 56px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-outline:hover {
+            background: rgba(255, 107, 107, 0.05);
+            transform: translateY(-3px);
+        }
+        /* ===== RESULT AREA ===== */
+        #status-label {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding: 14px;
+            background: rgba(255, 107, 107, 0.05);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid #ff6b6b;
+        }
+        .loader {
+            display: none;
+            width: 45px;
+            height: 45px;
+            border: 4px solid rgba(255, 107, 107, 0.1);
+            border-top: 4px solid #ff6b6b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        #success-btns {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+        }
+        /* ===== HIDDEN UTILITY ===== */
+        .hidden {
+            display: none !important;
+        }
+        /* ===== HOW TO USE POPUP ===== */
+        .how-to-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .popup-content {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            border: 1px solid var(--border);
+        }
+        .popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(239, 68, 68, 0.1);
+            border: none;
+            color: #ef4444;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .popup-close:hover {
+            background: rgba(239, 68, 68, 0.2);
+            transform: rotate(90deg);
+        }
+        .popup-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+        .popup-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .instructions-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .instructions-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .instructions-list li:last-child {
+            border-bottom: none;
+        }
+        .instructions-list li i {
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .note-box {
+            background: rgba(255, 167, 38, 0.1);
+            border-left: 4px solid #ffa726;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            margin-top: 25px;
+        }
+        .note-box p {
+            color: #7c2d12;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .note-box i {
+            color: #ffa726;
+            margin-right: 8px;
+        }
+        /* ===== FOOTER SECTION ===== */
+        .footer-section {
+            width: 100%;
+            padding: 40px 24px 30px 24px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+            position: relative;
+            z-index: 5;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .footer-second-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+            max-width: 1400px;
+            margin: 40px auto 0 auto;
+        }
+        .privacy-box, .copyright-box, .about-box, .contact-box {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+        .about-box, .contact-box {
+            padding: 25px;
+        }
+        .privacy-box:hover, .copyright-box:hover, .about-box:hover, .contact-box:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .about-box .section-title, .contact-box .section-title {
+            font-size: 1.2rem;
+        }
+        .section-title i {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .privacy-content ul, .copyright-content ul, .about-content p, .contact-content p {
+            list-style: none;
+            padding-left: 0;
+        }
+        .privacy-content li, .copyright-content li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        .privacy-content li:last-child, .copyright-content li:last-child {
+            border-bottom: none;
+        }
+        .privacy-content li i, .copyright-content li i {
+            color: var(--success);
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            flex-shrink: 0;
+        }
+        .about-content p, .contact-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        .made-with-love {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .made-with-love i {
+            color: #ff6b6b;
+            margin: 0 5px;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 240px;
+            }
+           
+            .footer-grid, .footer-second-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+           
+            body {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                overflow-y: auto;
+            }
+           
+            .sidebar {
+                width: 280px;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: -280px;
+                z-index: 100;
+                transition: left 0.3s ease;
+                box-shadow: 3px 0 15px rgba(0, 0, 0, 0.15);
+            }
+           
+            .sidebar.show {
+                left: 0;
+            }
+           
+            .logo {
+                padding: 20px;
+                font-size: 1.5rem;
+                justify-content: center;
+            }
+           
+            .nav-group {
+                display: flex;
+                flex-direction: column;
+                padding: 15px 0;
+            }
+           
+            .nav-item {
+                margin: 5px 15px;
+                padding: 14px 20px;
+            }
+           
+            .content {
+                margin-top: 0;
+                padding-top: 80px;
+                height: calc(100vh - 80px);
+            }
+           
+            #tool-view {
+                margin: 10px;
+                min-height: calc(100vh - 90px);
+            }
+           
+            .tool-workspace {
+                flex-direction: column;
+            }
+           
+            .editor-side, .result-side {
+                width: 100%;
+                padding: 20px;
+            }
+           
+            .editor-side {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+           
+            .footer-section {
+                padding: 30px 20px;
+            }
+           
+            .footer-grid, .footer-second-row {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+           
+            .tool-page-header h1 {
+                font-size: 1.8rem;
+            }
+           
+            #upload-zone {
+                padding: 30px 20px;
+                margin: 20px 0;
+            }
+           
+            #upload-zone i {
+                font-size: 2.5rem;
+            }
+           
+            #upload-zone h3 {
+                font-size: 1.2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .editor-side, .result-side {
+                padding: 15px;
+            }
+           
+            .tool-title {
+                font-size: 1.4rem;
+            }
+           
+            .size-quick-buttons {
+                grid-template-columns: 1fr;
+            }
+           
+            .footer-section {
+                padding: 25px 16px;
+            }
+           
+            .privacy-box, .copyright-box, .about-box, .contact-box {
+                padding: 20px;
+            }
+           
+            .footer-grid, .footer-second-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+           
+            .tool-page-header {
+                padding: 20px 15px 12px 15px;
+            }
+           
+            .tool-page-header h1 {
+                font-size: 1.6rem;
+            }
+           
+            #upload-zone {
+                padding: 25px 15px;
+            }
+           
+            #upload-zone i {
+                font-size: 2.2rem;
+            }
+           
+            .page-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 12px;
+                max-height: 250px;
+            }
+           
+            .popup-content {
+                padding: 20px;
+            }
+           
+            .popup-title {
+                font-size: 1.5rem;
+            }
+           
+            .popup-close {
+                top: 15px;
+                right: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .mobile-menu-btn {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+           
+            .size-quick-buttons {
+                grid-template-columns: 1fr;
+            }
+           
+            .privacy-box, .copyright-box, .about-box, .contact-box {
+                padding: 16px;
+            }
+           
+            .section-title {
+                font-size: 1.2rem;
+            }
+           
+            .privacy-content li, .copyright-content li {
+                font-size: 0.9rem;
+                padding: 8px 0;
+            }
+           
+            .about-content p, .contact-content p {
+                font-size: 0.9rem;
+            }
+           
+            .tool-page-header h1 {
+                font-size: 1.5rem;
+            }
+           
+            .tool-page-header p {
+                font-size: 0.9rem;
+            }
+           
+            .tool-title {
+                font-size: 1.3rem;
+            }
+           
+            .tool-subtitle {
+                font-size: 0.85rem;
+            }
+           
+            #upload-zone {
+                padding: 20px 12px;
+            }
+           
+            .btn-main {
+                padding: 14px 20px;
+                font-size: 0.9rem;
+                min-height: 50px;
+            }
+           
+            .popup-content {
+                padding: 16px;
+            }
+           
+            .popup-title {
+                font-size: 1.3rem;
+                padding-right: 40px;
+            }
+           
+            .instructions-list li {
+                font-size: 0.9rem;
+                padding: 10px 0;
+            }
+        }
+        @media (max-width: 360px) {
+            .size-quick-buttons {
+                grid-template-columns: 1fr;
+            }
+           
+            .sidebar {
+                width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- MOBILE MENU BUTTON -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+    <!-- MOBILE OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-file-pdf"></i> PDFSmartCore
+            </a>
+        </div>
+        <div class="nav-group">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="pdf-merge.html" class="nav-item">
+                <i class="fas fa-layer-group"></i> Merge PDF
+            </a>
+            <a href="pdf-split.html" class="nav-item">
+                <i class="fas fa-cut"></i> Split & Organize
+            </a>
+            <a href="word-to-pdf.html" class="nav-item">
+                <i class="fas fa-file-word"></i> Word to PDF
+            </a>
+            <a href="pdf-size.html" class="nav-item">
+                <i class="fas fa-compress-arrows-alt"></i> PDF Size
+            </a>
+            <a href="jpg-to-pdf.html" class="nav-item">
+                <i class="fas fa-image"></i> JPG to PDF
+            </a>
+            <a href="pdf-to-jpg.html" class="nav-item">
+                <i class="fas fa-file-image"></i> PDF to JPG
+            </a>
+            <a href="image-size.html" class="nav-item active">
+                <i class="fas fa-expand-arrows-alt"></i> Image Size
+            </a>
+        </div>
+    </div>
+    <!-- MAIN CONTENT AREA -->
+    <div class="content">
+        <!-- TOOL WORKSPACE -->
+        <div id="tool-view" class="tool-box">
+            <!-- TOOL PAGE HEADER -->
+            <div class="tool-page-header">
+                <h1>Professional PDF Suite</h1>
+                <p>Every tool is 100% free, secure, and works locally on your device. No uploads, no limits, no watermarks.</p>
+            </div>
+           
+            <!-- TOOL WORKSPACE CONTENT -->
+            <div class="tool-workspace">
+                <div class="editor-side">
+                    <div style="display: flex; align-items: center;">
+                        <a href="index.html" class="back-btn">
+                            <i class="fas fa-arrow-left"></i> Back to Home
+                        </a>
+                        <button class="help-btn" onclick="showHowToUse()">
+                            <i class="fas fa-question-circle"></i> How to Use
+                        </button>
+                    </div>
+                   
+                    <h2 class="tool-title">Adjust Image Size</h2>
+                    <p class="tool-subtitle">Resize images with precise control</p>
+                   
+                    <!-- FILE UPLOAD ZONE -->
+                    <div id="upload-zone" onclick="document.getElementById('picker').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3 id="upload-title">Select Image</h3>
+                        <p id="picker-msg">Drag & drop image or click to browse</p>
+                        <p class="upload-hint" id="file-type-hint">Supports JPG, PNG, GIF, BMP (single file)</p>
+                        <input type="file" id="picker" hidden accept="image/*" onchange="handleFiles(this.files)">
+                    </div>
+                   
+                    <!-- PAGE THUMBNAILS GRID -->
+                    <div id="page-grid" class="page-grid"></div>
+                   
+                    <!-- IMAGE SIZE CONTROLS -->
+                    <div id="image-size-tool" class="image-size-tool-container">
+                        <div class="size-display-box">
+                            <div class="size-row">
+                                <div class="size-label">
+                                    <i class="fas fa-image"></i> Original Size
+                                </div>
+                                <div id="img-original-size" class="size-value">0 KB</div>
+                            </div>
+                            <div class="size-row">
+                                <div class="size-label">
+                                    <i class="fas fa-bullseye"></i> Target Size
+                                </div>
+                                <div id="img-target-size" class="size-value">0 KB</div>
+                            </div>
+                            <div class="size-row">
+                                <div class="size-label">
+                                    <i class="fas fa-exchange-alt"></i> Change
+                                </div>
+                                <div id="img-change-percent" class="size-value">0%</div>
+                            </div>
+                        </div>
+                       
+                        <h4 style="margin-bottom: 15px; color: var(--text-primary);">
+                            <i class="fas fa-sliders-h"></i> Size Adjustment
+                        </h4>
+                        <div class="size-percentage-display" id="img-size-percent">100%</div>
+                       
+                        <div class="slider-container">
+                            <input type="range" min="1" max="500" value="100" class="simple-slider" id="img-size-slider">
+                            <div class="slider-labels">
+                                <span>1% (Min)</span>
+                                <span>100% (Original)</span>
+                                <span>500% (Max)</span>
+                            </div>
+                        </div>
+                       
+                        <div class="size-quick-buttons">
+                            <button class="quick-size-btn" onclick="setImageSize(50)">
+                                <i class="fas fa-compress"></i> 50% Size
+                            </button>
+                            <button class="quick-size-btn" onclick="setImageSize(150)">
+                                <i class="fas fa-expand"></i> 150% Size
+                            </button>
+                            <button class="quick-size-btn" onclick="resetImageSize()">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                        </div>
+                       
+                        <div class="size-note">
+                            <i class="fas fa-info-circle"></i>
+                            Adjust slider for precise size control (1% to 500%). Maintains aspect ratio automatically.
+                        </div>
+                    </div>
+                   
+                    <!-- RESIZED IMAGES PREVIEW -->
+                    <div id="resized-images-preview" class="resized-images-preview"></div>
+                   
+                    <!-- PROCESS BUTTON -->
+                    <button class="btn-main" id="process-btn" onclick="startWork()" style="display:none;">
+                        <span id="process-btn-text">Adjust Image Size</span>
+                        <i class="fas fa-bolt"></i>
+                    </button>
+                </div>
+               
+                <!-- RESULT SIDE -->
+                <div class="result-side">
+                    <h3 id="status-label">Status: Ready</h3>
+                    <div class="loader" id="loader"></div>
+                   
+                    <div id="success-btns" style="display:none;">
+                        <button class="btn-main btn-success" onclick="downloadFile()">
+                            <i class="fas fa-download"></i> Download Result
+                        </button>
+                        <button class="btn-outline" onclick="startNewTask()">
+                            <i class="fas fa-sync"></i> Start New Task
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <!-- ===== FOOTER SECTION ===== -->
+        <div class="footer-section">
+            <!-- FIRST ROW: Privacy & Terms -->
+            <div class="footer-grid">
+                <div class="privacy-box">
+                    <h3 class="section-title"><i class="fas fa-user-shield"></i> Privacy Policy</h3>
+                    <div class="privacy-content">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>100% Local Processing:</strong> All files are processed directly in your browser</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>No Server Uploads:</strong> Your files never leave your computer</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Auto Data Deletion:</strong> Uploaded files are automatically deleted after processing</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>No Tracking:</strong> We don't collect any personal information or usage data</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>No Cookies:</strong> We don't use tracking cookies or analytics</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Session Storage:</strong> Files are only stored temporarily in browser memory</li>
+                        </ul>
+                    </div>
+                </div>
+               
+                <div class="copyright-box">
+                    <h3 class="section-title"><i class="fas fa-copyright"></i> Copyright & Terms</h3>
+                    <div class="copyright-content">
+                        <ul>
+                            <li><i class="fas fa-code"></i> <strong>Software:</strong> PDFSmartCore v2.0</li>
+                            <li><i class="fas fa-calendar"></i> <strong>Copyright:</strong> © 2026 PDFSmartCore. All rights reserved.</li>
+                            <li><i class="fas fa-heart"></i> <strong>Free to Use:</strong> This software is completely free for personal and commercial use</li>
+                            <li><i class="fas fa-gavel"></i> <strong>Open Source:</strong> Built using open-source libraries (pdf-lib, pdf.js, jspdf)</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> <strong>Disclaimer:</strong> For personal use only. Not responsible for misuse.</li>
+                            <li><i class="fas fa-sync-alt"></i> <strong>Updates:</strong> Regular updates and feature additions planned</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- SECOND ROW: About Us & Contact Us -->
+            <div class="footer-second-row">
+                <div class="about-box">
+                    <h3 class="section-title"><i class="fas fa-info-circle"></i> About Us</h3>
+                    <div class="about-content">
+                        <p>Welcome to <strong>PDFSmartCore</strong> - your all-in-one PDF solution. We're dedicated to providing 100% free, secure, and powerful PDF tools that work entirely in your browser.</p>
+                        <p>Our mission is to make PDF editing accessible to everyone without compromising on security or quality.</p>
+                    </div>
+                </div>
+               
+                <div class="contact-box">
+                    <h3 class="section-title"><i class="fas fa-envelope"></i> Contact Us</h3>
+                    <div class="contact-content">
+                        <p>We're here to help! If you have any questions, suggestions, or feedback, please feel free to reach out to us.</p>
+                        <p><strong>Email:</strong> support@pdfsmartcore.com</p>
+                        <p><strong>Community:</strong> Join our community for help and discussions.</p>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- MADE WITH LOVE SECTION -->
+            <div class="made-with-love">
+                Made with <i class="fas fa-heart"></i> for the Community
+            </div>
+        </div>
+    </div>
+    <!-- HOW TO USE POPUP -->
+    <div id="how-to-popup" class="how-to-popup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closeHowToUse()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="popup-title">How to Use Image Size Tool</h2>
+            <p class="popup-subtitle">Step-by-step guide for resizing images</p>
+           
+            <ul class="instructions-list" id="instructions-list">
+                <li><i class="fas fa-check-circle"></i> <span><strong>Step 1:</strong> Upload an image file (JPG, PNG, GIF, BMP)</span></li>
+                <li><i class="fas fa-check-circle"></i> <span><strong>Step 2:</strong> Use the slider to adjust size from 1% to 500%</span></li>
+                <li><i class="fas fa-check-circle"></i> <span><strong>Step 3:</strong> Quick presets: 50% (reduce), 150% (increase), or Reset to 100%</span></li>
+                <li><i class="fas fa-check-circle"></i> <span><strong>Step 4:</strong> See real-time size calculation in the display box</span></li>
+                <li><i class="fas fa-check-circle"></i> <span><strong>Step 5:</strong> Click "Adjust Image Size" to process and download</span></li>
+            </ul>
+           
+            <div class="note-box">
+                <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Aspect ratio is automatically maintained. Image quality is preserved as much as possible.</p>
+                <p><i class="fas fa-shield-alt"></i> <strong>Security:</strong> 100% secure and private. Images are automatically deleted after processing.</p>
+            </div>
+        </div>
+    </div>
+    <!-- JAVASCRIPT -->
+    <script>
+        // Global variables
+        let currentPages = [];
+        let finalBlob = null;
+        let imageSizePercent = 100;
+        let resizedImages = [];
+        let totalOriginalSize = 0;
+        let totalResizedSize = 0;
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const sidebar = document.getElementById('sidebar');
+       
+        let isSidebarOpen = false;
+       
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+       
+        mobileOverlay.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeSidebar();
+        });
+       
+        function toggleSidebar() {
+            if (window.innerWidth <= 992) {
+                if (!isSidebarOpen) {
+                    sidebar.classList.add('show');
+                    mobileOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    isSidebarOpen = true;
+                } else {
+                    closeSidebar();
+                }
+            }
+        }
+       
+        function closeSidebar() {
+            sidebar.classList.remove('show');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            isSidebarOpen = false;
+        }
+       
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (window.innerWidth <= 992) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        function showHowToUse() {
+            document.getElementById('how-to-popup').style.display = 'flex';
+        }
+
+        function closeHowToUse() {
+            document.getElementById('how-to-popup').style.display = 'none';
+        }
+
+        document.getElementById('how-to-popup').addEventListener('click', function(e) {
+            if (e.target === this) closeHowToUse();
+        });
+
+        async function handleFiles(files) {
+            // Take only first file for image size tool
+            let filesToProcess = Array.from(files);
+            if (filesToProcess.length > 1) {
+                alert("This tool processes only one file at a time. Only the first file will be used.");
+                filesToProcess = [filesToProcess[0]];
+            }
+           
+            document.getElementById('upload-zone').style.display = 'none';
+            document.getElementById('process-btn').style.display = 'block';
+           
+            // Show image size controls
+            document.getElementById('image-size-tool').style.display = 'block';
+            totalOriginalSize = 0;
+            totalResizedSize = 0;
+           
+            // Scroll to process button
+            setTimeout(() => {
+                document.getElementById('process-btn').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }, 300);
+           
+            for (const file of filesToProcess) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = async (e) => {
+                        const img = new Image();
+                        img.onload = function() {
+                            const sizeKB = file.size / 1024;
+                            totalOriginalSize = sizeKB;
+                           
+                            document.getElementById('img-original-size').textContent = totalOriginalSize.toFixed(2) + " KB";
+                            updateImageSizeDisplay();
+                           
+                            addThumb(e.target.result, file, 0);
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+
+        function updateImageSizeDisplay() {
+            const targetSizeKB = (totalOriginalSize * imageSizePercent / 100).toFixed(2);
+            const changePercent = imageSizePercent - 100;
+           
+            document.getElementById('img-target-size').textContent = targetSizeKB + " KB";
+           
+            if (changePercent > 0) {
+                document.getElementById('img-change-percent').textContent = "+" + changePercent + "%";
+                document.getElementById('img-change-percent').className = "size-value change-negative";
+            } else if (changePercent < 0) {
+                document.getElementById('img-change-percent').textContent = changePercent + "%";
+                document.getElementById('img-change-percent').className = "size-value change-positive";
+            } else {
+                document.getElementById('img-change-percent').textContent = "0%";
+                document.getElementById('img-change-percent').className = "size-value";
+            }
+        }
+
+        function addThumb(data, file, idx) {
+            const id = 'p' + Math.random().toString(36).substr(2, 9);
+            currentPages.push({id, file, idx});
+           
+            const div = document.createElement('div');
+            div.className = 'page-item';
+            div.dataset.id = id;
+           
+            const controlButtonsHtml = `
+                <div class="page-ctrl">
+                    <button class="c-btn btn-del" onclick="removeThumb('${id}', this)" style="width: 100%;">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
+                </div>`;
+           
+            div.innerHTML = `
+                <img src="${data}" alt="${file.name}">
+                ${controlButtonsHtml}`;
+           
+            document.getElementById('page-grid').appendChild(div);
+        }
+
+        function removeThumb(id, btn) {
+            const pageIndex = currentPages.findIndex(p => p.id === id);
+            if (pageIndex !== -1) {
+                const file = currentPages[pageIndex].file;
+                const sizeKB = file.size / 1024;
+                totalOriginalSize -= sizeKB;
+                updateImageSizeDisplay();
+            }
+           
+            currentPages = currentPages.filter(p => p.id !== id);
+            btn.parentElement.parentElement.remove();
+           
+            document.getElementById('picker').value = '';
+           
+            if (document.querySelectorAll('.page-item').length === 0) {
+                document.getElementById('upload-zone').style.display = 'block';
+                document.getElementById('process-btn').style.display = 'none';
+                document.getElementById('image-size-tool').style.display = 'none';
+                document.getElementById('resized-images-preview').style.display = 'none';
+                document.getElementById('resized-images-preview').innerHTML = '';
+            }
+        }
+
+        function setImageSize(percent) {
+            imageSizePercent = percent;
+            document.getElementById('img-size-slider').value = percent;
+            document.getElementById('img-size-percent').textContent = percent + '%';
+            updateImageSizeDisplay();
+        }
+
+        function resetImageSize() {
+            setImageSize(100);
+        }
+
+        function startNewTask() {
+            currentPages = [];
+            finalBlob = null;
+            imageSizePercent = 100;
+            resizedImages = [];
+            totalOriginalSize = 0;
+            totalResizedSize = 0;
+           
+            document.getElementById('page-grid').innerHTML = '';
+            document.getElementById('upload-zone').style.display = 'block';
+            document.getElementById('process-btn').style.display = 'none';
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('success-btns').style.display = 'none';
+            document.getElementById('status-label').innerText = "Status: Ready";
+           
+            document.getElementById('image-size-tool').style.display = 'none';
+            document.getElementById('img-size-slider').value = 100;
+            document.getElementById('img-size-percent').textContent = '100%';
+            document.getElementById('resized-images-preview').style.display = 'none';
+            document.getElementById('resized-images-preview').innerHTML = '';
+           
+            document.getElementById('picker').value = '';
+           
+            document.getElementById('process-btn-text').textContent = 'Adjust Image Size';
+           
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+           
+            const content = document.querySelector('.content');
+            if (content) content.scrollTop = 0;
+           
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 10);
+        }
+
+        function showResizedImagesPreview() {
+            const previewContainer = document.getElementById('resized-images-preview');
+            previewContainer.innerHTML = '';
+            previewContainer.style.display = 'grid';
+           
+            resizedImages.forEach((img, index) => {
+                const div = document.createElement('div');
+                div.className = 'resized-image-item';
+                div.innerHTML = `
+                    <img src="${img.dataUrl}" alt="Resized ${index + 1}">
+                    <div class="resized-image-name">${img.name}</div>
+                    <div class="resized-image-size">${formatFileSize(img.size)}</div>
+                `;
+                previewContainer.appendChild(div);
+            });
+        }
+
+        async function startWork() {
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('status-label').innerText = "Processing...";
+            try {
+                if (currentPages.length === 0) {
+                    alert("Please upload an image first!");
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('status-label').innerText = "Status: Ready";
+                    return;
+                }
+               
+                document.getElementById('status-label').innerText = "Resizing image...";
+               
+                resizedImages = [];
+                let totalActualResizedSize = 0;
+               
+                for (let i = 0; i < currentPages.length; i++) {
+                    const ref = currentPages[i];
+                   
+                    if (!ref || !ref.file.type.startsWith('image/')) continue;
+                   
+                    const img = new Image();
+                    const reader = new FileReader();
+                   
+                    await new Promise((resolve) => {
+                        reader.onload = function(e) {
+                            img.src = e.target.result;
+                            img.onload = async function() {
+                                const originalWidth = img.width;
+                                const originalHeight = img.height;
+                               
+                                const newWidth = Math.round(originalWidth * (imageSizePercent / 100));
+                                const newHeight = Math.round(originalHeight * (imageSizePercent / 100));
+                               
+                                const canvas = document.createElement('canvas');
+                                canvas.width = newWidth;
+                                canvas.height = newHeight;
+                               
+                                const ctx = canvas.getContext('2d');
+                                ctx.drawImage(img, 0, 0, newWidth, newHeight);
+                               
+                                const blob = await new Promise(resolve => {
+                                    canvas.toBlob(resolve, 'image/jpeg', 0.9);
+                                });
+                               
+                                const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+                               
+                                const fileName = ref.file.name.replace(/\.[^/.]+$/, "");
+                                const newFileName = `${fileName}_${imageSizePercent}percent_${newWidth}x${newHeight}.jpg`;
+                               
+                                resizedImages.push({
+                                    name: newFileName,
+                                    blob: blob,
+                                    dataUrl: dataUrl,
+                                    size: blob.size
+                                });
+                               
+                                totalActualResizedSize += blob.size;
+                               
+                                document.getElementById('status-label').innerText = `Resizing image...`;
+                                resolve();
+                            };
+                        };
+                        reader.readAsDataURL(ref.file);
+                    });
+                }
+               
+                totalResizedSize = totalActualResizedSize / 1024;
+                const reductionPercent = totalOriginalSize > 0 ?
+                    ((totalOriginalSize - totalResizedSize) / totalOriginalSize * 100).toFixed(2) : 0;
+               
+                document.getElementById('img-target-size').textContent = totalResizedSize.toFixed(2) + " KB";
+                document.getElementById('img-change-percent').textContent = reductionPercent + "%";
+               
+                if (reductionPercent > 0) {
+                    document.getElementById('img-change-percent').className = "size-value change-positive";
+                } else if (reductionPercent < 0) {
+                    document.getElementById('img-change-percent').className = "size-value change-negative";
+                } else {
+                    document.getElementById('img-change-percent').className = "size-value";
+                }
+               
+                showResizedImagesPreview();
+               
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('success-btns').style.display = 'block';
+                document.getElementById('status-label').innerText = `Success! Image resized.`;
+               
+            } catch (error) {
+                console.error("Image Size Error:", error);
+                document.getElementById('status-label').innerText = "Error: " + error.message;
+                document.getElementById('loader').style.display = 'none';
+                alert("Resizing failed!");
+            }
+        }
+
+        function downloadFile() {
+            if (resizedImages.length > 0) {
+                resizedImages.forEach((img, index) => {
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(img.blob);
+                    a.download = img.name;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                   
+                    setTimeout(() => {
+                        URL.revokeObjectURL(a.href);
+                    }, 100);
+                });
+                return;
+            }
+           
+            if (!finalBlob) return;
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(finalBlob);
+            a.download = "resized_image.jpg";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+       
+        document.addEventListener('DOMContentLoaded', function() {
+            const imgSlider = document.getElementById('img-size-slider');
+            const imgPercent = document.getElementById('img-size-percent');
+           
+            imgSlider.oninput = function() {
+                imageSizePercent = parseInt(this.value);
+                imgPercent.textContent = imageSizePercent + '%';
+                updateImageSizeDisplay();
+            };
+           
+            // Set active nav item
+            const currentPage = window.location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if (item.getAttribute('href') === currentPage) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
