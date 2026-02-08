@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+  
     <!-- ===== ADVANCED SEO TAGS ===== -->
     <title>PDF Size | Reduce PDF File Size | Compress PDF Online | Increase PDF Size | Free PDF Compressor - PDFSmartCore</title>
-   
+  
     <meta name="description" content="100% Free PDF Size Tool: Reduce PDF file size without quality loss or increase PDF size. Compress PDF online with precise control. No uploads, works locally in browser.">
-   
+  
     <meta name="keywords" content="
         compress pdf, reduce pdf size, pdf compressor, pdf size reducer, compress pdf online,
         shrink pdf, make pdf smaller, decrease pdf size, pdf optimization, pdf size tool,
@@ -16,13 +16,13 @@
         free pdf compressor, online pdf size tool, local pdf compression, no watermark,
         pdfsmartcore, pdf tools 2026, secure pdf tools, local pdf processing
     ">
-   
+  
     <meta name="author" content="PDFSmartCore">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-   
+  
     <!-- Canonical URL -->
     <link rel="canonical" href="https://pdfsmartcore.com/pdf-size.html">
-   
+  
     <!-- Open Graph Tags -->
     <meta property="og:title" content="PDF Size Tool - Compress or Increase PDF File Size">
     <meta property="og:description" content="Reduce or increase PDF file size with precise control. 100% free, secure, no uploads required.">
@@ -32,19 +32,19 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="PDFSmartCore">
-   
+  
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PDF Size Tool - Compress PDF Online">
     <meta name="twitter:description" content="Reduce PDF file size without quality loss. 100% free, no registration required.">
     <meta name="twitter:image" content="https://pdfsmartcore.com/pdf-size-twitter.png">
-   
+  
     <!-- CDN Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-   
+  
     <style>
         /* ... (SAME CSS AS BEFORE - NO CHANGES) ... */
         /* Purana CSS exactly copy-paste karo */
@@ -938,14 +938,14 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
-        
+       
         /* Phone ke liye preview hide */
         @media (max-width: 992px) {
             #preview-frame {
                 display: none !important;
             }
         }
-        
+       
         @media (max-width: 1200px) {
             .sidebar {
                 width: 240px;
@@ -1192,7 +1192,7 @@
                 <h1>Professional PDF Suite</h1>
                 <p>Every tool is 100% free, secure, and works locally on your device. No uploads, no limits, no watermarks.</p>
             </div>
-           
+          
             <!-- TOOL WORKSPACE CONTENT -->
             <div class="tool-workspace">
                 <div class="editor-side">
@@ -1204,22 +1204,22 @@
                             <i class="fas fa-question-circle"></i> How to Use
                         </button>
                     </div>
-                   
+                  
                     <h2 class="tool-title">Adjust PDF Size</h2>
                     <p class="tool-subtitle">Compress to reduce size or increase PDF file size as needed</p>
-                   
+                  
                     <!-- FILE UPLOAD ZONE -->
-                    <div id="upload-zone" onclick="document.getElementById('picker').click()">
+                    <div id="upload-zone" onclick="triggerFilePicker()">
                         <i class="fas fa-cloud-upload-alt"></i>
                         <h3 id="upload-title">Select PDF File</h3>
                         <p id="picker-msg">Drag & drop PDF file or click to browse</p>
                         <p class="upload-hint" id="file-type-hint">Supports PDF files only (single file)</p>
                         <input type="file" id="picker" hidden accept=".pdf">
                     </div>
-                   
+                  
                     <!-- PAGE THUMBNAILS GRID -->
                     <div id="page-grid" class="page-grid"></div>
-                   
+                  
                     <!-- PDF SIZE CONTROLS -->
                     <div id="pdf-size-controls" class="size-controls">
                         <div class="size-display-box">
@@ -1242,12 +1242,12 @@
                                 <div id="pdf-change-percent" class="size-value">0%</div>
                             </div>
                         </div>
-                       
+                      
                         <h4 style="margin-bottom: 15px; color: var(--text-primary);">
                             <i class="fas fa-sliders-h"></i> Size Adjustment
                         </h4>
                         <div class="size-percentage-display" id="pdf-size-percent">100%</div>
-                       
+                      
                         <div class="slider-container">
                             <input type="range" min="10" max="500" value="100" class="simple-slider" id="pdf-size-slider">
                             <div class="slider-labels">
@@ -1256,7 +1256,7 @@
                                 <span>500% (Max)</span>
                             </div>
                         </div>
-                       
+                      
                         <div class="size-quick-buttons">
                             <button class="quick-size-btn" onclick="setPDFSize(50)">
                                 <i class="fas fa-compress"></i> 50% Size
@@ -1268,25 +1268,25 @@
                                 <i class="fas fa-undo"></i> Reset
                             </button>
                         </div>
-                       
+                      
                         <div class="size-note">
                             <i class="fas fa-info-circle"></i>
                             Adjust slider for precise size control (10% to 500%). Changes affect file size and quality.
                         </div>
                     </div>
-                   
+                  
                     <!-- PROCESS BUTTON -->
                     <button class="btn-main" id="process-btn" style="display:none;">
                         <span id="process-btn-text">Adjust PDF Size</span>
                         <i class="fas fa-bolt"></i>
                     </button>
                 </div>
-               
+              
                 <!-- RESULT SIDE -->
                 <div class="result-side">
                     <h3 id="status-label">Status: Ready</h3>
                     <div class="loader" id="loader"></div>
-                   
+                  
                     <!-- PDF PREVIEW FOR MOBILE -->
                     <div id="pdf-preview-container" style="display: none; margin-top: 15px; text-align: center;">
                         <p style="margin-bottom: 10px; color: var(--success); font-weight: 600;">
@@ -1296,9 +1296,9 @@
                             Click "Download Result" button to save the PDF file.
                         </p>
                     </div>
-                   
+                  
                     <iframe id="preview-frame" title="Result Preview"></iframe>
-                   
+                  
                     <div id="success-btns" style="display:none;">
                         <button class="btn-main btn-success" onclick="downloadFile()">
                             <i class="fas fa-download"></i> Download Result
@@ -1310,7 +1310,7 @@
                 </div>
             </div>
         </div>
-       
+      
         <!-- ===== FOOTER SECTION ===== -->
         <div class="footer-section">
             <div class="footer-grid">
@@ -1327,7 +1327,7 @@
                         </ul>
                     </div>
                 </div>
-               
+              
                 <div class="copyright-box">
                     <h3 class="section-title"><i class="fas fa-copyright"></i> Copyright & Terms</h3>
                     <div class="copyright-content">
@@ -1342,7 +1342,7 @@
                     </div>
                 </div>
             </div>
-           
+          
             <div class="footer-second-row">
                 <div class="about-box">
                     <h3 class="section-title"><i class="fas fa-info-circle"></i> About Us</h3>
@@ -1351,7 +1351,7 @@
                         <p>Our mission is to make PDF editing accessible to everyone without compromising on security or quality.</p>
                     </div>
                 </div>
-               
+              
                 <div class="contact-box">
                     <h3 class="section-title"><i class="fas fa-envelope"></i> Contact Us</h3>
                     <div class="contact-content">
@@ -1361,7 +1361,7 @@
                     </div>
                 </div>
             </div>
-           
+          
             <div class="made-with-love">
                 Made with <i class="fas fa-heart"></i> for the Community
             </div>
@@ -1375,7 +1375,7 @@
             </button>
             <h2 class="popup-title">How to Use PDF Size Tool</h2>
             <p class="popup-subtitle">Step-by-step guide for adjusting PDF file size</p>
-           
+          
             <ul class="instructions-list" id="instructions-list">
                 <li><i class="fas fa-check-circle"></i> <span><strong>Step 1:</strong> Upload a PDF file using the upload area or drag & drop</span></li>
                 <li><i class="fas fa-check-circle"></i> <span><strong>Step 2:</strong> Use the slider to adjust file size from 10% to 500%</span></li>
@@ -1383,7 +1383,7 @@
                 <li><i class="fas fa-check-circle"></i> <span><strong>Step 4:</strong> See real-time size calculation in the display box</span></li>
                 <li><i class="fas fa-check-circle"></i> <span><strong>Step 5:</strong> Click "Adjust PDF Size" to process and download</span></li>
             </ul>
-           
+          
             <div class="note-box">
                 <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> For minimal quality loss, try 50-80% compression for most documents.</p>
                 <p><i class="fas fa-shield-alt"></i> <strong>Security:</strong> 100% secure and private. Files are automatically deleted after processing.</p>
@@ -1392,15 +1392,33 @@
     </div>
     <!-- JAVASCRIPT - FIXED VERSION -->
     <script>
+        // Global variables
+        let currentPages = [];
+        let finalBlob = null;
+        let originalFileSize = 0;
+        let pdfCompressionLevel = 100;
+        let originalFile = null;
+        let originalFileName = "";
+      
+        // File picker function with fix
+        window.triggerFilePicker = function() {
+            const picker = document.getElementById('picker');
+            if (picker) {
+                // Reset value to ensure change event fires every time
+                picker.value = '';
+                picker.click();
+            }
+        };
+      
         // Pre-load PDF libraries on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log("PDF Size Tool Loading...");
-           
+          
             // Set PDF.js worker
             if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
                 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
             }
-           
+          
             // Check if PDF-Lib is loaded
             if (typeof PDFLib === 'undefined') {
                 console.warn("PDF-Lib not loaded yet, trying to pre-load...");
@@ -1409,33 +1427,25 @@
                 script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js';
                 document.head.appendChild(script);
             }
-           
-            // Initialize variables
-            let currentPages = [];
-            let finalBlob = null;
-            let originalFileSize = 0;
-            let pdfCompressionLevel = 100;
-            let originalFile = null;
-            let originalFileName = "";
-           
+          
             // Mobile menu setup
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileOverlay = document.getElementById('mobileOverlay');
             const sidebar = document.getElementById('sidebar');
-           
+          
             if (mobileMenuBtn && mobileOverlay && sidebar) {
                 let isSidebarOpen = false;
-               
+              
                 mobileMenuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     toggleSidebar();
                 });
-               
+              
                 mobileOverlay.addEventListener('click', function(e) {
                     e.stopPropagation();
                     closeSidebar();
                 });
-               
+              
                 function toggleSidebar() {
                     if (window.innerWidth <= 992) {
                         if (!isSidebarOpen) {
@@ -1448,14 +1458,14 @@
                         }
                     }
                 }
-               
+              
                 function closeSidebar() {
                     sidebar.classList.remove('show');
                     mobileOverlay.classList.remove('active');
                     document.body.style.overflow = 'auto';
                     isSidebarOpen = false;
                 }
-               
+              
                 // Close sidebar when clicking on nav item
                 document.querySelectorAll('.nav-item').forEach(item => {
                     item.addEventListener('click', function() {
@@ -1465,21 +1475,27 @@
                     });
                 });
             }
-           
-            // File picker setup
+          
+            // File picker setup - FIXED VERSION
             const picker = document.getElementById('picker');
             if (picker) {
+                // Clear value on click to ensure change event fires
+                picker.addEventListener('click', function(e) {
+                    this.value = '';
+                });
+              
+                // Handle file selection
                 picker.addEventListener('change', async function(e) {
-                    if (e.target.files && e.target.files.length) {
+                    if (e.target.files && e.target.files.length > 0) {
                         await handleFiles(e.target.files);
                     }
                 });
             }
-           
+          
             // Size slider setup
             const pdfSlider = document.getElementById('pdf-size-slider');
             const pdfPercent = document.getElementById('pdf-size-percent');
-           
+          
             if (pdfSlider && pdfPercent) {
                 pdfSlider.oninput = function() {
                     pdfCompressionLevel = parseInt(this.value);
@@ -1487,7 +1503,7 @@
                     updatePDFSizeDisplay();
                 };
             }
-           
+          
             // Process button setup
             const processBtn = document.getElementById('process-btn');
             if (processBtn) {
@@ -1498,49 +1514,47 @@
                     });
                 });
             }
-           
+          
             // Upload zone setup
             const uploadZone = document.getElementById('upload-zone');
             if (uploadZone) {
-                uploadZone.addEventListener('click', () => {
-                    if (picker) picker.click();
-                });
-               
                 // Drag and drop support
                 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
                     uploadZone.addEventListener(eventName, preventDefaults, false);
                 });
-               
+              
                 function preventDefaults(e) {
                     e.preventDefault();
                     e.stopPropagation();
                 }
-               
+              
                 ['dragenter', 'dragover'].forEach(eventName => {
                     uploadZone.addEventListener(eventName, highlight, false);
                 });
-               
+              
                 ['dragleave', 'drop'].forEach(eventName => {
                     uploadZone.addEventListener(eventName, unhighlight, false);
                 });
-               
+              
                 function highlight() {
                     uploadZone.style.borderColor = '#ff6b6b';
                     uploadZone.style.background = 'rgba(255, 107, 107, 0.05)';
                 }
-               
+              
                 function unhighlight() {
                     uploadZone.style.borderColor = 'var(--border)';
                     uploadZone.style.background = 'var(--card-bg)';
                 }
-               
+              
                 uploadZone.addEventListener('drop', async function(e) {
                     const dt = e.dataTransfer;
                     const files = dt.files;
-                    await handleFiles(files);
+                    if (files.length > 0) {
+                        await handleFiles(files);
+                    }
                 });
             }
-           
+          
             // Set active nav item
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
             document.querySelectorAll('.nav-item').forEach(item => {
@@ -1550,382 +1564,390 @@
                     item.classList.remove('active');
                 }
             });
-           
-            // File handling function
-            async function handleFiles(files) {
-                // Take only first file for PDF size tool
-                let filesToProcess = Array.from(files);
-                if (filesToProcess.length > 1) {
-                    alert("This tool processes only one file at a time. Only the first file will be used.");
-                    filesToProcess = [filesToProcess[0]];
-                }
-               
-                document.getElementById('upload-zone').style.display = 'none';
-                document.getElementById('process-btn').style.display = 'block';
-               
-                // Store original file info
-                originalFile = filesToProcess[0];
-                originalFileName = originalFile.name.replace('.pdf', '');
-                originalFileSize = filesToProcess[0].size;
-               
-                // Show PDF size controls
-                document.getElementById('pdf-size-controls').style.display = 'block';
-                updatePDFSizeDisplay();
-               
-                // Create thumbnail for PDF
-                for (const file of filesToProcess) {
-                    if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
-                        try {
-                            const pdf = await pdfjsLib.getDocument({data: await file.arrayBuffer()}).promise;
-                            const page = await pdf.getPage(1);
-                            const vp = page.getViewport({scale: 0.2});
-                            const canvas = document.createElement('canvas');
-                            canvas.height = vp.height; 
-                            canvas.width = vp.width;
-                            await page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise;
-                            addFileThumb(canvas.toDataURL(), file);
-                        } catch (error) {
-                            console.error("Error creating thumbnail:", error);
-                            // Add a default thumbnail if PDF rendering fails
-                            addFileThumb('', file);
-                        }
-                    } else {
-                        alert("Please upload a PDF file only!");
-                        startNewTask();
-                        return;
-                    }
-                }
+          
+            // Initialize display
+            updatePDFSizeDisplay();
+          
+            console.log("PDF Size Tool Loaded Successfully!");
+        });
+      
+        // File handling function
+        async function handleFiles(files) {
+            // Take only first file for PDF size tool
+            let filesToProcess = Array.from(files);
+            if (filesToProcess.length > 1) {
+                alert("This tool processes only one file at a time. Only the first file will be used.");
+                filesToProcess = [filesToProcess[0]];
             }
-           
-            // Update size display function
-            function updatePDFSizeDisplay() {
-                if (!originalFileSize) return;
-               
-                const targetSize = Math.round((originalFileSize * pdfCompressionLevel) / 100);
-               
-                const originalSizeEl = document.getElementById('pdf-original-size');
-                const targetSizeEl = document.getElementById('pdf-target-size');
-                const changePercentEl = document.getElementById('pdf-change-percent');
-               
-                if (originalSizeEl) originalSizeEl.textContent = formatFileSize(originalFileSize);
-                if (targetSizeEl) targetSizeEl.textContent = formatFileSize(targetSize);
-               
-                const changePercent = pdfCompressionLevel - 100;
-                if (changePercentEl) {
-                    if (changePercent > 0) {
-                        changePercentEl.textContent = "+" + changePercent + "%";
-                        changePercentEl.className = "size-value change-negative";
-                    } else if (changePercent < 0) {
-                        changePercentEl.textContent = changePercent + "%";
-                        changePercentEl.className = "size-value change-positive";
-                    } else {
-                        changePercentEl.textContent = "0%";
-                        changePercentEl.className = "size-value";
-                    }
-                }
+          
+            const file = filesToProcess[0];
+          
+            // Check if file is PDF
+            if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {
+                alert("Please upload a PDF file only!");
+                return;
             }
-           
-            // Add file thumbnail function
-            function addFileThumb(data, file) {
-                const id = 'p' + Math.random().toString(36).substr(2, 9);
-                currentPages.push({id, file, idx: 0, isWholeFile: true});
-               
-                const div = document.createElement('div');
-                div.className = 'page-item';
-                div.dataset.id = id;
-               
-                let imgSrc = data;
-                if (!data) {
-                    // Default PDF icon
-                    imgSrc = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDEwMCAxNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTQwIiByeD0iOCIgZmlsbD0iI0Y4RkFGQyIvPgo8cGF0aCBkPSJNNjUgNDVIMzVWMTA1SDY1VjQ1WiIgZmlsbD0iI2ZmNmI2YiIvPgo8cGF0aCBkPSJNMzUgMjVINjVWNDVIMzVWMjVaIiBmaWxsPSIjZmZhNzI2Ii8+CjxwYXRoIGQ9Ik02NSAyNUg4NVYxMDVINjVWMjVaIiBmaWxsPSIjZmZhNzI2IiBmaWxsLW9wYWNpdHk9IjAuOCIvPgo8L3N2Zz4K';
-                }
-               
-                div.innerHTML = `
-                    <img src="${imgSrc}" alt="${file.name}">
-                    <div class="page-ctrl">
-                        <button class="c-btn btn-del" onclick="removeThumb('${id}', this)">
-                            <i class="fas fa-trash"></i> Remove
-                        </button>
-                    </div>`;
-                   
-                document.getElementById('page-grid').appendChild(div);
+          
+            document.getElementById('upload-zone').style.display = 'none';
+            document.getElementById('process-btn').style.display = 'block';
+          
+            // Store original file info
+            originalFile = file;
+            originalFileName = file.name.replace('.pdf', '');
+            originalFileSize = file.size;
+          
+            // Show PDF size controls
+            document.getElementById('pdf-size-controls').style.display = 'block';
+            updatePDFSizeDisplay();
+          
+            // Create thumbnail for PDF
+            try {
+                const pdf = await pdfjsLib.getDocument({data: await file.arrayBuffer()}).promise;
+                const page = await pdf.getPage(1);
+                const vp = page.getViewport({scale: 0.2});
+                const canvas = document.createElement('canvas');
+                canvas.height = vp.height;
+                canvas.width = vp.width;
+                await page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise;
+                addFileThumb(canvas.toDataURL(), file);
+            } catch (error) {
+                console.error("Error creating thumbnail:", error);
+                // Add a default thumbnail if PDF rendering fails
+                addFileThumb('', file);
             }
-           
-            // Global functions
-            window.removeThumb = function(id, btn) {
-                currentPages = currentPages.filter(p => p.id !== id);
-                btn.parentElement.parentElement.remove();
-               
-                document.getElementById('picker').value = '';
-               
-                if (document.querySelectorAll('.page-item').length === 0) {
-                    document.getElementById('upload-zone').style.display = 'block';
-                    document.getElementById('process-btn').style.display = 'none';
-                    document.getElementById('pdf-size-controls').style.display = 'none';
-                }
-            };
-           
-            window.setPDFSize = function(percent) {
-                pdfCompressionLevel = percent;
-                document.getElementById('pdf-size-slider').value = percent;
-                document.getElementById('pdf-size-percent').textContent = percent + '%';
-                updatePDFSizeDisplay();
-            };
-           
-            window.resetPDFSize = function() {
-                setPDFSize(100);
-            };
-           
-            // Main work function
-            async function startWork() {
-                if (currentPages.length === 0) {
-                    alert("Please upload a PDF file first!");
-                    return;
-                }
-               
-                const loader = document.getElementById('loader');
-                const statusLabel = document.getElementById('status-label');
-                const processBtn = document.getElementById('process-btn');
-               
-                if (!loader || !statusLabel || !processBtn) {
-                    alert("Page not loaded properly. Please refresh.");
-                    return;
-                }
-               
-                loader.style.display = 'block';
-                statusLabel.innerText = "Processing...";
-                processBtn.disabled = true;
-               
-                try {
-                    const ref = currentPages[0];
-                    if (!ref || !ref.file) {
-                        throw new Error("No PDF file found!");
-                    }
-                   
-                    const file = ref.file;
-                    statusLabel.innerText = "Adjusting PDF Size...";
-                   
-                    const pdfBytes = await file.arrayBuffer();
-                   
-                    // Check if PDF-Lib is available
-                    if (typeof PDFLib === 'undefined') {
-                        throw new Error("PDF library not loaded. Please refresh the page.");
-                    }
-                   
-                    if (pdfCompressionLevel === 100) {
-                        // No change needed
-                        finalBlob = new Blob([pdfBytes], {type:'application/pdf'});
-                        statusLabel.innerText = "Processing complete!";
-                    } else if (pdfCompressionLevel < 100) {
-                        // Compress PDF
-                        statusLabel.innerText = "Compressing PDF...";
-                        finalBlob = await compressPDF(pdfBytes, pdfCompressionLevel);
-                    } else {
-                        // Increase PDF size
-                        statusLabel.innerText = "Increasing PDF size...";
-                        finalBlob = await increasePDFSize(pdfBytes, pdfCompressionLevel);
-                    }
-                   
-                    // Calculate actual size
-                    const actualSize = finalBlob.size;
-                   
-                    renderFinal(actualSize);
-                   
-                } catch (error) {
-                    console.error("PDF Size Error:", error);
-                    statusLabel.innerText = "Error: " + error.message;
-                    loader.style.display = 'none';
-                    processBtn.disabled = false;
-                    alert("Size adjustment failed! " + error.message);
-                }
-            }
-           
-            // Compression function
-            async function compressPDF(pdfBytes, targetPercent) {
-                try {
-                    const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
-                   
-                    // Calculate compression ratio
-                    const compressionRatio = targetPercent / 100;
-                   
-                    // Save with compression settings
-                    const compressedBytes = await pdfDoc.save({
-                        useObjectStreams: true,
-                        addDefaultPage: false,
-                        objectsPerTick: 50,
-                        updateFieldAppearances: false,
-                        embedScaling: Math.max(0.5, compressionRatio),
-                        embedFonts: compressionRatio > 0.7,
-                        preserveMetadata: compressionRatio > 0.8,
-                    });
-                   
-                    return new Blob([compressedBytes], {type:'application/pdf'});
-                } catch (error) {
-                    console.error("Compression error:", error);
-                    // Fallback
-                    return new Blob([pdfBytes], {type:'application/pdf'});
-                }
-            }
-           
-            // Increase size function
-            async function increasePDFSize(pdfBytes, targetPercent) {
-                try {
-                    const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
-                    const newPdfDoc = await PDFLib.PDFDocument.create();
-                   
-                    // Copy all original pages
-                    const totalPages = pdfDoc.getPageCount();
-                    const pages = await newPdfDoc.copyPages(pdfDoc, 
-                        Array.from({length: totalPages}, (_, i) => i)
-                    );
-                    pages.forEach(page => newPdfDoc.addPage(page));
-                   
-                    // Add duplicate pages to increase size
-                    const increaseFactor = (targetPercent - 100) / 100;
-                    if (increaseFactor > 0) {
-                        const extraPages = Math.floor(totalPages * increaseFactor);
-                       
-                        for (let i = 0; i < extraPages; i++) {
-                            const pageIndex = i % totalPages;
-                            const [copiedPage] = await newPdfDoc.copyPages(pdfDoc, [pageIndex]);
-                            newPdfDoc.addPage(copiedPage);
-                        }
-                    }
-                   
-                    // Add metadata
-                    newPdfDoc.setTitle(originalFileName + " (enlarged)");
-                    newPdfDoc.setAuthor("PDFSmartCore");
-                    newPdfDoc.setSubject("PDF Size Adjusted");
-                    newPdfDoc.setKeywords(["pdf", "size", "adjustment"]);
-                    newPdfDoc.setProducer("PDFSmartCore PDF Size Tool");
-                    newPdfDoc.setCreator("PDFSmartCore v2.0");
-                   
-                    const increasedBytes = await newPdfDoc.save();
-                    return new Blob([increasedBytes], {type:'application/pdf'});
-                } catch (error) {
-                    console.error("Increase size error:", error);
-                    // Fallback
-                    return new Blob([pdfBytes], {type:'application/pdf'});
-                }
-            }
-           
-            // Render final result
-            function renderFinal(actualSize) {
-                const loader = document.getElementById('loader');
-                const successBtns = document.getElementById('success-btns');
-                const statusLabel = document.getElementById('status-label');
-                const previewFrame = document.getElementById('preview-frame');
-                const pdfPreviewContainer = document.getElementById('pdf-preview-container');
-               
-                loader.style.display = 'none';
-                successBtns.style.display = 'block';
-               
-                // Check if mobile
-                const isMobile = window.innerWidth <= 992;
-               
-                if (isMobile) {
-                    previewFrame.style.display = 'none';
-                    pdfPreviewContainer.style.display = 'block';
-                    statusLabel.innerText = `PDF Ready! (${formatFileSize(actualSize)})`;
+        }
+      
+        // Update size display function
+        function updatePDFSizeDisplay() {
+            if (!originalFileSize) return;
+          
+            const targetSize = Math.round((originalFileSize * pdfCompressionLevel) / 100);
+          
+            const originalSizeEl = document.getElementById('pdf-original-size');
+            const targetSizeEl = document.getElementById('pdf-target-size');
+            const changePercentEl = document.getElementById('pdf-change-percent');
+          
+            if (originalSizeEl) originalSizeEl.textContent = formatFileSize(originalFileSize);
+            if (targetSizeEl) targetSizeEl.textContent = formatFileSize(targetSize);
+          
+            const changePercent = pdfCompressionLevel - 100;
+            if (changePercentEl) {
+                if (changePercent > 0) {
+                    changePercentEl.textContent = "+" + changePercent + "%";
+                    changePercentEl.className = "size-value change-negative";
+                } else if (changePercent < 0) {
+                    changePercentEl.textContent = changePercent + "%";
+                    changePercentEl.className = "size-value change-positive";
                 } else {
-                    const blobUrl = URL.createObjectURL(finalBlob);
-                    previewFrame.src = blobUrl;
-                    previewFrame.style.display = 'block';
-                    pdfPreviewContainer.style.display = 'none';
-                    statusLabel.innerText = `Complete! ${formatFileSize(actualSize)}`;
+                    changePercentEl.textContent = "0%";
+                    changePercentEl.className = "size-value";
                 }
-               
-                document.getElementById('process-btn').disabled = false;
             }
-           
-            // Download file function
-            window.downloadFile = function() {
-                if (!finalBlob || !originalFileName) {
-                    alert("No PDF generated yet!");
-                    return;
-                }
-               
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(finalBlob);
-               
-                let sizeLabel;
-                if (pdfCompressionLevel < 100) {
-                    sizeLabel = 'compressed';
-                } else if (pdfCompressionLevel > 100) {
-                    sizeLabel = 'increased';
-                } else {
-                    sizeLabel = 'original';
-                }
-               
-                a.download = `${originalFileName}_${sizeLabel}_${pdfCompressionLevel}percent.pdf`;
-               
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-               
-                // Clean up
-                setTimeout(() => URL.revokeObjectURL(a.href), 100);
-            };
-           
-            // Start new task function
-            window.startNewTask = function() {
-                // Reset everything
-                currentPages = [];
-                finalBlob = null;
-                originalFileSize = 0;
-                pdfCompressionLevel = 100;
-                originalFile = null;
-                originalFileName = "";
-               
-                document.getElementById('page-grid').innerHTML = '';
+        }
+      
+        // Add file thumbnail function
+        function addFileThumb(data, file) {
+            const id = 'p' + Math.random().toString(36).substr(2, 9);
+            currentPages.push({id, file, idx: 0, isWholeFile: true});
+          
+            const div = document.createElement('div');
+            div.className = 'page-item';
+            div.dataset.id = id;
+          
+            let imgSrc = data;
+            if (!data) {
+                // Default PDF icon
+                imgSrc = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDEwMCAxNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTQwIiByeD0iOCIgZmlsbD0iI0Y4RkFGQyIvPgo8cGF0aCBkPSJNNjUgNDVIMzVWMTA1SDY1VjQ1WiIgZmlsbD0iI2ZmNmI2YiIvPgo8cGF0aCBkPSJNMzUgMjVINjVWNDVIMzVWMjVaIiBmaWxsPSIjZmZhNzI2Ii8+CjxwYXRoIGQ9Ik02NSAyNUg4NVYxMDVINjVWMjVaIiBmaWxsPSIjZmZhNzI2IiBmaWxsLW9wYWNpdHk9IjAuOCIvPgo8L3N2Zz4K';
+            }
+          
+            div.innerHTML = `
+                <img src="${imgSrc}" alt="${file.name}">
+                <div class="page-ctrl">
+                    <button class="c-btn btn-del" onclick="removeThumb('${id}', this)">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
+                </div>`;
+              
+            document.getElementById('page-grid').appendChild(div);
+        }
+      
+        // Global functions
+        window.removeThumb = function(id, btn) {
+            currentPages = currentPages.filter(p => p.id !== id);
+            btn.parentElement.parentElement.remove();
+          
+            document.getElementById('picker').value = '';
+          
+            if (document.querySelectorAll('.page-item').length === 0) {
                 document.getElementById('upload-zone').style.display = 'block';
                 document.getElementById('process-btn').style.display = 'none';
-                document.getElementById('process-btn').disabled = false;
-                document.getElementById('loader').style.display = 'none';
-                document.getElementById('preview-frame').style.display = 'none';
-                document.getElementById('pdf-preview-container').style.display = 'none';
-                document.getElementById('preview-frame').src = "about:blank";
-                document.getElementById('success-btns').style.display = 'none';
-                document.getElementById('status-label').innerText = "Status: Ready";
-               
                 document.getElementById('pdf-size-controls').style.display = 'none';
-                document.getElementById('pdf-size-slider').value = 100;
-                document.getElementById('pdf-size-percent').textContent = '100%';
-               
-                document.getElementById('picker').value = '';
-               
-                // Scroll to top
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            };
-           
-            // Format file size function
-            function formatFileSize(bytes) {
-                if (bytes === 0) return '0 Bytes';
-                const k = 1024;
-                const sizes = ['Bytes', 'KB', 'MB'];
-                const i = Math.floor(Math.log(bytes) / Math.log(k));
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+                originalFileSize = 0;
+                updatePDFSizeDisplay();
             }
-           
-            // How to use functions
-            window.showHowToUse = function() {
-                document.getElementById('how-to-popup').style.display = 'flex';
-            };
-           
-            window.closeHowToUse = function() {
-                document.getElementById('how-to-popup').style.display = 'none';
-            };
-           
-            document.getElementById('how-to-popup').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeHowToUse();
+        };
+      
+        window.setPDFSize = function(percent) {
+            pdfCompressionLevel = percent;
+            document.getElementById('pdf-size-slider').value = percent;
+            document.getElementById('pdf-size-percent').textContent = percent + '%';
+            updatePDFSizeDisplay();
+        };
+      
+        window.resetPDFSize = function() {
+            setPDFSize(100);
+        };
+      
+        // Main work function
+        async function startWork() {
+            if (currentPages.length === 0) {
+                alert("Please upload a PDF file first!");
+                return;
+            }
+          
+            const loader = document.getElementById('loader');
+            const statusLabel = document.getElementById('status-label');
+            const processBtn = document.getElementById('process-btn');
+          
+            if (!loader || !statusLabel || !processBtn) {
+                alert("Page not loaded properly. Please refresh.");
+                return;
+            }
+          
+            loader.style.display = 'block';
+            statusLabel.innerText = "Processing...";
+            processBtn.disabled = true;
+          
+            try {
+                const ref = currentPages[0];
+                if (!ref || !ref.file) {
+                    throw new Error("No PDF file found!");
                 }
+              
+                const file = ref.file;
+                statusLabel.innerText = "Adjusting PDF Size...";
+              
+                const pdfBytes = await file.arrayBuffer();
+              
+                // Check if PDF-Lib is available
+                if (typeof PDFLib === 'undefined') {
+                    throw new Error("PDF library not loaded. Please refresh the page.");
+                }
+              
+                if (pdfCompressionLevel === 100) {
+                    // No change needed
+                    finalBlob = new Blob([pdfBytes], {type:'application/pdf'});
+                    statusLabel.innerText = "Processing complete!";
+                } else if (pdfCompressionLevel < 100) {
+                    // Compress PDF
+                    statusLabel.innerText = "Compressing PDF...";
+                    finalBlob = await compressPDF(pdfBytes, pdfCompressionLevel);
+                } else {
+                    // Increase PDF size
+                    statusLabel.innerText = "Increasing PDF size...";
+                    finalBlob = await increasePDFSize(pdfBytes, pdfCompressionLevel);
+                }
+              
+                // Calculate actual size
+                const actualSize = finalBlob.size;
+              
+                renderFinal(actualSize);
+              
+            } catch (error) {
+                console.error("PDF Size Error:", error);
+                statusLabel.innerText = "Error: " + error.message;
+                loader.style.display = 'none';
+                processBtn.disabled = false;
+                alert("Size adjustment failed! " + error.message);
+            }
+        }
+      
+        // Compression function (rasterization for size reduction)
+        async function compressPDF(pdfBytes, targetPercent) {
+            const compressionRatio = targetPercent / 100;
+            const quality = 0.2 + (0.75 * compressionRatio); // Ranges from 0.2 (10%) to ~0.95 (99%)
+            const scale = 0.3 + (0.7 * compressionRatio); // Ranges from 0.3 (10%) to ~1 (99%)
+
+            try {
+                const pdf = await pdfjsLib.getDocument({data: pdfBytes}).promise;
+                const numPages = pdf.numPages;
+                const newPdfDoc = await PDFLib.PDFDocument.create();
+
+                for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    const viewport = page.getViewport({scale: scale});
+                    const canvas = document.createElement('canvas');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    const renderContext = {
+                        canvasContext: canvas.getContext('2d'),
+                        viewport: viewport
+                    };
+                    await page.render(renderContext).promise;
+                    const imgData = canvas.toDataURL('image/jpeg', quality);
+                    const jpgImage = await newPdfDoc.embedJpg(imgData);
+                    const pdfPage = newPdfDoc.addPage([jpgImage.width, jpgImage.height]);
+                    pdfPage.drawImage(jpgImage, {
+                        x: 0,
+                        y: 0,
+                        width: jpgImage.width,
+                        height: jpgImage.height,
+                    });
+                }
+
+                const compressedBytes = await newPdfDoc.save({ useObjectStreams: true });
+                return new Blob([compressedBytes], {type: 'application/pdf'});
+            } catch (error) {
+                console.error("Compression error:", error);
+                // Fallback to original if compression fails
+                return new Blob([pdfBytes], {type: 'application/pdf'});
+            }
+        }
+      
+        // Increase size function (add duplicate pages for approximation)
+        async function increasePDFSize(pdfBytes, targetPercent) {
+            try {
+                const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
+                const totalPages = pdfDoc.getPageCount();
+                const newPdfDoc = await PDFLib.PDFDocument.create();
+                const copiedPages = await newPdfDoc.copyPages(pdfDoc, pdfDoc.getPageIndices());
+                copiedPages.forEach((page) => newPdfDoc.addPage(page));
+
+                const increaseFactor = (targetPercent - 100) / 100;
+                const extraPagesNum = Math.round(totalPages * increaseFactor);
+
+                for (let i = 0; i < extraPagesNum; i++) {
+                    const pageIndex = i % totalPages;
+                    const [copiedPage] = await newPdfDoc.copyPages(pdfDoc, [pageIndex]);
+                    newPdfDoc.addPage(copiedPage);
+                }
+
+                newPdfDoc.setTitle(originalFileName + " (Increased Size)");
+                newPdfDoc.setAuthor("PDFSmartCore");
+
+                const increasedBytes = await newPdfDoc.save({ useObjectStreams: false });
+                return new Blob([increasedBytes], {type: 'application/pdf'});
+            } catch (error) {
+                console.error("Increase size error:", error);
+                // Fallback to original if increase fails
+                return new Blob([pdfBytes], {type: 'application/pdf'});
+            }
+        }
+      
+        // Render final result
+        function renderFinal(actualSize) {
+            const loader = document.getElementById('loader');
+            const successBtns = document.getElementById('success-btns');
+            const statusLabel = document.getElementById('status-label');
+            const previewFrame = document.getElementById('preview-frame');
+            const pdfPreviewContainer = document.getElementById('pdf-preview-container');
+          
+            loader.style.display = 'none';
+            successBtns.style.display = 'block';
+          
+            // Check if mobile
+            const isMobile = window.innerWidth <= 992;
+          
+            if (isMobile) {
+                previewFrame.style.display = 'none';
+                pdfPreviewContainer.style.display = 'block';
+                statusLabel.innerText = `PDF Ready! (${formatFileSize(actualSize)})`;
+            } else {
+                const blobUrl = URL.createObjectURL(finalBlob);
+                previewFrame.src = blobUrl;
+                previewFrame.style.display = 'block';
+                pdfPreviewContainer.style.display = 'none';
+                statusLabel.innerText = `Complete! ${formatFileSize(actualSize)}`;
+            }
+          
+            document.getElementById('process-btn').disabled = false;
+        }
+      
+        // Download file function
+        window.downloadFile = function() {
+            if (!finalBlob || !originalFileName) {
+                alert("No PDF generated yet!");
+                return;
+            }
+          
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(finalBlob);
+          
+            let sizeLabel;
+            if (pdfCompressionLevel < 100) {
+                sizeLabel = 'compressed';
+            } else if (pdfCompressionLevel > 100) {
+                sizeLabel = 'increased';
+            } else {
+                sizeLabel = 'original';
+            }
+          
+            a.download = `${originalFileName}_${sizeLabel}_${pdfCompressionLevel}percent.pdf`;
+          
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          
+            // Clean up
+            setTimeout(() => URL.revokeObjectURL(a.href), 100);
+        };
+      
+        // Start new task function
+        window.startNewTask = function() {
+            // Reset everything
+            currentPages = [];
+            finalBlob = null;
+            originalFileSize = 0;
+            pdfCompressionLevel = 100;
+            originalFile = null;
+            originalFileName = "";
+          
+            document.getElementById('page-grid').innerHTML = '';
+            document.getElementById('upload-zone').style.display = 'block';
+            document.getElementById('process-btn').style.display = 'none';
+            document.getElementById('process-btn').disabled = false;
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('preview-frame').style.display = 'none';
+            document.getElementById('pdf-preview-container').style.display = 'none';
+            document.getElementById('preview-frame').src = "about:blank";
+            document.getElementById('success-btns').style.display = 'none';
+            document.getElementById('status-label').innerText = "Status: Ready";
+          
+            document.getElementById('pdf-size-controls').style.display = 'none';
+            document.getElementById('pdf-size-slider').value = 100;
+            document.getElementById('pdf-size-percent').textContent = '100%';
+          
+            document.getElementById('picker').value = '';
+          
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-           
-            console.log("PDF Size Tool Loaded Successfully!");
+        };
+      
+        // Format file size function
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+      
+        // How to use functions
+        window.showHowToUse = function() {
+            document.getElementById('how-to-popup').style.display = 'flex';
+        };
+      
+        window.closeHowToUse = function() {
+            document.getElementById('how-to-popup').style.display = 'none';
+        };
+      
+        document.getElementById('how-to-popup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeHowToUse();
+            }
         });
     </script>
 </body>
