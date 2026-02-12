@@ -46,7 +46,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
     <style>
-        /* ... (SAME CSS AS BEFORE - NO CHANGES) ... */
+        /* ===== ORIGINAL CSS - BILKUL TERA JAISA ===== */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -78,21 +78,24 @@
             --radius-lg: 20px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
         }
+        
         body {
             background: var(--bg);
             color: var(--text-primary);
             display: flex;
             height: 100vh;
-            overflow: hidden;
+            overflow: hidden; /* POORI WEBSITE SCROLL BAND */
             font-weight: 400;
             line-height: 1.6;
         }
+        
         .mobile-menu-btn {
             display: none;
             position: fixed;
@@ -223,7 +226,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
+            overflow-y: auto; /* CONTENT SCROLL HOGA */
             padding: 0;
             position: relative;
         }
@@ -245,6 +248,7 @@
             padding: 25px 30px 15px 30px;
             border-bottom: 1px solid var(--border);
             background: linear-gradient(135deg, #f9fafb, #f1f5f9);
+            flex-shrink: 0;
         }
         .tool-page-header h1 {
             font-size: 2rem;
@@ -271,13 +275,14 @@
             display: flex;
             flex: 1;
             overflow: hidden;
+            min-height: 0;
         }
         .editor-side {
             flex: 1.2;
             padding: 25px;
             background: linear-gradient(135deg, #f9fafb, #f1f5f9);
             border-right: 1px solid var(--border);
-            overflow-y: auto;
+            overflow-y: auto; /* EDITOR SIDE SCROLL HOGA */
             position: relative;
         }
         .result-side {
@@ -287,6 +292,7 @@
             flex-direction: column;
             background: var(--card-bg);
             position: relative;
+            overflow-y: auto;
         }
         .editor-side::-webkit-scrollbar {
             width: 8px;
@@ -361,6 +367,97 @@
             margin-bottom: 20px;
             font-weight: 500;
         }
+        
+        /* ===== FIX 1: UPLOAD ZONE - UPLOAD KE BAAD CHHUPAO ===== */
+        #upload-zone.uploaded {
+            display: none !important;
+        }
+        
+        /* ===== FIX 2: FILE INFO CONTAINER - THUMBNAIL + SIZE INFO SIDE BY SIDE ===== */
+        .file-info-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        
+        .thumbnail-section {
+            width: 100px;
+            flex-shrink: 0;
+        }
+        
+        .thumbnail-section .page-item {
+            margin-bottom: 0;
+            border: 2px solid var(--border);
+            border-color: #ff6b6b;
+        }
+        
+        .size-info-compact {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .size-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .size-info-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .size-info-label i {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .size-info-value {
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        
+        .reduction-badge {
+            background: var(--success);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        /* ===== FIX 3: ORIGINAL SIZE-CONTROLS WALA DIV - COMPLETELY HATAYA ===== */
+        .size-controls {
+            display: none !important;
+        }
+        
+        /* ===== FIX 4: QUALITY CONTROLS - SHOW ONLY WHEN UPLOADED ===== */
+        .quality-controls-wrapper {
+            display: none;
+        }
+        
+        .quality-controls-wrapper.show {
+            display: block;
+        }
+        
         #upload-zone {
             border: 3px dashed var(--border);
             padding: 40px 30px;
@@ -410,30 +507,11 @@
             color: var(--text-light);
             margin-top: 10px;
         }
+        
         .page-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-            max-height: 300px;
-            overflow-y: auto;
-            padding-right: 5px;
+            display: none;
         }
-        .page-grid::-webkit-scrollbar {
-            width: 10px;
-        }
-        .page-grid::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        .page-grid::-webkit-scrollbar-thumb {
-            background: #ff6b6b;
-            border-radius: 10px;
-            min-height: 50px;
-        }
-        .page-grid::-webkit-scrollbar-thumb:hover {
-            background: #ff5252;
-        }
+        
         .page-item {
             background: var(--card-bg);
             border: 2px solid var(--border);
@@ -493,67 +571,7 @@
         .btn-del:hover {
             background: linear-gradient(135deg, #ff5252, #ff4444);
         }
-        .size-controls {
-            display: none;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 25px;
-            margin-top: 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-        .size-display-box {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            margin-bottom: 25px;
-            border: 1px solid var(--border);
-        }
-        .size-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-        .size-row:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        .size-label {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .size-label i {
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .size-value {
-            font-weight: 800;
-            font-size: 1rem;
-            color: var(--text-primary);
-        }
-        .change-positive {
-            color: var(--success);
-        }
-        .change-negative {
-            color: var(--danger);
-        }
-        .size-percentage-display {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 800;
-            color: #ff6b6b;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 10px rgba(255, 107, 107, 0.2);
-        }
+        
         .quality-buttons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -820,6 +838,8 @@
             color: #ffa726;
             margin-right: 8px;
         }
+        
+        /* ===== FOOTER ===== */
         .footer-section {
             width: 100%;
             padding: 40px 24px 30px 24px;
@@ -925,7 +945,6 @@
             50% { transform: scale(1.1); }
         }
        
-        /* Phone ke liye preview hide */
         @media (max-width: 992px) {
             #preview-frame {
                 display: none !important;
@@ -941,16 +960,20 @@
                 gap: 30px;
             }
         }
+        
+        /* ===== PHONE RESPONSIVE - BILKUL TERI ORIGINAL JAISA ===== */
         @media (max-width: 992px) {
             .mobile-menu-btn {
                 display: flex;
             }
+            
             body {
                 flex-direction: column;
                 height: auto;
                 min-height: 100vh;
-                overflow-y: auto;
+                overflow-y: auto; /* PHONE MEIN BODY SCROLL */
             }
+            
             .sidebar {
                 width: 280px;
                 height: 100vh;
@@ -964,40 +987,43 @@
             .sidebar.show {
                 left: 0;
             }
-            .logo {
-                padding: 20px;
-                font-size: 1.5rem;
-                justify-content: center;
-            }
-            .nav-group {
-                display: flex;
-                flex-direction: column;
-                padding: 15px 0;
-            }
-            .nav-item {
-                margin: 5px 15px;
-                padding: 14px 20px;
-            }
+            
             .content {
                 margin-top: 0;
                 padding-top: 80px;
-                height: calc(100vh - 80px);
+                height: auto;
+                min-height: 100vh;
+                overflow-y: visible;
             }
+            
             #tool-view {
                 margin: 10px;
-                min-height: calc(100vh - 90px);
-            }
-            .tool-workspace {
+                min-height: auto;
+                display: flex;
                 flex-direction: column;
             }
-            .editor-side, .result-side {
+            
+            .tool-workspace {
+                flex-direction: column;
+                overflow-y: visible;
+                min-height: auto;
+            }
+            
+            .editor-side {
                 width: 100%;
                 padding: 20px;
-            }
-            .editor-side {
                 border-right: none;
                 border-bottom: 1px solid var(--border);
+                overflow-y: visible;
+                max-height: none;
             }
+            
+            .result-side {
+                width: 100%;
+                padding: 20px;
+                overflow-y: visible;
+            }
+            
             .footer-section {
                 padding: 30px 20px;
             }
@@ -1025,7 +1051,18 @@
                 padding: 15px 8px;
                 min-height: 80px;
             }
+            .file-info-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .thumbnail-section {
+                width: 120px;
+            }
+            .size-info-compact {
+                width: 100%;
+            }
         }
+        
         @media (max-width: 768px) {
             .editor-side, .result-side {
                 padding: 15px;
@@ -1084,6 +1121,7 @@
                 right: 15px;
             }
         }
+        
         @media (max-width: 480px) {
             .mobile-menu-btn {
                 top: 15px;
@@ -1152,6 +1190,7 @@
                 padding: 10px 0;
             }
         }
+        
         @media (max-width: 360px) {
             .sidebar {
                 width: 85%;
@@ -1212,7 +1251,7 @@
           
             <!-- TOOL WORKSPACE CONTENT -->
             <div class="tool-workspace">
-                <div class="editor-side">
+                <div class="editor-side" id="editor-side">
                     <div style="display: flex; align-items: center;">
                         <a href="index.html" class="back-btn">
                             <i class="fas fa-arrow-left"></i> Back to Home
@@ -1233,38 +1272,38 @@
                         <p class="upload-hint" id="file-type-hint">Supports PDF files only (single file)</p>
                         <input type="file" id="picker" hidden accept=".pdf">
                     </div>
-                  
-                    <!-- PAGE THUMBNAILS GRID -->
-                    <div id="page-grid" class="page-grid"></div>
-                  
-                    <!-- PDF SIZE CONTROLS - FINAL FIXED VALUES -->
-                    <div id="pdf-size-controls" class="size-controls">
-                        <div class="size-display-box">
-                            <div class="size-row">
-                                <div class="size-label">
+                    
+                    <!-- FILE INFO CONTAINER (THUMBNAIL + SIZE INFO) -->
+                    <div id="file-info-container" class="file-info-container" style="display: none;">
+                        <div class="thumbnail-section" id="thumbnail-section"></div>
+                        <div class="size-info-compact">
+                            <div class="size-info-row">
+                                <span class="size-info-label">
                                     <i class="fas fa-file-alt"></i> Original Size
-                                </div>
-                                <div id="pdf-original-size" class="size-value">0 KB</div>
+                                </span>
+                                <span id="compact-original-size" class="size-info-value">0 KB</span>
                             </div>
-                            <div class="size-row">
-                                <div class="size-label">
+                            <div class="size-info-row">
+                                <span class="size-info-label">
                                     <i class="fas fa-bullseye"></i> Estimated Size
-                                </div>
-                                <div id="pdf-target-size" class="size-value">0 KB</div>
+                                </span>
+                                <span id="compact-target-size" class="size-info-value">0 KB</span>
                             </div>
-                            <div class="size-row">
-                                <div class="size-label">
+                            <div class="size-info-row">
+                                <span class="size-info-label">
                                     <i class="fas fa-chart-line"></i> Estimated Reduction
-                                </div>
-                                <div id="pdf-change-percent" class="size-value">0%</div>
+                                </span>
+                                <span id="compact-change-percent" class="size-info-value reduction-badge">0%</span>
                             </div>
                         </div>
-                      
-                        <h4 style="margin-bottom: 15px; color: var(--text-primary);">
+                    </div>
+                  
+                    <!-- QUALITY CONTROLS WRAPPER -->
+                    <div id="quality-controls-wrapper" class="quality-controls-wrapper">
+                        <h4 style="margin-bottom: 15px; color: var(--text-primary); margin-top: 10px;">
                             <i class="fas fa-sliders-h"></i> Quality Level
                         </h4>
                       
-                        <!-- 3 QUALITY BUTTONS - FINAL TUNED VALUES -->
                         <div class="quality-buttons">
                             <button class="quality-btn" id="quality-high" onclick="setQualityLevel('high')">
                                 <i class="fas fa-diamond"></i>
@@ -1283,7 +1322,6 @@
                             </button>
                         </div>
                       
-                        <!-- NOTE ABOUT FILE SIZE VARIATION -->
                         <div class="size-note">
                             <i class="fas fa-info-circle"></i>
                             <strong>Note:</strong> Final size may vary depending on file content and complexity.
@@ -1302,7 +1340,6 @@
                     <h3 id="status-label">Status: Ready</h3>
                     <div class="loader" id="loader"></div>
                   
-                    <!-- PDF PREVIEW FOR MOBILE -->
                     <div id="pdf-preview-container" style="display: none; margin-top: 15px; text-align: center;">
                         <p style="margin-bottom: 10px; color: var(--success); font-weight: 600;">
                             <i class="fas fa-check-circle"></i> PDF Ready for Download!
@@ -1326,7 +1363,7 @@
             </div>
         </div>
       
-        <!-- ===== FOOTER SECTION ===== -->
+        <!-- FOOTER SECTION -->
         <div class="footer-section">
             <div class="footer-grid">
                 <div class="privacy-box">
@@ -1382,6 +1419,7 @@
             </div>
         </div>
     </div>
+    
     <!-- HOW TO USE POPUP -->
     <div id="how-to-popup" class="how-to-popup">
         <div class="popup-content">
@@ -1405,49 +1443,47 @@
             </div>
         </div>
     </div>
-    <!-- JAVASCRIPT - FINAL TUNED VERSION -->
+    
     <script>
         // Global variables
         let currentPages = [];
         let finalBlob = null;
         let originalFileSize = 0;
-        let pdfCompressionLevel = 78; // Default to High (22% reduction = 78% of original)
         let originalFile = null;
         let originalFileName = "";
-        let currentQuality = 'high'; // high, medium, low
+        let currentQuality = 'high';
       
-        // Quality presets - FINAL TUNED VALUES for perfect balance
+        // Quality presets
         const QUALITY_PRESETS = {
             high: {
                 name: 'High Quality',
-                reductionPercent: 22, // Target ~22% reduction (20-25% range)
-                targetPercent: 78, // 100% - 22% = 78% of original
-                quality: 0.75, // FINAL TUNED: Perfect for 20-25% reduction
-                scale: 0.8,   // FINAL TUNED: Perfect balance
+                reductionPercent: 22,
+                targetPercent: 78,
+                quality: 0.75,
+                scale: 0.8,
                 icon: 'diamond',
                 range: '20-30% Reduction'
             },
             medium: {
                 name: 'Medium Quality',
-                reductionPercent: 38, // Target ~38% reduction (35-40% range)
-                targetPercent: 62, // 100% - 38% = 62% of original
-                quality: 0.55, // FINAL TUNED: Perfect for 35-40% reduction
-                scale: 0.6,   // FINAL TUNED: Perfect balance
+                reductionPercent: 38,
+                targetPercent: 62,
+                quality: 0.55,
+                scale: 0.6,
                 icon: 'balance-scale',
                 range: '30-50% Reduction'
             },
             low: {
                 name: 'Low Quality',
-                reductionPercent: 58, // Target ~58% reduction (55-60% range)
-                targetPercent: 42, // 100% - 58% = 42% of original
-                quality: 0.35, // FINAL TUNED: Perfect for 55-60% reduction
-                scale: 0.45,  // FINAL TUNED: Perfect balance
+                reductionPercent: 58,
+                targetPercent: 42,
+                quality: 0.35,
+                scale: 0.45,
                 icon: 'leaf',
                 range: '50-70% Reduction'
             }
         };
       
-        // File picker function with fix
         window.triggerFilePicker = function() {
             const picker = document.getElementById('picker');
             if (picker) {
@@ -1456,11 +1492,9 @@
             }
         };
       
-        // Pre-load PDF libraries on page load
         document.addEventListener('DOMContentLoaded', function() {
-            console.log("PDF Size Tool Loading with FINAL TUNED values...");
+            console.log("PDF Size Tool Loading...");
           
-            // Set PDF.js worker
             if (pdfjsLib && pdfjsLib.GlobalWorkerOptions) {
                 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
             }
@@ -1471,48 +1505,21 @@
             const sidebar = document.getElementById('sidebar');
           
             if (mobileMenuBtn && mobileOverlay && sidebar) {
-                let isSidebarOpen = false;
-              
                 mobileMenuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    toggleSidebar();
+                    if (window.innerWidth <= 992) {
+                        sidebar.classList.add('show');
+                        mobileOverlay.classList.add('active');
+                    }
                 });
               
                 mobileOverlay.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    closeSidebar();
-                });
-              
-                function toggleSidebar() {
-                    if (window.innerWidth <= 992) {
-                        if (!isSidebarOpen) {
-                            sidebar.classList.add('show');
-                            mobileOverlay.classList.add('active');
-                            document.body.style.overflow = 'hidden';
-                            isSidebarOpen = true;
-                        } else {
-                            closeSidebar();
-                        }
-                    }
-                }
-              
-                function closeSidebar() {
                     sidebar.classList.remove('show');
                     mobileOverlay.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    isSidebarOpen = false;
-                }
-              
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.addEventListener('click', function() {
-                        if (window.innerWidth <= 992) {
-                            closeSidebar();
-                        }
-                    });
                 });
             }
           
-            // File picker setup
             const picker = document.getElementById('picker');
             if (picker) {
                 picker.addEventListener('click', function(e) {
@@ -1526,7 +1533,6 @@
                 });
             }
           
-            // Process button setup
             const processBtn = document.getElementById('process-btn');
             if (processBtn) {
                 processBtn.addEventListener('click', function() {
@@ -1537,83 +1543,36 @@
                 });
             }
           
-            // Upload zone setup
             const uploadZone = document.getElementById('upload-zone');
             if (uploadZone) {
                 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                    uploadZone.addEventListener(eventName, preventDefaults, false);
+                    uploadZone.addEventListener(eventName, (e) => e.preventDefault(), false);
                 });
-              
-                function preventDefaults(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-              
-                ['dragenter', 'dragover'].forEach(eventName => {
-                    uploadZone.addEventListener(eventName, highlight, false);
-                });
-              
-                ['dragleave', 'drop'].forEach(eventName => {
-                    uploadZone.addEventListener(eventName, unhighlight, false);
-                });
-              
-                function highlight() {
-                    uploadZone.style.borderColor = '#ff6b6b';
-                    uploadZone.style.background = 'rgba(255, 107, 107, 0.05)';
-                }
-              
-                function unhighlight() {
-                    uploadZone.style.borderColor = 'var(--border)';
-                    uploadZone.style.background = 'var(--card-bg)';
-                }
               
                 uploadZone.addEventListener('drop', async function(e) {
-                    const dt = e.dataTransfer;
-                    const files = dt.files;
-                    if (files.length > 0) {
-                        await handleFiles(files);
-                    }
+                    e.preventDefault();
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) await handleFiles(files);
                 });
             }
           
-            // Set active nav item
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.nav-item').forEach(item => {
-                if (item.getAttribute('href') === currentPage) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-          
-            // Set default quality to High
             setQualityLevel('high');
-          
-            console.log("PDF Size Tool Loaded Successfully with FINAL TUNED values!");
+            console.log("PDF Size Tool Loaded Successfully!");
         });
       
-        // Set quality level function
         window.setQualityLevel = function(level) {
             currentQuality = level;
-            pdfCompressionLevel = QUALITY_PRESETS[level].targetPercent;
-          
-            // Update active button state
             document.querySelectorAll('.quality-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.getElementById(`quality-${level}`).classList.add('active');
-          
-            // Update display
-            updatePDFSizeDisplay();
-          
-            // Update process button text
+            updateCompactSizeDisplay();
             const processBtnText = document.getElementById('process-btn-text');
             if (processBtnText) {
                 processBtnText.textContent = `Compress PDF (${QUALITY_PRESETS[level].name})`;
             }
         };
       
-        // File handling function
         async function handleFiles(files) {
             let filesToProcess = Array.from(files);
             if (filesToProcess.length > 1) {
@@ -1628,17 +1587,18 @@
                 return;
             }
           
-            document.getElementById('upload-zone').style.display = 'none';
+            const uploadZone = document.getElementById('upload-zone');
+            uploadZone.classList.add('uploaded');
+            
+            document.getElementById('file-info-container').style.display = 'flex';
+            document.getElementById('quality-controls-wrapper').style.display = 'block';
             document.getElementById('process-btn').style.display = 'block';
           
             originalFile = file;
             originalFileName = file.name.replace('.pdf', '');
             originalFileSize = file.size;
           
-            document.getElementById('pdf-size-controls').style.display = 'block';
-            updatePDFSizeDisplay();
-          
-            // Reset to High quality as default
+            updateCompactSizeDisplay();
             setQualityLevel('high');
           
             try {
@@ -1654,33 +1614,24 @@
                 console.error("Error creating thumbnail:", error);
                 addFileThumb('', file);
             }
+            
+            // ===== YEH LO BHAI - TUJHE YAHI CHAHIYE THA =====
+            // EDITOR SIDE KO THODA SCROLL KARO TAKI BUTTONS DIKHEIN
+            setTimeout(function() {
+                const editorSide = document.getElementById('editor-side');
+                if (editorSide) {
+                    // 200 pixels scroll karo niche - buttons dikh jayenge
+                    editorSide.scrollTop = 200;
+                }
+            }, 300); // 300ms delay - upload complete hone ke baad
         }
       
-        // Update size display function
-        function updatePDFSizeDisplay() {
-            if (!originalFileSize) return;
-          
-            const preset = QUALITY_PRESETS[currentQuality];
-            const targetSize = Math.round((originalFileSize * preset.targetPercent) / 100);
-            const reductionPercent = preset.reductionPercent;
-          
-            const originalSizeEl = document.getElementById('pdf-original-size');
-            const targetSizeEl = document.getElementById('pdf-target-size');
-            const changePercentEl = document.getElementById('pdf-change-percent');
-          
-            if (originalSizeEl) originalSizeEl.textContent = formatFileSize(originalFileSize);
-            if (targetSizeEl) targetSizeEl.textContent = formatFileSize(targetSize);
-          
-            if (changePercentEl) {
-                changePercentEl.textContent = `~${reductionPercent}% smaller`;
-                changePercentEl.className = "size-value change-positive";
-            }
-        }
-      
-        // Add file thumbnail function
         function addFileThumb(data, file) {
             const id = 'p' + Math.random().toString(36).substr(2, 9);
             currentPages.push({id, file, idx: 0, isWholeFile: true});
+          
+            const thumbnailSection = document.getElementById('thumbnail-section');
+            thumbnailSection.innerHTML = '';
           
             const div = document.createElement('div');
             div.className = 'page-item';
@@ -1699,26 +1650,35 @@
                     </button>
                 </div>`;
               
-            document.getElementById('page-grid').appendChild(div);
+            thumbnailSection.appendChild(div);
         }
       
-        // Global functions
+        function updateCompactSizeDisplay() {
+            if (!originalFileSize) return;
+            const preset = QUALITY_PRESETS[currentQuality];
+            const targetSize = Math.round((originalFileSize * preset.targetPercent) / 100);
+            const reductionPercent = preset.reductionPercent;
+            document.getElementById('compact-original-size').textContent = formatFileSize(originalFileSize);
+            document.getElementById('compact-target-size').textContent = formatFileSize(targetSize);
+            document.getElementById('compact-change-percent').textContent = `~${reductionPercent}% smaller`;
+        }
+      
         window.removeThumb = function(id, btn) {
             currentPages = currentPages.filter(p => p.id !== id);
             btn.parentElement.parentElement.remove();
-          
             document.getElementById('picker').value = '';
           
             if (document.querySelectorAll('.page-item').length === 0) {
-                document.getElementById('upload-zone').style.display = 'block';
+                const uploadZone = document.getElementById('upload-zone');
+                uploadZone.classList.remove('uploaded');
+                document.getElementById('file-info-container').style.display = 'none';
+                document.getElementById('quality-controls-wrapper').style.display = 'none';
                 document.getElementById('process-btn').style.display = 'none';
-                document.getElementById('pdf-size-controls').style.display = 'none';
                 originalFileSize = 0;
-                updatePDFSizeDisplay();
+                updateCompactSizeDisplay();
             }
         };
       
-        // Main work function
         async function startWork() {
             if (currentPages.length === 0) {
                 alert("Please upload a PDF file first!");
@@ -1751,13 +1711,10 @@
                     throw new Error("PDF library not loaded. Please refresh the page.");
                 }
               
-                // Get current quality preset
                 const preset = QUALITY_PRESETS[currentQuality];
                 statusLabel.innerText = `Compressing (${preset.name})...`;
               
-                // Always compress - never increase size
-                finalBlob = await compressPDF(pdfBytes, preset.targetPercent, preset.quality, preset.scale);
-              
+                finalBlob = await compressPDF(pdfBytes, preset.quality, preset.scale);
                 const actualSize = finalBlob.size;
                 renderFinal(actualSize);
               
@@ -1770,20 +1727,15 @@
             }
         }
       
-        // Compression function with exact target percentage
-        async function compressPDF(pdfBytes, targetPercent, quality, scale) {
+        async function compressPDF(pdfBytes, quality, scale) {
             try {
                 const pdf = await pdfjsLib.getDocument({data: pdfBytes}).promise;
                 const numPages = pdf.numPages;
                 const newPdfDoc = await PDFLib.PDFDocument.create();
               
-                // Use exact scale and quality from preset
-                const renderScale = scale;
-                const renderQuality = quality;
-              
                 for (let pageNum = 1; pageNum <= numPages; pageNum++) {
                     const page = await pdf.getPage(pageNum);
-                    const viewport = page.getViewport({scale: renderScale});
+                    const viewport = page.getViewport({scale: scale});
                     const canvas = document.createElement('canvas');
                     canvas.height = viewport.height;
                     canvas.width = viewport.width;
@@ -1792,7 +1744,7 @@
                         viewport: viewport
                     };
                     await page.render(renderContext).promise;
-                    const imgData = canvas.toDataURL('image/jpeg', renderQuality);
+                    const imgData = canvas.toDataURL('image/jpeg', quality);
                     const jpgImage = await newPdfDoc.embedJpg(imgData);
                     const pdfPage = newPdfDoc.addPage([jpgImage.width, jpgImage.height]);
                     pdfPage.drawImage(jpgImage, {
@@ -1803,16 +1755,14 @@
                     });
                 }
               
-                const compressedBytes = await newPdfDoc.save({ useObjectStreams: true });
+                const compressedBytes = await newPdfDoc.save();
                 return new Blob([compressedBytes], {type: 'application/pdf'});
             } catch (error) {
                 console.error("Compression error:", error);
-                // Fallback to original if compression fails
                 return new Blob([pdfBytes], {type: 'application/pdf'});
             }
         }
       
-        // Render final result
         function renderFinal(actualSize) {
             const loader = document.getElementById('loader');
             const successBtns = document.getElementById('success-btns');
@@ -1822,6 +1772,7 @@
           
             loader.style.display = 'none';
             successBtns.style.display = 'block';
+            document.getElementById('process-btn').disabled = false;
           
             const isMobile = window.innerWidth <= 992;
           
@@ -1836,42 +1787,36 @@
                 pdfPreviewContainer.style.display = 'none';
                 statusLabel.innerText = `Complete! ${formatFileSize(actualSize)}`;
             }
-          
-            document.getElementById('process-btn').disabled = false;
         }
       
-        // Download file function
         window.downloadFile = function() {
             if (!finalBlob || !originalFileName) {
                 alert("No PDF generated yet!");
                 return;
             }
-          
             const a = document.createElement('a');
             a.href = URL.createObjectURL(finalBlob);
-          
             const preset = QUALITY_PRESETS[currentQuality];
             a.download = `${originalFileName}_${currentQuality}_${preset.reductionPercent}percent_reduced.pdf`;
-          
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-          
             setTimeout(() => URL.revokeObjectURL(a.href), 100);
         };
       
-        // Start new task function
         window.startNewTask = function() {
             currentPages = [];
             finalBlob = null;
             originalFileSize = 0;
-            pdfCompressionLevel = QUALITY_PRESETS.high.targetPercent;
             originalFile = null;
             originalFileName = "";
             currentQuality = 'high';
           
-            document.getElementById('page-grid').innerHTML = '';
-            document.getElementById('upload-zone').style.display = 'block';
+            document.getElementById('thumbnail-section').innerHTML = '';
+            const uploadZone = document.getElementById('upload-zone');
+            uploadZone.classList.remove('uploaded');
+            document.getElementById('file-info-container').style.display = 'none';
+            document.getElementById('quality-controls-wrapper').style.display = 'none';
             document.getElementById('process-btn').style.display = 'none';
             document.getElementById('process-btn').disabled = false;
             document.getElementById('loader').style.display = 'none';
@@ -1880,21 +1825,11 @@
             document.getElementById('preview-frame').src = "about:blank";
             document.getElementById('success-btns').style.display = 'none';
             document.getElementById('status-label').innerText = "Status: Ready";
-          
-            document.getElementById('pdf-size-controls').style.display = 'none';
-          
-            // Reset active button to High
             setQualityLevel('high');
-          
             document.getElementById('picker').value = '';
-          
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
       
-        // Format file size function
         function formatFileSize(bytes) {
             if (bytes === 0) return '0 Bytes';
             const k = 1024;
@@ -1903,7 +1838,6 @@
             return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
       
-        // How to use functions
         window.showHowToUse = function() {
             document.getElementById('how-to-popup').style.display = 'flex';
         };
