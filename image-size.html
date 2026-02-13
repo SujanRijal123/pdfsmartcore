@@ -109,7 +109,7 @@
                 flex-direction: column;
                 background: var(--card-bg);
                 position: relative;
-                overflow: hidden; /* SIRF YAHAN CHANGE - POORA RESULT SIDE FIXED */
+                overflow: hidden;
             }
         }
         
@@ -572,7 +572,7 @@
             font-style: italic;
         }
         
-        /* ===== RESULT SIDE - BILKUL PDF SIZE TOOL JAISA ===== */
+        /* ===== RESULT SIDE ===== */
         #status-label {
             text-align: center;
             font-size: 1.1rem;
@@ -583,7 +583,7 @@
             background: rgba(255, 107, 107, 0.05);
             border-radius: var(--radius-sm);
             border-left: 4px solid #ff6b6b;
-            flex-shrink: 0; /* YEH FIXED RAHEGA */
+            flex-shrink: 0;
         }
         
         .loader {
@@ -598,8 +598,9 @@
             flex-shrink: 0;
         }
         
-        /* ===== PREVIEW CONTAINER - SIRF YAHI SCROLL HOGA ===== */
-        .preview-scroll-container {
+        /* DESKTOP PREVIEW */
+        #desktop-preview {
+            display: none;
             flex: 1;
             overflow-y: auto;
             min-height: 0;
@@ -607,33 +608,25 @@
             padding-right: 5px;
         }
         
-        .preview-scroll-container::-webkit-scrollbar {
+        #desktop-preview::-webkit-scrollbar {
             width: 8px;
         }
-        .preview-scroll-container::-webkit-scrollbar-track {
+        #desktop-preview::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-        .preview-scroll-container::-webkit-scrollbar-thumb {
+        #desktop-preview::-webkit-scrollbar-thumb {
             background: #ff6b6b;
             border-radius: 10px;
             min-height: 40px;
         }
-        .preview-scroll-container::-webkit-scrollbar-thumb:hover {
-            background: #ff5252;
-        }
         
         .result-image-preview {
-            display: none;
-            padding: 10px;
+            padding: 20px;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             border-radius: var(--radius);
             border: 1px solid var(--border);
             text-align: center;
-        }
-        
-        .result-image-preview.show {
-            display: block;
         }
         
         .result-image-preview h4 {
@@ -644,18 +637,12 @@
             align-items: center;
             gap: 8px;
             justify-content: center;
-            flex-shrink: 0;
         }
         
         .result-image-preview h4 i {
             background: linear-gradient(135deg, #4ade80, #22c55e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        
-        .preview-image-container {
-            width: 100%;
-            text-align: center;
         }
         
         .preview-image-container img {
@@ -668,12 +655,35 @@
             box-shadow: var(--shadow);
         }
         
-        /* ===== DOWNLOAD BUTTONS - SCROLLBAR KE BAHAR FIXED ===== */
+        /* PHONE MESSAGE - INITIALLY HIDDEN */
+        #mobile-message {
+            display: none;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        #mobile-message p {
+            margin-bottom: 10px;
+            color: var(--success);
+            font-weight: 600;
+        }
+        
+        #mobile-message p i {
+            margin-right: 8px;
+        }
+        
+        #mobile-message .size-info {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* DOWNLOAD BUTTONS - INITIALLY HIDDEN */
         #success-btns {
             display: none;
             width: 100%;
             margin-top: 10px;
-            flex-shrink: 0; /* YEH FIXED RAHEGA */
+            flex-shrink: 0;
         }
         
         .btn-main {
@@ -720,7 +730,7 @@
             to { transform: rotate(360deg); }
         }
         
-        /* ===== FOOTER - BILKUL ORIGINAL ===== */
+        /* ===== FOOTER ===== */
         .footer-section {
             width: 100%;
             padding: 40px 24px 30px 24px;
@@ -1050,13 +1060,13 @@
                     </button>
                 </div>
                
-                <!-- RIGHT SIDE - RESULT (PDF SIZE TOOL JAISA EXACT) -->
+                <!-- RIGHT SIDE - RESULT -->
                 <div class="result-side">
                     <h3 id="status-label">Status: Ready</h3>
                     <div class="loader" id="loader"></div>
                     
-                    <!-- SIRF YAHI SCROLL HOGA - PREVIEW CONTAINER -->
-                    <div class="preview-scroll-container">
+                    <!-- DESKTOP PREVIEW - INITIALLY HIDDEN -->
+                    <div id="desktop-preview">
                         <div id="result-image-preview" class="result-image-preview">
                             <h4>
                                 <i class="fas fa-check-circle"></i> Compressed Image Preview
@@ -1064,8 +1074,14 @@
                             <div id="preview-image-container" class="preview-image-container"></div>
                         </div>
                     </div>
+                    
+                    <!-- PHONE MESSAGE - INITIALLY HIDDEN -->
+                    <div id="mobile-message">
+                        <p><i class="fas fa-check-circle"></i> Image Ready for Download!</p>
+                        <p class="size-info" id="mobile-size-info"></p>
+                    </div>
                    
-                    <!-- DOWNLOAD BUTTONS - SCROLL KE BAHAR FIXED -->
+                    <!-- DOWNLOAD BUTTONS - INITIALLY HIDDEN -->
                     <div id="success-btns">
                         <button class="btn-main btn-success" onclick="downloadFile()">
                             <i class="fas fa-download"></i> Download Result
@@ -1078,7 +1094,7 @@
             </div>
         </div>
        
-        <!-- FOOTER - BILKUL ORIGINAL -->
+        <!-- FOOTER -->
         <div class="footer-section">
             <div class="footer-grid">
                 <div class="privacy-box">
@@ -1304,7 +1320,8 @@
                 document.getElementById('file-info-container').classList.remove('show');
                 document.getElementById('image-size-tool').style.display = 'none';
                 document.getElementById('process-btn').style.display = 'none';
-                document.getElementById('result-image-preview').classList.remove('show');
+                document.getElementById('desktop-preview').style.display = 'none';
+                document.getElementById('mobile-message').style.display = 'none';
                 document.getElementById('success-btns').style.display = 'none';
                 document.getElementById('preview-image-container').innerHTML = '';
                 totalOriginalSize = 0;
@@ -1321,6 +1338,11 @@
             document.getElementById('loader').style.display = 'block';
             document.getElementById('status-label').innerText = "Processing...";
             document.getElementById('process-btn').disabled = true;
+           
+            // Pehle sab kuch chhupa do
+            document.getElementById('desktop-preview').style.display = 'none';
+            document.getElementById('mobile-message').style.display = 'none';
+            document.getElementById('success-btns').style.display = 'none';
            
             try {
                 const file = currentPages[0].file;
@@ -1340,9 +1362,17 @@
                
                 document.getElementById('compact-target-size').textContent = finalImageSize.toFixed(2) + " KB";
                
-                // Show preview
-                document.getElementById('preview-image-container').innerHTML = `<img src="${finalImageDataUrl}" alt="Compressed">`;
-                document.getElementById('result-image-preview').classList.add('show');
+                const isMobile = window.innerWidth <= 992;
+               
+                if (isMobile) {
+                    // Phone mein message dikhao
+                    document.getElementById('mobile-message').style.display = 'block';
+                    document.getElementById('mobile-size-info').textContent = `Size: ${finalImageSize.toFixed(2)} KB`;
+                } else {
+                    // Desktop mein preview dikhao
+                    document.getElementById('preview-image-container').innerHTML = `<img src="${finalImageDataUrl}" alt="Compressed">`;
+                    document.getElementById('desktop-preview').style.display = 'block';
+                }
                
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('success-btns').style.display = 'block';
@@ -1391,7 +1421,8 @@
             document.getElementById('file-info-container').classList.remove('show');
             document.getElementById('image-size-tool').style.display = 'none';
             document.getElementById('process-btn').style.display = 'none';
-            document.getElementById('result-image-preview').classList.remove('show');
+            document.getElementById('desktop-preview').style.display = 'none';
+            document.getElementById('mobile-message').style.display = 'none';
             document.getElementById('success-btns').style.display = 'none';
             document.getElementById('preview-image-container').innerHTML = '';
             document.getElementById('status-label').innerText = "Status: Ready";
@@ -1399,6 +1430,18 @@
            
             setQualityLevel('high');
             document.getElementById('picker').value = '';
+           
+            // ===== YEH ADD KIYA - AUTO SCROLL TO TOP =====
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Editor side ko bhi top par scroll karo
+            const editorSide = document.querySelector('.editor-side');
+            if (editorSide) {
+                editorSide.scrollTop = 0;
+            }
         };
       
         window.showHowToUse = function() {
