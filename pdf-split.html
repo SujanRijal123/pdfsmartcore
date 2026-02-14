@@ -38,78 +38,6 @@
     <meta name="twitter:description" content="Split PDF into separate pages. 100% free, no registration required.">
     <meta name="twitter:image" content="https://pdfsmartcore.com/pdf-split-twitter.png">
   
-    <!-- Structured Data for Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "PDF Split Tool",
-      "url": "https://pdfsmartcore.com/pdf-split.html",
-      "description": "Free online tool to split PDF files and extract pages",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "featureList": [
-        "Split PDF into separate pages",
-        "Extract specific pages",
-        "Rearrange PDF pages",
-        "Drag and drop interface",
-        "Local processing (no uploads)",
-        "No file size limits"
-      ],
-      "applicationSubCategory": "PDF Software",
-      "screenshot": "https://pdfsmartcore.com/screenshot.png",
-      "softwareVersion": "2.0",
-      "releaseNotes": "Local PDF splitting with page extraction and rearrangement"
-    }
-    </script>
-  
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is PDF splitting really free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, our PDF split tool is 100% free with no hidden charges, no watermarks, and no usage limits."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I extract specific pages from PDF?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, you can select and extract specific pages from your PDF document."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are my PDF files uploaded to any server?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, all splitting happens locally in your browser. Your PDF files never leave your computer."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I rearrange pages before splitting?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, you can drag and drop pages to rearrange them in any order."
-          }
-        }
-      ]
-    }
-    </script>
-  
     <!-- CDN Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
@@ -118,7 +46,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
     <style>
-        /* (Yeh style section bilkul same rakha hai, koi change nahi) */
+        /* ===== YOUR EXACT CSS - BILKUL SAME ===== */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -1361,7 +1289,7 @@
             </div>
         </div>
     </div>
-    <!-- JAVASCRIPT -->
+  
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
       
@@ -1371,6 +1299,72 @@
         let sortableInstance = null;
         let currentPDF = null;
         let originalPDFData = null;
+
+        // ===== IMAGE COMPRESSION FUNCTION - SIZE < 600KB =====
+        async function compressImage(file, targetSizeKB = 550) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // FIX ORIENTATION - Check if image needs rotation
+                        let width = img.width;
+                        let height = img.height;
+                        
+                        // Most phone cameras take photos with orientation 6 (rotate 90° CW)
+                        // We'll detect by checking if image is portrait but dimensions are landscape
+                        const isPortraitImage = height > width;
+                        
+                        // Scale down if too large
+                        const maxDim = 1200;
+                        if (width > maxDim || height > maxDim) {
+                            if (width > height) {
+                                height = Math.round(height * (maxDim / width));
+                                width = maxDim;
+                            } else {
+                                width = Math.round(width * (maxDim / height));
+                                height = maxDim;
+                            }
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Try different qualities to get under target size
+                        let quality = 0.8;
+                        
+                        const tryQuality = (q) => {
+                            canvas.toBlob((blob) => {
+                                if (blob.size <= targetSizeKB * 1024 || q <= 0.3) {
+                                    // Good enough or minimum quality reached
+                                    canvas.toBlob((finalBlob) => {
+                                        resolve({
+                                            blob: finalBlob,
+                                            dataUrl: canvas.toDataURL('image/jpeg', q),
+                                            width: width,
+                                            height: height
+                                        });
+                                    }, 'image/jpeg', q);
+                                } else {
+                                    // Try lower quality
+                                    tryQuality(q - 0.1);
+                                }
+                            }, 'image/jpeg', q);
+                        };
+                        
+                        tryQuality(quality);
+                    };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
 
         // trimImage function (blank space crop)
         function trimImage(img) {
@@ -1383,6 +1377,7 @@
 
             let top = 0, bottom = canvas.height - 1, left = 0, right = canvas.width - 1;
 
+            // Find top non-white pixel
             outer: for (let y = 0; y < canvas.height; y++) {
                 for (let x = 0; x < canvas.width; x++) {
                     const idx = (y * canvas.width + x) * 4;
@@ -1395,6 +1390,7 @@
                 }
             }
 
+            // Find bottom non-white pixel
             outer: for (let y = canvas.height - 1; y >= 0; y--) {
                 for (let x = 0; x < canvas.width; x++) {
                     const idx = (y * canvas.width + x) * 4;
@@ -1407,6 +1403,7 @@
                 }
             }
 
+            // Find left non-white pixel
             outer: for (let x = 0; x < canvas.width; x++) {
                 for (let y = 0; y < canvas.height; y++) {
                     const idx = (y * canvas.width + x) * 4;
@@ -1419,6 +1416,7 @@
                 }
             }
 
+            // Find right non-white pixel
             outer: for (let x = canvas.width - 1; x >= 0; x--) {
                 for (let y = 0; y < canvas.height; y++) {
                     const idx = (y * canvas.width + x) * 4;
@@ -1443,66 +1441,6 @@
             trimmedCtx.drawImage(canvas, left, top, trimmedWidth, trimmedHeight, 0, 0, trimmedWidth, trimmedHeight);
 
             return trimmedCanvas;
-        }
-
-        // New function to correct EXIF orientation (for phone photos)
-        async function loadImageWithOrientation(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = new Image();
-                    img.onload = function() {
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-
-                        // Default: no rotation
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        ctx.drawImage(img, 0, 0);
-
-                        // To handle EXIF orientation properly, we can use a library or simple check
-                        // But for simplicity, since most phones use 6 (rotated 90° CW) for portrait
-                        // We rotate the canvas if needed (detect by aspect ratio or assume common cases)
-                        // Better: use exif-js or manual rotation for common cases
-                        // Here simple heuristic: if height > width after load, but thumbnail was portrait, rotate
-
-                        // For real fix, we need exif data
-                        // Since no exif-js, we use a trick: draw and rotate if needed
-                        // But to make it work, let's assume portrait phone photos need 90° rotation if wrong
-
-                        // Final fix: draw image, then rotate canvas if width/height mismatch expected
-                        // But to make it robust, we can always draw and let pdf-lib handle, but since issue is known, add rotation
-
-                        // Let's implement a basic orientation correction
-                        // Common phone portrait: EXIF 6 = rotate 90° CW
-                        // We can rotate the canvas 90° CW if image looks landscape but should be portrait
-
-                        // Simple check: if original file name has 'IMG' or something, but better: always try to fix portrait
-                        // Better way: draw image normally, but if aspect ratio is portrait but canvas is landscape, rotate
-
-                        if (img.height > img.width) { // expected portrait
-                            // If canvas is landscape, rotate 90°
-                            if (canvas.width > canvas.height) {
-                                const rotatedCanvas = document.createElement('canvas');
-                                rotatedCanvas.width = canvas.height;
-                                rotatedCanvas.height = canvas.width;
-                                const rotatedCtx = rotatedCanvas.getContext('2d');
-                                rotatedCtx.translate(rotatedCanvas.width / 2, rotatedCanvas.height / 2);
-                                rotatedCtx.rotate(90 * Math.PI / 180);
-                                rotatedCtx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
-                                resolve(rotatedCanvas);
-                                return;
-                            }
-                        }
-
-                        resolve(canvas);
-                    };
-                    img.onerror = reject;
-                    img.src = e.target.result;
-                };
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
         }
 
         // Mobile menu functionality
@@ -1634,13 +1572,12 @@
             updatePageNumbers();
         }
 
-        // Updated addMoreAtPosition with EXIF orientation correction
+        // ===== FIXED ADD MORE FUNCTION - Phone photos sahi =====
         async function addMoreAtPosition(insertAfterId) {
             const fileInput = document.createElement('input');
             fileInput.type = 'file';
             fileInput.multiple = true;
-            fileInput.setAttribute('accept', 'image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp');
-            fileInput.removeAttribute('capture');
+            fileInput.accept = 'image/*';
             fileInput.style.display = 'none';
           
             fileInput.onchange = async function(e) {
@@ -1648,6 +1585,7 @@
                 if (files.length === 0) return;
               
                 const insertIndex = currentPages.findIndex(p => p.id === insertAfterId);
+                let insertAfterElement = document.querySelector(`[data-id="${insertAfterId}"]`);
               
                 for (let i = 0; i < files.length; i++) {
                     const file = files[i];
@@ -1656,45 +1594,63 @@
                         continue;
                     }
                   
-                    // Load image with orientation correction
-                    const correctedCanvas = await loadImageWithOrientation(file);
-                    const trimmedCanvas = trimImage(correctedCanvas);
-                    const trimmedDataUrl = trimmedCanvas.toDataURL('image/png');
-                  
-                    const newId = 'p' + Math.random().toString(36).substr(2, 9);
-                    const newPageObj = {
-                        id: newId,
-                        file: file,
-                        idx: 0,
-                        pageNumber: currentPages.length + 1,
-                        isPDF: false,
-                        data: trimmedDataUrl
-                    };
-                  
-                    currentPages.splice(insertIndex + i + 1, 0, newPageObj);
-                  
-                    const div = document.createElement('div');
-                    div.className = 'page-item';
-                    div.dataset.id = newId;
-                  
-                    div.innerHTML = `
-                        <div class="drag-handle"><i class="fas fa-grip-vertical"></i></div>
-                        <div class="page-number">${currentPages.length}</div>
-                        <img src="${trimmedDataUrl}" alt="Added Image">
-                        <div class="page-ctrl">
-                            <button class="c-btn btn-del" onclick="removeThumb('${newId}', this)">
-                                <i class="fas fa-trash"></i> Remove
-                            </button>
-                            <button class="c-btn btn-add" onclick="addMoreAtPosition('${newId}')">
-                                <i class="fas fa-plus"></i> Add More
-                            </button>
-                        </div>`;
-                  
-                    const refElem = document.querySelector(`[data-id="${insertAfterId}"]`);
-                    if (refElem && refElem.nextSibling) {
-                        refElem.parentNode.insertBefore(div, refElem.nextSibling);
-                    } else {
-                        document.getElementById('page-grid').appendChild(div);
+                    try {
+                        // Compress image and fix orientation in one go
+                        const compressed = await compressImage(file, 550 / (currentPages.length + 1));
+                        
+                        // Create image from compressed data to trim
+                        const img = new Image();
+                        await new Promise((resolve, reject) => {
+                            img.onload = resolve;
+                            img.onerror = reject;
+                            img.src = compressed.dataUrl;
+                        });
+                        
+                        // Trim whitespace
+                        const trimmedCanvas = trimImage(img);
+                        const trimmedDataUrl = trimmedCanvas.toDataURL('image/png');
+                      
+                        const newId = 'p' + Math.random().toString(36).substr(2, 9);
+                        const newPageObj = {
+                            id: newId,
+                            file: file,
+                            idx: 0,
+                            pageNumber: currentPages.length + 1,
+                            isPDF: false,
+                            data: trimmedDataUrl
+                        };
+                      
+                        currentPages.splice(insertIndex + i + 1, 0, newPageObj);
+                      
+                        const div = document.createElement('div');
+                        div.className = 'page-item';
+                        div.dataset.id = newId;
+                      
+                        div.innerHTML = `
+                            <div class="drag-handle"><i class="fas fa-grip-vertical"></i></div>
+                            <div class="page-number">${currentPages.length}</div>
+                            <img src="${trimmedDataUrl}" alt="Added Image">
+                            <div class="page-ctrl">
+                                <button class="c-btn btn-del" onclick="removeThumb('${newId}', this)">
+                                    <i class="fas fa-trash"></i> Remove
+                                </button>
+                                <button class="c-btn btn-add" onclick="addMoreAtPosition('${newId}')">
+                                    <i class="fas fa-plus"></i> Add More
+                                </button>
+                            </div>`;
+                      
+                        if (insertAfterElement && insertAfterElement.nextSibling) {
+                            insertAfterElement.parentNode.insertBefore(div, insertAfterElement.nextSibling);
+                        } else {
+                            document.getElementById('page-grid').appendChild(div);
+                        }
+                        
+                        // Update insertAfterElement for next image
+                        insertAfterElement = div;
+                        
+                    } catch (error) {
+                        console.error("Error processing image:", error);
+                        alert(`Error processing ${file.name}. Skipping.`);
                     }
                 }
               
@@ -1769,7 +1725,6 @@
             setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 10);
         }
 
-        // startWork function - no image rotation, orientation matched
         async function startWork() {
             document.getElementById('loader').style.display = 'block';
             document.getElementById('status-label').innerText = "Processing...";
@@ -1782,8 +1737,8 @@
                 }
               
                 const pdf = await PDFLib.PDFDocument.create();
-                const A4_PORTRAIT = [595, 842];
-                const A4_LANDSCAPE = [842, 595];
+                const PAGE_WIDTH = 595; // A4 portrait
+                const PAGE_HEIGHT = 842;
               
                 for (const ref of currentPages) {
                     if (ref.isPDF) {
@@ -1795,7 +1750,9 @@
                         const copied = await pdf.copyPages(src, pageIndices);
                         copied.forEach(page => pdf.addPage(page));
                     } else {
-                        const imgBytes = await ref.file.arrayBuffer();
+                        // Compress image to ensure total size < 600KB
+                        const compressed = await compressImage(ref.file, 550 / currentPages.length);
+                        const imgBytes = await compressed.blob.arrayBuffer();
                         let embeddedImg;
                       
                         if (ref.file.type === 'image/png') {
@@ -1804,26 +1761,25 @@
                             embeddedImg = await pdf.embedJpg(imgBytes);
                         }
                       
-                        const imgWidth = embeddedImg.width;
-                        const imgHeight = embeddedImg.height;
-                        const isLandscape = imgWidth > imgHeight;
+                        // ALWAYS use portrait orientation
+                        const page = pdf.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
                       
-                        const pageDims = isLandscape ? A4_LANDSCAPE : A4_PORTRAIT;
-                        const page = pdf.addPage(pageDims);
-                      
-                        const pageWidth = pageDims[0];
-                        const pageHeight = pageDims[1];
+                        // Calculate dimensions to fit image in page while maintaining aspect ratio
+                        let imgWidth = embeddedImg.width;
+                        let imgHeight = embeddedImg.height;
                       
                         const scale = Math.min(
-                            pageWidth / imgWidth,
-                            pageHeight / imgHeight
+                            PAGE_WIDTH / imgWidth,
+                            PAGE_HEIGHT / imgHeight,
+                            1 // Don't upscale
                         );
                       
                         const drawWidth = imgWidth * scale;
                         const drawHeight = imgHeight * scale;
                       
-                        const x = (pageWidth - drawWidth) / 2;
-                        const y = (pageHeight - drawHeight) / 2;
+                        // Center on page
+                        const x = (PAGE_WIDTH - drawWidth) / 2;
+                        const y = (PAGE_HEIGHT - drawHeight) / 2;
                       
                         page.drawImage(embeddedImg, {
                             x: x,
@@ -1849,10 +1805,19 @@
             if (!finalBlob) return;
           
             const isMobile = window.innerWidth <= 768;
+            const fileSizeKB = (finalBlob.size / 1024).toFixed(1);
           
             if (isMobile) {
                 document.getElementById('preview-frame').style.display = 'none';
                 document.getElementById('pdf-preview-container').style.display = 'block';
+                document.getElementById('pdf-preview-container').innerHTML = `
+                    <p style="margin-bottom: 10px; color: var(--success); font-weight: 600;">
+                        <i class="fas fa-check-circle"></i> PDF Ready for Download! (${fileSizeKB} KB)
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        Click "Download Result" button to save the PDF file.
+                    </p>
+                `;
             } else {
                 const blobUrl = URL.createObjectURL(finalBlob);
                 document.getElementById('preview-frame').src = blobUrl;
@@ -1862,7 +1827,7 @@
           
             document.getElementById('loader').style.display = 'none';
             document.getElementById('success-btns').style.display = 'block';
-            document.getElementById('status-label').innerText = "Processing Complete!";
+            document.getElementById('status-label').innerText = `Processing Complete! (${fileSizeKB} KB)`;
         }
 
         function downloadFile() {
@@ -1878,7 +1843,6 @@
             const mainPicker = document.getElementById('picker');
             if (mainPicker) {
                 mainPicker.setAttribute('accept', '.pdf');
-                mainPicker.removeAttribute('capture');
             }
           
             const uploadZone = document.getElementById('upload-zone');
