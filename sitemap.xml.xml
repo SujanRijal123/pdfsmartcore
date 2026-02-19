@@ -7,7 +7,7 @@
     <!-- Home Page -->
     <url>
         <loc>https://pdfsmartcore.com/</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -15,7 +15,7 @@
     <!-- Merge PDF -->
     <url>
         <loc>https://pdfsmartcore.com/pdf-merge.html</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -23,7 +23,7 @@
     <!-- Split & Organize -->
     <url>
         <loc>https://pdfsmartcore.com/pdf-split.html</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -31,7 +31,7 @@
     <!-- Word to PDF -->
     <url>
         <loc>https://pdfsmartcore.com/word-to-pdf.html</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -39,7 +39,7 @@
     <!-- PDF Size -->
     <url>
         <loc>https://pdfsmartcore.com/pdf-size.html</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -47,7 +47,7 @@
     <!-- JPG to PDF -->
     <url>
         <loc>https://pdfsmartcore.com/jpg-to-pdf.html</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -55,7 +55,7 @@
     <!-- PDF to JPG -->
     <url>
         <loc>https://pdfsmartcore.com/pdf-to-jpg.html</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -63,7 +63,23 @@
     <!-- Image Size -->
     <url>
         <loc>https://pdfsmartcore.com/image-size.html</loc>
-        <lastmod>2026-02-04</lastmod>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Image Format -->
+    <url>
+        <loc>https://pdfsmartcore.com/image-format.html</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+     <!-- PDF to Excel -->
+    <url>
+        <loc>https://pdfsmartcore.com/pdf-to-excel.html</loc>
+        <lastmod>2026-02-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

@@ -20,7 +20,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
    
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://pdfsmartcore.com/pdf-merge.html">  <!-- Apna domain daal dena -->
+    <link rel="canonical" href="https://pdfsmartcore.com/pdf-merge.html">
    
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Merge PDF Files Online Free - Combine PDF Documents">
@@ -38,7 +38,12 @@
     <meta name="twitter:description" content="Combine multiple PDFs into one document. 100% free, no registration required.">
     <meta name="twitter:image" content="https://pdfsmartcore.com/pdf-merge-twitter.png">
    
-    <!-- Structured Data for Google (rating removed) -->
+    <!-- FAVICON - Added properly -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
+   
+    <!-- Structured Data for Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,10 +66,7 @@
         "Local processing (no uploads)",
         "No file size limits"
       ],
-      "applicationSubCategory": "PDF Software",
-      "screenshot": "https://pdfsmartcore.com/screenshot.png",
-      "softwareVersion": "2.0",
-      "releaseNotes": "Local PDF merging with drag-drop support"
+      "softwareVersion": "2.0"
     }
     </script>
    
@@ -88,22 +90,6 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No, all merging happens locally in your browser. Your PDF files never leave your computer."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the maximum number of PDFs I can merge?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "There is no limit. You can merge as many PDF files as you want."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I arrange the order of PDF pages?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, you can drag and drop PDF thumbnails to arrange them in any order before merging."
           }
         }
       ]
@@ -137,8 +123,8 @@
             --warning-glow: rgba(245, 158, 11, 0.15);
             --info: #3b82f6;
             --info-glow: rgba(59, 130, 246, 0.15);
-            --sidebar: #0f172a;
-            --sidebar-light: #1e293b;
+            --sidebar: #000000;
+            --sidebar-light: #111111;
             --bg: #f8fafc;
             --card-bg: #ffffff;
             --text-primary: #1e293b;
@@ -154,6 +140,7 @@
             --radius-lg: 20px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
         /* ===== GLOBAL RESETS ===== */
         * {
             margin: 0;
@@ -161,6 +148,7 @@
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
         }
+        
         body {
             background: var(--bg);
             color: var(--text-primary);
@@ -170,6 +158,7 @@
             font-weight: 400;
             line-height: 1.6;
         }
+        
         /* ===== MOBILE MENU BUTTON ===== */
         .mobile-menu-btn {
             display: none;
@@ -177,7 +166,7 @@
             top: 20px;
             left: 20px;
             z-index: 1001;
-            background: var(--sidebar);
+            background: #000000;
             color: white;
             border: none;
             width: 50px;
@@ -190,14 +179,16 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transition: var(--transition);
         }
+        
         .mobile-menu-btn:hover {
-            background: var(--primary);
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
             transform: scale(1.05);
         }
-        /* ===== SIDEBAR ===== */
+        
+        /* ===== SIDEBAR - PURE BLACK ===== */
         .sidebar {
             width: 280px;
-            background: var(--sidebar);
+            background: #000000;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
@@ -205,38 +196,39 @@
             transition: var(--transition);
             z-index: 100;
         }
+        
         .logo {
-            padding: 24px 20px;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #ffffff;
-            border-bottom: 1px solid var(--sidebar-light);
+            padding: 20px 20px;
+            padding-left: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
-            gap: 12px;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
+            justify-content: flex-start;
+            min-height: 80px;
+            background: transparent;
         }
-        .logo i {
-            font-size: 1.8rem;
-            color: #ff6b6b;
-            filter: drop-shadow(0 2px 4px rgba(255, 107, 107, 0.3));
-            transition: var(--transition);
+        
+        .logo-img {
+            max-height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+            background: transparent;
         }
+        
         .nav-group {
             padding: 20px 0;
             flex: 1;
+            overflow-y: auto;
         }
+        
         .nav-item {
             padding: 16px 24px;
+            padding-left: 24px;
             display: flex;
             align-items: center;
             gap: 14px;
-            color: var(--text-light);
+            color: #a0aec0;
             transition: var(--transition);
             font-size: 0.95rem;
             font-weight: 500;
@@ -246,17 +238,20 @@
             overflow: hidden;
             text-decoration: none;
         }
+        
         .nav-item:hover {
-            background: var(--sidebar-light);
+            background: #111111;
             color: white;
             transform: translateX(4px);
         }
+        
         .nav-item.active {
-            background: linear-gradient(135deg, var(--sidebar-light), rgba(99, 102, 241, 0.1));
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 167, 38, 0.2));
             color: white;
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #ff6b6b;
             font-weight: 600;
         }
+        
         .nav-item i {
             width: 24px;
             text-align: center;
@@ -266,17 +261,20 @@
             -webkit-text-fill-color: transparent;
             transition: var(--transition);
         }
+        
         .nav-item:hover i {
             background: linear-gradient(135deg, #4ade80, #22d3ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
         .nav-item.active i {
             background: linear-gradient(135deg, #4ade80, #22d3ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5));
         }
+        
         /* ===== MOBILE OVERLAY ===== */
         .mobile-overlay {
             display: none;
@@ -288,9 +286,11 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 99;
         }
+        
         .mobile-overlay.active {
             display: block;
         }
+        
         /* ===== MAIN CONTENT ===== */
         .content {
             flex: 1;
@@ -300,6 +300,7 @@
             padding: 0;
             position: relative;
         }
+        
         /* ===== TOOL WORKSPACE ===== */
         .tool-box {
             display: flex;
@@ -314,6 +315,7 @@
             min-height: calc(100vh - 40px);
             flex-direction: column;
         }
+        
         /* TOOL PAGE HEADER */
         .tool-page-header {
             text-align: center;
@@ -321,6 +323,7 @@
             border-bottom: 1px solid var(--border);
             background: linear-gradient(135deg, #f9fafb, #f1f5f9);
         }
+        
         .tool-page-header h1 {
             font-size: 2rem;
             font-weight: 800;
@@ -331,9 +334,9 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
             text-shadow: 0 4px 10px rgba(255, 107, 107, 0.15);
         }
+        
         .tool-page-header p {
             font-size: 0.95rem;
             color: #4a5568;
@@ -342,11 +345,13 @@
             line-height: 1.5;
             font-weight: 500;
         }
+        
         .tool-workspace {
             display: flex;
             flex: 1;
             overflow: hidden;
         }
+        
         .editor-side {
             flex: 1.2;
             padding: 25px;
@@ -355,6 +360,7 @@
             overflow-y: auto;
             position: relative;
         }
+        
         .result-side {
             flex: 1;
             padding: 25px;
@@ -363,22 +369,27 @@
             background: var(--card-bg);
             position: relative;
         }
+        
         /* FIXED: Better scrollbar for mobile */
         .editor-side::-webkit-scrollbar {
             width: 8px;
         }
+        
         .editor-side::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
+        
         .editor-side::-webkit-scrollbar-thumb {
             background: #ff6b6b;
             border-radius: 10px;
             min-height: 40px;
         }
+        
         .editor-side::-webkit-scrollbar-thumb:hover {
             background: #ff5252;
         }
+        
         .back-btn {
             background: rgba(255, 107, 107, 0.1);
             border: none;
@@ -394,10 +405,12 @@
             transition: var(--transition);
             font-size: 0.9rem;
         }
+        
         .back-btn:hover {
             background: rgba(255, 107, 107, 0.2);
             transform: translateX(-4px);
         }
+        
         /* HOW TO USE BUTTON */
         .help-btn {
             background: rgba(59, 130, 246, 0.1);
@@ -415,10 +428,12 @@
             transition: var(--transition);
             font-size: 0.9rem;
         }
+        
         .help-btn:hover {
             background: rgba(59, 130, 246, 0.2);
             transform: translateY(-2px);
         }
+        
         /* TOOL TITLE COMPACT */
         .tool-title {
             font-size: 1.5rem;
@@ -430,14 +445,15 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
         }
+        
         .tool-subtitle {
             font-size: 0.9rem;
             color: #4a5568;
             margin-bottom: 20px;
             font-weight: 500;
         }
+        
         /* ===== UPLOAD ZONE ===== */
         #upload-zone {
             border: 3px dashed var(--border);
@@ -451,12 +467,14 @@
             position: relative;
             overflow: hidden;
         }
+        
         #upload-zone:hover {
             border-color: #ffa726;
             background: rgba(255, 167, 38, 0.02);
             transform: translateY(-4px);
             box-shadow: var(--shadow);
         }
+        
         #upload-zone i {
             font-size: 3rem;
             background: linear-gradient(135deg, #ff6b6b, #ffa726);
@@ -466,29 +484,34 @@
             filter: drop-shadow(0 4px 6px rgba(255, 107, 107, 0.2));
             transition: var(--transition);
         }
+        
         #upload-zone:hover i {
             transform: scale(1.1);
             background: linear-gradient(135deg, #4ade80, #22d3ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
         #upload-zone h3 {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 6px;
         }
+        
         #upload-zone p {
             font-size: 0.85rem;
             color: var(--text-secondary);
             margin-bottom: 3px;
         }
+        
         .upload-hint {
             font-size: 0.8rem;
             color: var(--text-light);
             margin-top: 10px;
         }
-        /* ===== PAGE THUMBNAILS GRID (COMPACT) ===== */
+        
+        /* ===== PAGE THUMBNAILS GRID ===== */
         .page-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -498,22 +521,26 @@
             overflow-y: auto;
             padding-right: 5px;
         }
-        /* FIXED: Better scrollbar for mobile touch */
+        
         .page-grid::-webkit-scrollbar {
             width: 10px;
         }
+        
         .page-grid::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
+        
         .page-grid::-webkit-scrollbar-thumb {
             background: #ff6b6b;
             border-radius: 10px;
             min-height: 50px;
         }
+        
         .page-grid::-webkit-scrollbar-thumb:hover {
             background: #ff5252;
         }
+        
         .page-item {
             background: var(--card-bg);
             border: 2px solid var(--border);
@@ -528,11 +555,13 @@
             user-select: none;
             min-height: 160px;
         }
+        
         .page-item:hover {
             border-color: #ff6b6b;
             transform: translateY(-4px);
             box-shadow: var(--shadow);
         }
+        
         .page-item img {
             width: 100%;
             border-radius: 6px;
@@ -542,7 +571,8 @@
             background: #f8fafc;
             pointer-events: none;
         }
-        /* DRAG HANDLE - Sirf ispe drag hoga */
+        
+        /* DRAG HANDLE */
         .drag-handle {
             position: absolute;
             top: 6px;
@@ -563,12 +593,14 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.1);
             touch-action: none;
         }
+        
         .drag-handle i {
             background: linear-gradient(135deg, #ff6b6b, #ffa726);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Page control buttons - Mobile Friendly */
+        
+        /* Page control buttons */
         .page-ctrl {
             display: flex;
             gap: 8px;
@@ -577,6 +609,7 @@
             position: relative;
             z-index: 10;
         }
+        
         .c-btn {
             border: none;
             padding: 10px 12px;
@@ -598,26 +631,32 @@
             z-index: 100;
             pointer-events: auto !important;
         }
-        /* IMPORTANT: Button pe koi bhi touch event propagate nahi hone dena */
+        
         .c-btn * {
             pointer-events: none;
         }
+        
         .c-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        
         .btn-del {
             background: linear-gradient(135deg, #ff6b6b, #ff5252);
         }
+        
         .btn-del:hover {
             background: linear-gradient(135deg, #ff5252, #ff4444);
         }
+        
         .btn-add {
             background: linear-gradient(135deg, #4ade80, #22c55e);
         }
+        
         .btn-add:hover {
             background: linear-gradient(135deg, #22c55e, #16a34a);
         }
+        
         /* ===== ACTION BUTTONS ===== */
         .btn-main {
             background: linear-gradient(135deg, #ff6b6b, #ffa726);
@@ -640,14 +679,17 @@
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
         }
+        
         .btn-main:hover {
             background: linear-gradient(135deg, #ffa726, #ff6b6b);
             transform: translateY(-4px);
             box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
         }
+        
         .btn-success {
             background: linear-gradient(135deg, #4ade80, #22c55e);
         }
+        
         .btn-outline {
             background: white;
             color: #ff6b6b;
@@ -668,10 +710,12 @@
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
         }
+        
         .btn-outline:hover {
             background: rgba(255, 107, 107, 0.05);
             transform: translateY(-3px);
         }
+        
         /* ===== RESULT AREA ===== */
         #status-label {
             text-align: center;
@@ -684,6 +728,7 @@
             border-radius: var(--radius-sm);
             border-left: 4px solid #ff6b6b;
         }
+        
         .loader {
             display: none;
             width: 45px;
@@ -694,10 +739,11 @@
             animation: spin 1s linear infinite;
             margin: 30px auto;
         }
+        
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        /* FIXED: PDF preview for mobile */
+        
         #preview-frame {
             width: 100%;
             height: 500px;
@@ -708,15 +754,18 @@
             box-shadow: var(--shadow);
             background: white;
         }
+        
         #success-btns {
             display: none;
             width: 100%;
             margin-top: 20px;
         }
+        
         /* ===== HIDDEN UTILITY ===== */
         .hidden {
             display: none !important;
         }
+        
         /* ===== HOW TO USE POPUP ===== */
         .how-to-popup {
             display: none;
@@ -731,6 +780,7 @@
             align-items: center;
             padding: 20px;
         }
+        
         .popup-content {
             background: var(--card-bg);
             border-radius: var(--radius-lg);
@@ -743,6 +793,7 @@
             position: relative;
             border: 1px solid var(--border);
         }
+        
         .popup-close {
             position: absolute;
             top: 20px;
@@ -760,10 +811,12 @@
             font-size: 1.2rem;
             transition: var(--transition);
         }
+        
         .popup-close:hover {
             background: rgba(239, 68, 68, 0.2);
             transform: rotate(90deg);
         }
+        
         .popup-title {
             font-size: 1.8rem;
             font-weight: 800;
@@ -773,18 +826,20 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
         }
+        
         .popup-subtitle {
             font-size: 1rem;
             color: var(--text-secondary);
             margin-bottom: 25px;
             font-weight: 500;
         }
+        
         .instructions-list {
             list-style: none;
             padding-left: 0;
         }
+        
         .instructions-list li {
             padding: 12px 0;
             border-bottom: 1px solid var(--border-light);
@@ -795,9 +850,11 @@
             font-size: 0.95rem;
             line-height: 1.5;
         }
+        
         .instructions-list li:last-child {
             border-bottom: none;
         }
+        
         .instructions-list li i {
             background: linear-gradient(135deg, #4ade80, #22d3ee);
             -webkit-background-clip: text;
@@ -806,6 +863,7 @@
             margin-top: 2px;
             flex-shrink: 0;
         }
+        
         .note-box {
             background: rgba(255, 167, 38, 0.1);
             border-left: 4px solid #ffa726;
@@ -813,30 +871,36 @@
             border-radius: var(--radius-sm);
             margin-top: 25px;
         }
+        
         .note-box p {
             color: #7c2d12;
             font-size: 0.9rem;
             line-height: 1.5;
             margin-bottom: 8px;
         }
+        
         .note-box i {
             color: #ffa726;
             margin-right: 8px;
         }
+        
         /* ===== DRAG AND DROP STYLES ===== */
         .sortable-ghost {
             opacity: 0.4;
             background: rgba(99, 102, 241, 0.1);
         }
+        
         .sortable-chosen {
             background: rgba(255, 167, 38, 0.1);
             border-color: #ffa726;
         }
+        
         .sortable-drag {
             opacity: 0.8;
             transform: rotate(3deg);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+        
         /* ===== FOOTER SECTION ===== */
         .footer-section {
             width: 100%;
@@ -847,6 +911,7 @@
             position: relative;
             z-index: 5;
         }
+        
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -854,6 +919,7 @@
             max-width: 1400px;
             margin: 0 auto;
         }
+        
         .footer-second-row {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -862,6 +928,7 @@
             max-width: 1400px;
             margin: 40px auto 0 auto;
         }
+        
         .privacy-box, .copyright-box, .about-box, .contact-box {
             background: var(--card-bg);
             border-radius: var(--radius);
@@ -870,13 +937,16 @@
             box-shadow: var(--shadow);
             height: 100%;
         }
+        
         .about-box, .contact-box {
             padding: 25px;
         }
+        
         .privacy-box:hover, .copyright-box:hover, .about-box:hover, .contact-box:hover {
-            border-color: var(--primary);
+            border-color: #ff6b6b;
             box-shadow: var(--shadow-lg);
         }
+        
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -886,18 +956,22 @@
             align-items: center;
             gap: 12px;
         }
+        
         .about-box .section-title, .contact-box .section-title {
             font-size: 1.2rem;
         }
+        
         .section-title i {
             background: linear-gradient(135deg, #ff6b6b, #ffa726);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
         .privacy-content ul, .copyright-content ul, .about-content p, .contact-content p {
             list-style: none;
             padding-left: 0;
         }
+        
         .privacy-content li, .copyright-content li {
             padding: 10px 0;
             border-bottom: 1px solid var(--border-light);
@@ -907,9 +981,11 @@
             gap: 10px;
             font-size: 0.95rem;
         }
+        
         .privacy-content li:last-child, .copyright-content li:last-child {
             border-bottom: none;
         }
+        
         .privacy-content li i, .copyright-content li i {
             color: var(--success);
             font-size: 0.9rem;
@@ -918,12 +994,14 @@
             -webkit-text-fill-color: transparent;
             flex-shrink: 0;
         }
+        
         .about-content p, .contact-content p {
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 15px;
             font-size: 0.95rem;
         }
+        
         .made-with-love {
             text-align: center;
             margin-top: 40px;
@@ -933,24 +1011,32 @@
             color: var(--text-secondary);
             font-weight: 600;
         }
+        
         .made-with-love i {
             color: #ff6b6b;
             margin: 0 5px;
             animation: heartbeat 1.5s infinite;
         }
+        
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
-        /* ===== RESPONSIVE DESIGN ===== */
+        
+        /* ===== RESPONSIVE DESIGN - PHONE FIXES ===== */
         @media (max-width: 1200px) {
             .sidebar {
                 width: 240px;
             }
         }
+        
         @media (max-width: 992px) {
             .mobile-menu-btn {
                 display: flex;
+                left: 15px;
+                top: 15px;
+                width: 45px;
+                height: 45px;
             }
            
             body {
@@ -976,9 +1062,14 @@
             }
            
             .logo {
-                padding: 20px;
-                font-size: 1.5rem;
-                justify-content: center;
+                padding: 15px 20px;
+                padding-left: 70px;
+                justify-content: flex-start;
+                min-height: 70px;
+            }
+           
+            .logo-img {
+                max-height: 38px;
             }
            
             .nav-group {
@@ -990,12 +1081,14 @@
             .nav-item {
                 margin: 5px 15px;
                 padding: 14px 20px;
+                padding-left: 24px;
             }
            
             .content {
                 margin-top: 0;
-                padding-top: 80px;
-                height: calc(100vh - 80px);
+                padding-top: 70px;
+                height: auto;
+                min-height: 100vh;
             }
            
             .tool-box {
@@ -1051,6 +1144,7 @@
                 grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
             }
         }
+        
         @media (max-width: 768px) {
             .editor-side, .result-side {
                 padding: 15px;
@@ -1118,13 +1212,22 @@
                 min-height: 34px;
             }
         }
+        
         @media (max-width: 480px) {
             .mobile-menu-btn {
-                top: 15px;
-                left: 15px;
-                width: 45px;
-                height: 45px;
+                top: 12px;
+                left: 12px;
+                width: 42px;
+                height: 42px;
                 font-size: 1.3rem;
+            }
+           
+            .logo {
+                padding-left: 65px;
+            }
+           
+            .logo-img {
+                max-height: 35px;
             }
            
             .page-grid {
@@ -1207,6 +1310,7 @@
                 font-size: 1rem;
             }
         }
+        
         @media (max-width: 360px) {
             .page-grid {
                 grid-template-columns: 1fr;
@@ -1214,6 +1318,10 @@
            
             .sidebar {
                 width: 85%;
+            }
+           
+            .logo {
+                padding-left: 60px;
             }
         }
     </style>
@@ -1223,12 +1331,14 @@
     <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
     </button>
+    
     <!-- MOBILE OVERLAY -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
-    <!-- SIDEBAR NAVIGATION -->
+    
+    <!-- SIDEBAR NAVIGATION - PURE BLACK WITH LOGO -->
     <div class="sidebar" id="sidebar">
         <div class="logo">
-            <i class="fas fa-file-pdf"></i> PDFSmartCore
+            <img src="logo.png" alt="PDFSmartCore" class="logo-img" id="sidebarLogo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-file-pdf\' style=\'font-size:2rem; background:linear-gradient(135deg,#ff6b6b,#ffa726); -webkit-background-clip:text; -webkit-text-fill-color:transparent;\'></i>'">
         </div>
         <div class="nav-group">
             <a href="index.html" class="nav-item">
@@ -1255,8 +1365,15 @@
             <a href="image-size.html" class="nav-item">
                 <i class="fas fa-expand-arrows-alt"></i> Image Size
             </a>
+            <a href="image-format.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i> JPG to JPEG
+            </a>
+            <a href="pdf-to-excel.html" class="nav-item">
+                <i class="fas fa-file-excel"></i> PDF to Excel
+            </a>
         </div>
     </div>
+    
     <!-- MAIN CONTENT AREA -->
     <div class="content">
         <!-- TOOL WORKSPACE -->
@@ -1305,7 +1422,7 @@
                 <div class="result-side">
                     <h3 id="status-label">Status: Ready</h3>
                     <div class="loader" id="loader"></div>
-                    <!-- FIXED: PDF preview for mobile -->
+                    
                     <div id="pdf-preview-container" style="display: none; margin-top: 15px; text-align: center;">
                         <p style="margin-bottom: 10px; color: var(--success); font-weight: 600;">
                             <i class="fas fa-check-circle"></i> PDF Ready for Download!
@@ -1320,7 +1437,6 @@
                         <button class="btn-main btn-success" onclick="downloadFile()">
                             <i class="fas fa-download"></i> Download Result
                         </button>
-                        <!-- FIXED: New Task button scrolls to top -->
                         <button class="btn-outline" onclick="startNewTask()">
                             <i class="fas fa-sync"></i> Start New Task
                         </button>
@@ -1388,6 +1504,7 @@
             </div>
         </div>
     </div>
+    
     <!-- HOW TO USE POPUP -->
     <div id="how-to-popup" class="how-to-popup">
         <div class="popup-content">
@@ -1411,6 +1528,7 @@
             </div>
         </div>
     </div>
+    
     <!-- JAVASCRIPT -->
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
@@ -1419,13 +1537,13 @@
         let currentPages = [];
         let finalBlob = null;
         let sortableInstance = null;
-        let filesUploaded = false; // NEW: Track if files have been uploaded
+        let filesUploaded = false;
+        
         // Mobile menu functionality
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileOverlay = document.getElementById('mobileOverlay');
         const sidebar = document.getElementById('sidebar');
        
-        // FIXED: Nav toggle functionality
         let isSidebarOpen = false;
        
         mobileMenuBtn.addEventListener('click', function(e) {
@@ -1466,50 +1584,45 @@
                 }
             });
         });
+        
         // Function to show How to Use popup
         function showHowToUse() {
             const popup = document.getElementById('how-to-popup');
             popup.style.display = 'flex';
         }
+        
         // Function to close How to Use popup
         function closeHowToUse() {
             document.getElementById('how-to-popup').style.display = 'none';
         }
+        
         // Close popup when clicking outside
         document.getElementById('how-to-popup').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeHowToUse();
             }
         });
+        
         async function handleFiles(files) {
-            // Check if files were selected (not cancelled)
             if (!files || files.length === 0) {
-                // If no files selected AND no files have been uploaded before, keep upload zone visible
                 if (!filesUploaded) {
                     return;
                 }
-                // If files have been uploaded before, upload zone should stay hidden
                 return;
             }
            
-            // Hide upload zone
             document.getElementById('upload-zone').style.display = 'none';
             document.getElementById('process-btn').style.display = 'block';
-           
-            // Set flag that files have been uploaded
             filesUploaded = true;
            
-            // Filter only PDF files
             const pdfFiles = Array.from(files).filter(file => file.type === 'application/pdf');
            
-            // Alert if non-PDF files are selected
             const nonPdfFiles = Array.from(files).filter(file => file.type !== 'application/pdf');
             if (nonPdfFiles.length > 0) {
                 alert("Only PDF files are allowed. Please select PDF files only.");
             }
            
             if (pdfFiles.length === 0) {
-                // If no valid PDFs, show upload zone only if no files have been uploaded before
                 if (!filesUploaded) {
                     document.getElementById('upload-zone').style.display = 'block';
                 }
@@ -1517,7 +1630,6 @@
                 return;
             }
            
-            // Scroll to process button
             setTimeout(() => {
                 document.getElementById('process-btn').scrollIntoView({
                     behavior: 'smooth',
@@ -1541,7 +1653,6 @@
                 }
             }
            
-            // MOBILE FIX: Initialize drag and drop with separate drag handle
             setTimeout(() => {
                 if (sortableInstance) {
                     sortableInstance.destroy();
@@ -1549,36 +1660,26 @@
                
                 const pageGrid = document.getElementById('page-grid');
                
-                // FIXED: Use only drag-handle class for dragging
                 sortableInstance = new Sortable(pageGrid, {
                     animation: 150,
                     ghostClass: 'sortable-ghost',
                     chosenClass: 'sortable-chosen',
                     dragClass: 'sortable-drag',
-                   
-                    // FIXED: Only drag-handle pe drag chalega
                     handle: '.drag-handle',
-                   
-                    // MOBILE SPECIFIC SETTINGS
                     delay: 100,
                     delayOnTouchOnly: true,
                     touchStartThreshold: 5,
-                   
-                    // Fix scrolling while dragging on mobile
                     scroll: true,
                     scrollSensitivity: 30,
                     scrollSpeed: 10,
                    
                     onStart: function(evt) {
-                        // Prevent body scrolling while dragging
                         document.body.style.overflow = 'hidden';
                     },
                    
                     onEnd: function(evt) {
-                        // Restore scrolling
                         document.body.style.overflow = 'auto';
                        
-                        // Update currentPages array based on new order
                         const pageItems = Array.from(document.querySelectorAll('.page-item'));
                         const newPages = [];
                         pageItems.forEach(item => {
@@ -1592,7 +1693,6 @@
                     }
                 });
                
-                // FIXED: Buttons ka touch event properly handle karo
                 document.querySelectorAll('.c-btn').forEach(btn => {
                     btn.addEventListener('touchstart', function(e) {
                         e.stopPropagation();
@@ -1604,21 +1704,19 @@
                     });
                 });
                
-                // FIXED: Camera option hatao file input se
                 const fileInput = document.getElementById('picker');
                 if (fileInput) {
                     fileInput.removeAttribute('capture');
                     fileInput.setAttribute('accept', '.pdf');
                    
-                    // NEW: Fix for cancel issue - reset file input
                     fileInput.addEventListener('click', function() {
-                        // Reset the value so change event fires even if same file selected
                         this.value = '';
                     });
                 }
                
             }, 100);
         }
+        
         function addFileThumb(data, file, idx) {
             const id = 'p' + Math.random().toString(36).substr(2, 9);
             currentPages.push({id, file, idx: 0, isWholeFile: true});
@@ -1627,9 +1725,7 @@
             div.className = 'page-item';
             div.dataset.id = id;
            
-            // FIXED: Naya HTML structure with separate drag handle
             div.innerHTML = `
-                <!-- DRAG HANDLE - Sirf ispe drag hoga -->
                 <div class="drag-handle">
                     <i class="fas fa-grip-vertical"></i>
                 </div>
@@ -1646,31 +1742,28 @@
                
             document.getElementById('page-grid').appendChild(div);
         }
-        // NEW: Separate function for Add More button
+        
         function openFilePickerForAddMore() {
             const fileInput = document.getElementById('picker');
-            // Reset the file input
             fileInput.value = '';
-            // Trigger click
             fileInput.click();
         }
+        
         function removeThumb(id, btn) {
             currentPages = currentPages.filter(p => p.id !== id);
             btn.parentElement.parentElement.remove();
            
-            // Check if all thumbnails are removed
             if (document.querySelectorAll('.page-item').length === 0) {
-                filesUploaded = false; // Reset the flag
+                filesUploaded = false;
                 document.getElementById('upload-zone').style.display = 'block';
                 document.getElementById('process-btn').style.display = 'none';
             }
         }
-        // FIXED: New Task function that properly scrolls to top
+        
         function startNewTask() {
-            // Reset everything
             currentPages = [];
             finalBlob = null;
-            filesUploaded = false; // Reset the flag
+            filesUploaded = false;
            
             document.getElementById('page-grid').innerHTML = '';
             document.getElementById('upload-zone').style.display = 'block';
@@ -1684,8 +1777,6 @@
            
             document.getElementById('picker').value = '';
            
-            // FIXED: PROPER SCROLL TO TOP
-            // First immediately set scroll positions to 0
             document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
            
@@ -1699,7 +1790,6 @@
                 editorSide.scrollTop = 0;
             }
            
-            // Then smoothly scroll to top
             setTimeout(() => {
                 window.scrollTo({
                     top: 0,
@@ -1714,6 +1804,7 @@
                 }
             }, 10);
         }
+        
         async function startWork() {
             document.getElementById('loader').style.display = 'block';
             document.getElementById('status-label').innerText = "Processing...";
@@ -1726,7 +1817,7 @@
                 }
                
                 const pdf = await PDFLib.PDFDocument.create();
-                // Use currentPages array in EXACT drag-sort order
+               
                 for (const ref of currentPages) {
                     if (ref.file.type === 'application/pdf') {
                         const src = await PDFLib.PDFDocument.load(await ref.file.arrayBuffer());
@@ -1745,18 +1836,16 @@
                 alert("Merge failed! Please make sure all files are valid PDFs.");
             }
         }
+        
         function renderFinal() {
             if (!finalBlob) return;
            
-            // FIXED: For mobile, show simple message instead of iframe
             const isMobile = window.innerWidth <= 768;
            
             if (isMobile) {
-                // Show simple preview for mobile
                 document.getElementById('preview-frame').style.display = 'none';
                 document.getElementById('pdf-preview-container').style.display = 'block';
             } else {
-                // Show iframe for desktop
                 const blobUrl = URL.createObjectURL(finalBlob);
                 const previewFrame = document.getElementById('preview-frame');
                 previewFrame.src = blobUrl;
@@ -1768,6 +1857,7 @@
             document.getElementById('success-btns').style.display = 'block';
             document.getElementById('status-label').innerText = "Merge Complete!";
         }
+        
         function downloadFile() {
             if (!finalBlob) return;
             const a = document.createElement('a');
@@ -1777,41 +1867,32 @@
             a.click();
             document.body.removeChild(a);
         }
+        
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Fix navigation from sidebar
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    // Links already work with <a> tags
+                    // Links already work
                 });
             });
            
-            // IMPORTANT FIX: File input se camera option completely remove karo
             const fileInput = document.getElementById('picker');
             if (fileInput) {
-                // Ensure no camera option appears
                 fileInput.setAttribute('accept', '.pdf');
                 fileInput.removeAttribute('capture');
-                fileInput.removeAttribute('multiple-capture');
                
-                // NEW: Handle file input cancel properly
                 fileInput.addEventListener('click', function(e) {
                     this.setAttribute('accept', '.pdf');
-                    // Reset value to ensure change event fires
                     this.value = '';
                 });
                
-                // NEW: Detect when file dialog is cancelled
                 fileInput.addEventListener('change', function(e) {
                     if (!this.files || this.files.length === 0) {
-                        // File selection was cancelled
-                        // Do nothing - don't show upload zone if files already uploaded
                         return;
                     }
                 });
             }
            
-            // Add drag and drop functionality
             const uploadZone = document.getElementById('upload-zone');
             if (uploadZone) {
                 uploadZone.addEventListener('dragover', function(e) {
@@ -1836,11 +1917,9 @@
                 });
             }
            
-            // Update upload text to show only PDF files
             document.getElementById('file-type-hint').textContent = 'Supports PDF files only';
         });
        
-        // MOBILE FIX: Add this to handle file drag from outside
         document.addEventListener('dragover', function(e) {
             e.preventDefault();
         });
@@ -1851,6 +1930,23 @@
                 handleFiles(e.dataTransfer.files);
             }
         });
+
+        // Logo error handling
+        const logoImg = document.getElementById('sidebarLogo');
+        if (logoImg) {
+            logoImg.onerror = function() {
+                console.log('Logo not found, showing icon');
+                this.style.display = 'none';
+                const logoDiv = this.parentElement;
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-file-pdf';
+                icon.style.fontSize = '2rem';
+                icon.style.background = 'linear-gradient(135deg, #ff6b6b, #ffa726)';
+                icon.style.webkitBackgroundClip = 'text';
+                icon.style.webkitTextFillColor = 'transparent';
+                logoDiv.appendChild(icon);
+            };
+        }
     </script>
 </body>
 </html>

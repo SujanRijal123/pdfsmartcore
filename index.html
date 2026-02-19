@@ -7,7 +7,7 @@
     <!-- ===== ADVANCED SEO TAGS ===== -->
     <title>PDFSmartCore | All-in-One PDF Tools Suite</title>
     
-    <meta name="description" content="100% Free PDF Tools: Merge PDF files, Split PDF pages, Compress PDF size, Convert Word to PDF, Convert JPG to PDF, Extract images from PDF, Resize images online. No uploads, works locally in browser.">
+    <meta name="description" content="100% Free PDF Tools: Merge PDF files, Split PDF pages, Compress PDF size, Convert Word to PDF, Convert JPG to PDF, Extract images from PDF, Resize images online, JPG to PNG Converter, PDF to Excel. No uploads, works locally in browser.">
     
     <meta name="keywords" content="
         merge pdf, merge pdf online, merge pdf files, combine pdf, pdf merger, pdf combiner,
@@ -17,6 +17,8 @@
         jpg to pdf, image to pdf, jpg to pdf converter, convert images to pdf,
         pdf to jpg, pdf to image, extract images from pdf, save pdf as jpg,
         image resize, resize image, resize image online, change image size, image size reducer,
+        jpg to png, convert jpg to png, png to jpg, jpg to jpeg, png to jpeg,
+        pdf to excel, convert pdf to excel, extract tables from pdf, pdf to xlsx,
         free pdf tools, online pdf editor, pdf tools online, no watermark pdf tools,
         pdfsmartcore, pdf tools 2026, secure pdf tools, local pdf processing
     ">
@@ -25,7 +27,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://pdfsmartcore.com/">  <!-- Apna domain daal dena -->
+    <link rel="canonical" href="https://pdfsmartcore.com/">
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="PDFSmartCore - Free Online PDF Tools Suite">
@@ -43,14 +45,18 @@
     <meta name="twitter:description" content="All PDF tools in one place. 100% free, no registration required.">
     <meta name="twitter:image" content="https://pdfsmartcore.com/twitter-card.png">
     
-    <!-- Structured Data for Google (rating removed) -->
+    <!-- FAVICON - Only for browser tab -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Structured Data for Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "PDFSmartCore",
       "url": "https://pdfsmartcore.com",
-      "description": "Free online PDF tools suite: Merge PDF files, Split PDF pages, Compress PDF size, Convert Word documents to PDF, Convert JPG images to PDF, Extract images from PDF, Resize images online. All tools work locally in your browser.",
+      "description": "Free online PDF tools suite: Merge PDF files, Split PDF pages, Compress PDF size, Convert Word documents to PDF, Convert JPG images to PDF, Extract images from PDF, Resize images online, JPG to JPEG Converter, PDF to Excel. All tools work locally in your browser.",
       "applicationCategory": ["BusinessApplication", "UtilityApplication"],
       "operatingSystem": "Any",
       "offers": {
@@ -65,17 +71,11 @@
         "Convert Word DOCX to PDF format",
         "Convert JPG/PNG images to PDF",
         "Extract images from PDF as JPG",
-        "Resize images with precise control"
+        "Resize images with precise control",
+        "Convert JPG to JPEG, PNG to JPG, JPG to JPEG",
+        "Convert PDF to Excel format"
       ],
-      "applicationSubCategory": "PDF Software",
-      "screenshot": "https://pdfsmartcore.com/screenshot.png",
-      "softwareVersion": "2.0",
-      "releaseNotes": "Added 7 new PDF tools with local processing",
-      "countriesSupported": ["IN", "US", "UK", "CA", "AU", "DE", "FR", "ES", "IT"],
-      "processorRequirements": "Modern web browser",
-      "memoryRequirements": "512 MB RAM",
-      "storageRequirements": "No storage required",
-      "permissions": "None - works entirely in browser"
+      "softwareVersion": "2.0"
     }
     </script>
     
@@ -90,7 +90,7 @@
           "name": "Are these PDF tools really free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, all 7 PDF tools are 100% free with no hidden charges, no watermarks, and no usage limits."
+            "text": "Yes, all 9 PDF tools are 100% free with no hidden charges, no watermarks, and no usage limits."
           }
         },
         {
@@ -106,15 +106,7 @@
           "name": "What file formats are supported?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PDF, DOCX, JPG, PNG, GIF, BMP for input. Output depends on the tool being used."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is there any file size limit?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, there are no file size restrictions. Process as large files as your browser can handle."
+            "text": "PDF, DOCX, JPG, PNG, GIF, BMP, XLSX for input. Output depends on the tool being used."
           }
         }
       ]
@@ -123,12 +115,6 @@
     
     <!-- Sitemap Link -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    
-    <!-- Favicon - Generate kar le bhai favicon.io se "PDFSmartCore" text + PDF icon (red/orange theme best lagega) -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     
     <!-- CDN Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
@@ -158,8 +144,8 @@
             --warning-glow: rgba(245, 158, 11, 0.15);
             --info: #3b82f6;
             --info-glow: rgba(59, 130, 246, 0.15);
-            --sidebar: #0f172a;
-            --sidebar-light: #1e293b;
+            --sidebar: #000000;
+            --sidebar-light: #111111;
             --bg: #f8fafc;
             --card-bg: #ffffff;
             --text-primary: #1e293b;
@@ -174,6 +160,11 @@
             --radius-sm: 8px;
             --radius-lg: 20px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Logo ke colors */
+            --gradient-start: #ff6b6b;
+            --gradient-mid: #ff8e53;
+            --gradient-end: #ffa726;
         }
 
         /* ===== GLOBAL RESETS ===== */
@@ -185,7 +176,7 @@
         }
 
         body {
-            background: var(--bg);
+            background: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
             color: var(--text-primary);
             display: flex;
             height: 100vh;
@@ -194,14 +185,14 @@
             line-height: 1.6;
         }
 
-        /* ===== MOBILE MENU BUTTON ===== */
+        /* ===== MOBILE MENU BUTTON - LEFT PE HI RAHEGA ===== */
         .mobile-menu-btn {
             display: none;
             position: fixed;
             top: 20px;
             left: 20px;
             z-index: 1001;
-            background: var(--sidebar);
+            background: #000000;
             color: white;
             border: none;
             width: 50px;
@@ -216,14 +207,14 @@
         }
 
         .mobile-menu-btn:hover {
-            background: var(--primary);
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
             transform: scale(1.05);
         }
 
-        /* ===== SIDEBAR ===== */
+        /* ===== SIDEBAR - PURE BLACK ===== */
         .sidebar {
             width: 280px;
-            background: var(--sidebar);
+            background: #000000;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
@@ -233,40 +224,37 @@
         }
 
         .logo {
-            padding: 24px 20px;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #ffffff;
-            border-bottom: 1px solid var(--sidebar-light);
+            padding: 20px 20px;
+            padding-left: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
-            gap: 12px;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
+            justify-content: flex-start;
+            min-height: 80px;
+            background: transparent;
         }
 
-        .logo i {
-            font-size: 1.8rem;
-            color: #ff6b6b;
-            filter: drop-shadow(0 2px 4px rgba(255, 107, 107, 0.3));
-            transition: var(--transition);
+        .logo-img {
+            max-height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+            background: transparent;
         }
 
         .nav-group {
             padding: 20px 0;
             flex: 1;
+            overflow-y: auto;
         }
 
         .nav-item {
             padding: 16px 24px;
+            padding-left: 24px;
             display: flex;
             align-items: center;
             gap: 14px;
-            color: var(--text-light);
+            color: #a0aec0;
             transition: var(--transition);
             font-size: 0.95rem;
             font-weight: 500;
@@ -278,15 +266,15 @@
         }
 
         .nav-item:hover {
-            background: var(--sidebar-light);
+            background: #111111;
             color: white;
             transform: translateX(4px);
         }
 
         .nav-item.active {
-            background: linear-gradient(135deg, var(--sidebar-light), rgba(99, 102, 241, 0.1));
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 167, 38, 0.2));
             color: white;
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid var(--gradient-start);
             font-weight: 600;
         }
 
@@ -294,7 +282,7 @@
             width: 24px;
             text-align: center;
             font-size: 1.4rem;
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             transition: var(--transition);
@@ -359,7 +347,7 @@
             color: var(--text-primary);
             margin-bottom: 12px;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -396,6 +384,7 @@
             display: block;
             text-decoration: none;
             color: inherit;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
         }
 
         .card::before {
@@ -405,7 +394,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05), rgba(255, 167, 38, 0.05));
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.02), rgba(255, 167, 38, 0.02));
             z-index: 1;
         }
 
@@ -416,7 +405,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #ff6b6b, #ffa726, #4ade80);
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
             transform: scaleX(0);
             transition: transform 0.3s ease;
             z-index: 2;
@@ -424,8 +413,8 @@
 
         .card:hover {
             transform: translateY(-8px);
-            border-color: #ffa726;
-            box-shadow: var(--shadow-xl);
+            border-color: var(--gradient-end);
+            box-shadow: 0 20px 30px -10px rgba(255, 107, 107, 0.2);
         }
 
         .card:hover::after {
@@ -437,7 +426,7 @@
             margin-bottom: 20px;
             position: relative;
             z-index: 3;
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 4px 6px rgba(255, 107, 107, 0.2));
@@ -486,6 +475,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
         }
 
         .info-box::before {
@@ -495,14 +485,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(16, 185, 129, 0.05));
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.02), rgba(16, 185, 129, 0.02));
             z-index: 1;
         }
 
         .info-box:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary);
+            box-shadow: 0 20px 30px -10px rgba(255, 107, 107, 0.15);
+            border-color: var(--gradient-start);
         }
 
         .info-box i {
@@ -510,7 +500,7 @@
             margin-bottom: 20px;
             position: relative;
             z-index: 2;
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 4px 6px rgba(255, 107, 107, 0.2));
@@ -574,7 +564,7 @@
             border-radius: var(--radius);
             padding: 30px;
             border: 1px solid var(--border);
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
             height: 100%;
         }
 
@@ -583,8 +573,8 @@
         }
 
         .privacy-box:hover, .copyright-box:hover, .about-box:hover, .contact-box:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-lg);
+            border-color: var(--gradient-start);
+            box-shadow: 0 15px 30px -8px rgba(255, 107, 107, 0.15);
         }
 
         .section-title {
@@ -602,7 +592,7 @@
         }
 
         .section-title i {
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -653,7 +643,7 @@
         }
 
         .made-with-love i {
-            color: #ff6b6b;
+            color: var(--gradient-start);
             margin: 0 5px;
             animation: heartbeat 1.5s infinite;
         }
@@ -663,25 +653,14 @@
             50% { transform: scale(1.1); }
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 1200px) {
-            .sidebar {
-                width: 240px;
-            }
-            
-            .tool-grid {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            }
-            
-            .footer-grid, .footer-second-row {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-        }
-
+        /* ===== RESPONSIVE DESIGN - PHONE KE LIYE FIX ===== */
         @media (max-width: 992px) {
             .mobile-menu-btn {
                 display: flex;
+                left: 15px;  /* THODA LEFT SE SPACE */
+                top: 15px;
+                width: 45px;
+                height: 45px;
             }
             
             body {
@@ -707,9 +686,14 @@
             }
             
             .logo {
-                padding: 20px;
-                font-size: 1.5rem;
-                justify-content: center;
+                padding: 15px 20px;
+                padding-left: 70px;  /* YAHAN PE THODA RIGHT KIYA - MENU BUTTON SE BACHNE KE LIYE */
+                justify-content: flex-start;
+                min-height: 70px;
+            }
+            
+            .logo-img {
+                max-height: 38px;  /* THODA CHOTA KIYA */
             }
             
             .nav-group {
@@ -721,16 +705,18 @@
             .nav-item {
                 margin: 5px 15px;
                 padding: 14px 20px;
+                padding-left: 24px;
             }
             
             .content {
                 margin-top: 0;
-                padding-top: 80px;
-                height: calc(100vh - 80px);
+                padding-top: 70px;  /* KAM KIYA */
+                height: auto;
+                min-height: 100vh;
             }
             
             #home-view {
-                padding: 20px 15px;
+                padding: 15px 15px 20px 15px;
             }
             
             .footer-section {
@@ -743,42 +729,43 @@
             }
             
             .dashboard-header h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+                margin-top: 10px;
             }
             
             .dashboard-header p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 768px) {
             #home-view {
-                padding: 15px;
+                padding: 12px 12px 20px 12px;
             }
             
             .tool-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 15px;
+                gap: 12px;
             }
             
             .card {
-                padding: 25px 15px;
+                padding: 20px 12px;
             }
             
             .card i {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             .card h3 {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .card p {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             
             .dashboard-header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .info-box {
@@ -801,11 +788,19 @@
 
         @media (max-width: 480px) {
             .mobile-menu-btn {
-                top: 15px;
-                left: 15px;
-                width: 45px;
-                height: 45px;
+                top: 12px;
+                left: 12px;
+                width: 42px;
+                height: 42px;
                 font-size: 1.3rem;
+            }
+            
+            .logo {
+                padding-left: 65px;  /* CHHOTE PHONE PE BHI ADJUST */
+            }
+            
+            .logo-img {
+                max-height: 35px;
             }
             
             .tool-grid {
@@ -831,11 +826,11 @@
             }
             
             .dashboard-header h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .dashboard-header p {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .made-with-love {
@@ -848,6 +843,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .logo {
+                padding-left: 60px;
+            }
+            
             .sidebar {
                 width: 85%;
             }
@@ -856,7 +855,7 @@
 </head>
 <body>
 
-    <!-- MOBILE MENU BUTTON -->
+    <!-- MOBILE MENU BUTTON - LEFT PE HI HAI -->
     <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
     </button>
@@ -864,10 +863,10 @@
     <!-- MOBILE OVERLAY -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
-    <!-- SIDEBAR NAVIGATION -->
+    <!-- SIDEBAR NAVIGATION - PURE BLACK -->
     <div class="sidebar" id="sidebar">
         <div class="logo">
-            <i class="fas fa-file-pdf"></i> PDFSmartCore
+            <img src="logo.png" alt="PDFSmartCore" class="logo-img" id="sidebarLogo">
         </div>
         <div class="nav-group">
             <a href="index.html" class="nav-item active">
@@ -894,6 +893,14 @@
             <a href="image-size.html" class="nav-item">
                 <i class="fas fa-expand-arrows-alt"></i> Image Size
             </a>
+            <!-- CHANGED: "Image Format" to "JPG to PNG" but link remains image-format.html -->
+            <a href="image-format.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i> JPG to JPEG
+            </a>
+            <!-- PDF to Excel -->
+            <a href="pdf-to-excel.html" class="nav-item">
+                <i class="fas fa-file-excel"></i> PDF to Excel
+            </a>
         </div>
     </div>
 
@@ -902,7 +909,7 @@
         <!-- HOME/DASHBOARD VIEW -->
         <div id="home-view">
             <div class="dashboard-header">
-                <h1>Professional PDF Suite</h1>
+                <h1>PDFSmartCore</h1>
                 <p>Every tool is 100% free, secure, and works locally on your device. No uploads, no limits, no watermarks.</p>
             </div>
             
@@ -941,6 +948,18 @@
                     <i class="fas fa-expand-arrows-alt"></i>
                     <h3>Image Size</h3>
                     <p>Resize images with precise control</p>
+                </a>
+                <!-- CHANGED: "Image Format" to "JPG to PNG" but link remains image-format.html -->
+                <a href="image-format.html" class="card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>JPG to PNG</h3>
+                    <p>Convert JPG to PNG, PNG to JPG, JPG to JPEG</p>
+                </a>
+                <!-- PDF to Excel -->
+                <a href="pdf-to-excel.html" class="card">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>PDF to Excel</h3>
+                    <p>Convert PDF tables to Excel spreadsheets</p>
                 </a>
             </div>
 
@@ -1067,6 +1086,36 @@
             document.body.style.overflow = 'auto';
             isSidebarOpen = false;
         }
+
+        // Active nav item based on current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if (item.getAttribute('href') === currentPage) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Logo error handling - agar logo na mile to icon dikhao
+            const logoImg = document.getElementById('sidebarLogo');
+            if (logoImg) {
+                logoImg.onerror = function() {
+                    console.log('Logo image not found, showing icon instead');
+                    this.style.display = 'none';
+                    const logoDiv = this.parentElement;
+                    const icon = document.createElement('i');
+                    icon.className = 'fas fa-file-pdf';
+                    icon.style.fontSize = '2rem';
+                    icon.style.background = 'linear-gradient(135deg, #ff6b6b, #ffa726)';
+                    icon.style.webkitBackgroundClip = 'text';
+                    icon.style.webkitTextFillColor = 'transparent';
+                    icon.style.filter = 'drop-shadow(0 2px 4px rgba(255, 107, 107, 0.3))';
+                    logoDiv.appendChild(icon);
+                };
+            }
+        });
     </script>
 </body>
 </html>
