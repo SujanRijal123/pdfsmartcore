@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pdfsmartcore.com/sitemap.xml
+Sitemap: https://www.pdfsmartcore.com/sitemap.xml
