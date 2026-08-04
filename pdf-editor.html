@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>PDF Text Editor - Edit PDF Text Online Free · PDFSmartCore</title>
+    
+    <!-- ===== SEO TAGS ===== -->
+    <meta name="description" content="Edit text in PDF files online free. Modify, delete, or add text to any PDF document. 100% secure, works locally in your browser. No uploads, no watermarks." />
+    <meta name="keywords" content="pdf text editor, edit pdf text, edit pdf online, pdf editor, modify pdf text, change text in pdf, free pdf editor" />
+    <meta name="author" content="PDFSmartCore" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://pdfsmartcore.com/pdf-editor.html" />
+    
+    <meta property="og:title" content="PDF Text Editor - Edit PDF Text Online Free" />
+    <meta property="og:description" content="Edit text in PDF files online free. 100% secure, no uploads." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pdfsmartcore.com/pdf-editor.html" />
+    <meta property="og:site_name" content="PDFSmartCore" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PDF Text Editor - Edit PDF Text Online Free" />
+    <meta name="twitter:description" content="Edit text in PDF files online free. 100% secure, works locally." />
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico" />
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDF Text Editor",
+      "url": "https://pdfsmartcore.com/pdf-editor.html",
+      "description": "Edit text in PDF files online free. 100% secure, works locally.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- OCR Engine for Scanned PDF Processing -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            touch-action: manipulation;
+        }
+
+        .top-nav {
+            background: #0f172a;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 64px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            flex-wrap: wrap;
+        }
+        .top-nav .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .top-nav .nav-left .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .top-nav .nav-left .brand .logo-img {
+            max-height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .top-nav .nav-left .brand .tagline {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            font-weight: 400;
+            margin-left: 8px;
+            padding-left: 8px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+        .top-nav .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-nav .nav-links a:hover { background: rgba(255,255,255,0.06); color: white; }
+        .top-nav .nav-links a.active { background: rgba(79,70,229,0.2); color: #818cf8; }
+        .top-nav .nav-links a i { font-size: 0.8rem; }
+
+        .top-nav .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .top-nav .nav-right .badge {
+            font-size: 0.65rem;
+            color: #94a3b8;
+            background: rgba(255,255,255,0.06);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .top-nav .nav-right .badge i { color: #10b981; margin-right: 4px; }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background: #0f172a;
+            z-index: 1000;
+            padding: 20px 0;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+            border-right: 1px solid rgba(255,255,255,0.06);
+        }
+        .mobile-sidebar.open { left: 0; }
+        .mobile-sidebar::-webkit-scrollbar { width: 3px; }
+        .mobile-sidebar::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
+
+        .mobile-sidebar .sidebar-header {
+            padding: 12px 20px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .mobile-sidebar .sidebar-header .sidebar-logo {
+            max-height: 36px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .mobile-sidebar .sidebar-close {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+        .mobile-sidebar .sidebar-close:hover { color: white; }
+
+        .mobile-sidebar .nav-item-mobile {
+            display: block;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            border-radius: 0;
+            transition: 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .mobile-sidebar .nav-item-mobile:hover {
+            background: rgba(255,255,255,0.04);
+            color: white;
+            border-left-color: #4f46e5;
+        }
+        .mobile-sidebar .nav-item-mobile.active {
+            color: #818cf8;
+            background: rgba(79,70,229,0.1);
+            border-left-color: #4f46e5;
+        }
+        .mobile-sidebar .nav-item-mobile i {
+            width: 24px;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .sidebar-overlay.active { display: block; }
+
+        .main-content { flex: 1; display: flex; flex-direction: column; }
+        .container { padding: 24px 16px; flex: 1; max-width: 1300px; margin: 0 auto; width: 100%; }
+
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .tool-card-header {
+            padding: 18px 24px;
+            border-bottom: 1px solid #e2e8f0;
+            background: #fafbfc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tool-card-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .tool-card-header .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .tool-card-header .actions button {
+            padding: 6px 16px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-edit { background: #4f46e5; color: white; }
+        .btn-edit:hover { background: #4338ca; }
+        .btn-edit.active { background: #10b981; }
+        .btn-edit:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-revert { background: #e2e8f0; color: #475569; }
+        .btn-revert:hover { background: #d1d5db; }
+        .btn-revert:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-save { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; }
+        .btn-save:hover { box-shadow: 0 4px 12px rgba(79,70,229,0.3); }
+        .btn-save:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-new { background: #10b981; color: white; }
+        .btn-new:hover { background: #0da271; }
+        .btn-help { background: #f59e0b; color: white; }
+        .btn-help:hover { background: #d97706; }
+
+        /* ===== ZOOM CONTROLS ===== */
+        .zoom-controls {
+            display: none;
+            align-items: center;
+            background: #f1f5f9;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            padding: 2px 6px;
+            gap: 6px;
+        }
+        .zoom-controls.show { display: flex; }
+        .zoom-btn {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            color: #0f172a;
+            font-weight: bold;
+        }
+        .zoom-btn:hover { background: #e2e8f0; }
+        .zoom-val { font-size: 0.75rem; font-weight: 600; min-width: 45px; text-align: center; color: #334155; }
+
+        .tool-card-body { padding: 16px; }
+
+        .upload-zone {
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 48px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #fafbfc;
+        }
+        .upload-zone:hover { border-color: #4f46e5; background: rgba(79,70,229,0.02); }
+        .upload-zone i { font-size: 2.5rem; color: #818cf8; margin-bottom: 12px; }
+        .upload-zone h3 { font-size: 1.1rem; font-weight: 600; }
+        .upload-zone p { font-size: 0.85rem; color: #64748b; }
+        .upload-zone .hint { font-size: 0.75rem; color: #94a3b8; margin-top: 6px; }
+        .upload-zone.hidden { display: none; }
+
+        /* ENABLE SMOOTH PINCH & TOUCH PAN IN VIEWPORT */
+        .viewport-wrapper {
+            display: none;
+            margin-top: 10px;
+            width: 100%;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-x pan-y pinch-zoom;
+        }
+        .viewport-wrapper.active { display: block; }
+
+        #viewport-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            transform-origin: top center;
+            transition: transform 0.15s ease-out;
+        }
+
+        .page-card {
+            position: relative;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 0px;
+            border: none !important;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        .page-card canvas {
+            display: block;
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .text-layer {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+        }
+
+        .text-block {
+            position: absolute;
+            color: transparent;
+            cursor: default;
+            font-family: Arial, sans-serif;
+            border: 1px dashed transparent;
+            pointer-events: none;
+            box-sizing: border-box;
+            user-select: none;
+            white-space: pre;
+            line-height: 1;
+            padding: 0;
+            margin: 0;
+        }
+        .text-block.editable {
+            cursor: pointer;
+            pointer-events: auto;
+            border-color: rgba(79,70,229,0.3);
+            border-radius: 2px;
+        }
+        .text-block.editable:hover, .text-block.editable:active {
+            border-color: #4f46e5;
+            background: rgba(79,70,229,0.08);
+        }
+
+        .edit-input-wrapper {
+            position: absolute;
+            z-index: 250;
+            background: white;
+            border: 1.5px solid #4f46e5;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            touch-action: none;
+        }
+        .edit-input-wrapper textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: Arial, sans-serif;
+            color: #0f172a;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            resize: none;
+            overflow: hidden;
+            white-space: pre;
+            -webkit-appearance: none;
+        }
+
+        .handle-dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #4f46e5;
+            border: 2px solid white;
+            border-radius: 50%;
+            z-index: 300;
+            cursor: pointer;
+            touch-action: none;
+        }
+        .handle-dot:hover, .handle-dot:active {
+            background: #7c3aed;
+            transform: scale(1.25);
+        }
+        .handle-e {
+            top: 50%;
+            right: -7px;
+            transform: translateY(-50%);
+            cursor: e-resize;
+        }
+        .handle-se {
+            bottom: -7px;
+            right: -7px;
+            cursor: se-resize;
+        }
+
+        .status-bar {
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #4f46e5;
+            margin-top: 16px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        .status-bar.success { border-left-color: #10b981; color: #10b981; }
+        .status-bar.error { border-left-color: #ef4444; color: #ef4444; }
+
+        .recommended-section {
+            margin-top: 32px;
+            padding: 18px 22px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .recommended-section h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+        .recommended-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 8px;
+        }
+        .recommended-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #f8fafc;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+            color: #0f172a;
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .recommended-item:hover { border-color: #4f46e5; background: rgba(79,70,229,0.03); }
+        .recommended-item i { color: #4f46e5; font-size: 0.8rem; }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .popup-overlay.active { display: flex; }
+        .popup-box {
+            background: white;
+            border-radius: 16px;
+            max-width: 560px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 32px 28px;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
+        .popup-box::-webkit-scrollbar { width: 4px; }
+        .popup-box::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .popup-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .popup-close:hover { color: #0f172a; }
+        .popup-box h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+        .popup-box .popup-subtitle { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; }
+        .popup-box .popup-section { margin-bottom: 20px; }
+        .popup-box .popup-section h4 { font-size: 0.95rem; font-weight: 600; color: #4f46e5; margin-bottom: 6px; }
+        .popup-box .popup-section p { font-size: 0.85rem; color: #475569; line-height: 1.6; }
+
+        .site-footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 32px 28px 20px;
+            margin-top: auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-col h4 { color: white; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; }
+        .footer-col a {
+            display: block;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 2px 0;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .footer-col a:hover { color: white; }
+        .footer-col a i { width: 16px; margin-right: 4px; font-size: 0.65rem; }
+
+        .footer-about { grid-column: span 2; }
+        .footer-about p { font-size: 0.78rem; line-height: 1.6; color: #94a3b8; max-width: 420px; }
+        .footer-about .highlight { color: #818cf8; font-weight: 600; }
+
+        .footer-privacy ul { list-style: none; padding: 0; }
+        .footer-privacy ul li { font-size: 0.75rem; color: #94a3b8; padding: 2px 0; display: flex; align-items: flex-start; gap: 6px; }
+        .footer-privacy ul li i { color: #10b981; font-size: 0.6rem; margin-top: 4px; }
+
+        .footer-col .no-click { cursor: default; color: #94a3b8; display: block; font-size: 0.75rem; padding: 2px 0; }
+        .footer-col .no-click:hover { color: #94a3b8; }
+        .footer-col .no-click i { width: 16px; margin-right: 4px; font-size: 0.65rem; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.7rem;
+            color: #64748b;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-bottom i { color: #f59e0b; }
+        .footer-bottom .email-link { color: #818cf8; text-decoration: none; }
+        .footer-bottom .email-link:hover { text-decoration: underline; }
+
+        @media (max-width: 992px) {
+            .top-nav { padding: 0 16px; height: 56px; }
+            .top-nav .nav-left .brand .tagline { display: none; }
+            .top-nav .nav-links a { font-size: 0.7rem; padding: 4px 10px; }
+            .container { padding: 16px 8px; }
+        }
+
+        @media (max-width: 768px) {
+            .top-nav .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .top-nav .nav-right .badge { display: none; }
+            .container { padding: 10px 4px; }
+            .tool-card-header { padding: 14px 16px; flex-direction: column; align-items: stretch; }
+            .tool-card-header .actions { justify-content: stretch; }
+            .tool-card-header .actions button { flex: 1; justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .footer-about { grid-column: span 1; }
+            .footer-about p { max-width: 100%; }
+            .mobile-sidebar { width: 260px; left: -260px; }
+        }
+
+        @media (max-width: 640px) {
+            .top-nav { height: 56px; }
+            .top-nav .nav-left .brand .logo-img { max-height: 32px; }
+            .upload-zone { padding: 30px 16px; }
+            .upload-zone i { font-size: 2rem; }
+            .site-footer { padding: 20px 16px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 16px; }
+            .popup-box { padding: 20px 16px; max-height: 90vh; }
+            .popup-box h2 { font-size: 1.2rem; }
+            .mobile-sidebar { width: 240px; left: -240px; }
+            .mobile-sidebar .nav-item-mobile { font-size: 0.8rem; padding: 8px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== MOBILE SIDEBAR ===== -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header">
+            <a href="index.html">
+                <img src="logo.png" alt="PDFSmartCore" class="sidebar-logo" id="sidebarLogo" onerror="this.style.display='none'; this.parentElement.parentElement.querySelector('.brand-text').style.display='block'">
+            </a>
+            <span class="brand-text" style="display:none;">PDF<span>Core</span></span>
+            <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        </div>
+        <a href="index.html" class="nav-item-mobile"><i class="fas fa-home"></i> Home</a>
+        <a href="pdf-editor.html" class="nav-item-mobile active"><i class="fas fa-pen-fancy"></i> Text Editor</a>
+        <a href="pdf-merge.html" class="nav-item-mobile"><i class="fas fa-layer-group"></i> Merge PDF</a>
+        <a href="pdf-split.html" class="nav-item-mobile"><i class="fas fa-cut"></i> Split PDF</a>
+        <a href="word-to-pdf.html" class="nav-item-mobile"><i class="fas fa-file-word"></i> Word to PDF</a>
+        <a href="pdf-size.html" class="nav-item-mobile"><i class="fas fa-compress"></i> PDF Size</a>
+        <a href="jpg-to-pdf.html" class="nav-item-mobile"><i class="fas fa-image"></i> JPG to PDF</a>
+        <a href="pdf-to-jpg.html" class="nav-item-mobile"><i class="fas fa-file-image"></i> PDF to JPG</a>
+        <a href="image-size.html" class="nav-item-mobile"><i class="fas fa-expand"></i> Image Size</a>
+        <a href="image-format.html" class="nav-item-mobile"><i class="fas fa-exchange-alt"></i> JPG to JPEG</a>
+        <a href="pdf-to-excel.html" class="nav-item-mobile"><i class="fas fa-file-excel"></i> PDF to Excel</a>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ===== TOP NAVBAR ===== -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="brand">
+                <img src="logo.png" alt="PDFSmartCore" class="logo-img" id="navLogo" onerror="this.style.display='none'">
+                <span class="tagline">Free PDF Tools</span>
+            </a>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="pdf-editor.html" class="active"><i class="fas fa-pen-fancy"></i> Editor</a>
+            <a href="pdf-merge.html"><i class="fas fa-layer-group"></i> Merge</a>
+            <a href="pdf-split.html"><i class="fas fa-cut"></i> Split</a>
+            <a href="word-to-pdf.html"><i class="fas fa-file-word"></i> Word</a>
+            <a href="pdf-size.html"><i class="fas fa-compress"></i> Size</a>
+            <a href="jpg-to-pdf.html"><i class="fas fa-image"></i> JPG→PDF</a>
+            <a href="pdf-to-jpg.html"><i class="fas fa-file-image"></i> PDF→JPG</a>
+            <a href="image-size.html"><i class="fas fa-expand"></i> Image Size</a>
+            <a href="image-format.html"><i class="fas fa-exchange-alt"></i> JPG→JPEG</a>
+            <a href="pdf-to-excel.html"><i class="fas fa-file-excel"></i> Excel</a>
+        </div>
+        <div class="nav-right">
+            <span class="badge"><i class="fas fa-shield-alt"></i> Secure</span>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="main-content">
+        <div class="container">
+
+            <div class="tool-card">
+                <div class="tool-card-header">
+                    <h2><i class="fas fa-pen-fancy" style="color:#4f46e5;"></i> PDF Text Editor</h2>
+                    <div class="actions">
+                        <!-- ZOOM BUTTONS CONTROL BAR -->
+                        <div class="zoom-controls" id="zoomControls">
+                            <button class="zoom-btn" onclick="adjustZoom(-0.15)"><i class="fas fa-search-minus"></i></button>
+                            <span class="zoom-val" id="zoomVal">100%</span>
+                            <button class="zoom-btn" onclick="adjustZoom(0.15)"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                        <button class="btn-help" id="helpBtn" onclick="openHowToUse()"><i class="fas fa-question-circle"></i> How to Use</button>
+                        <button class="btn-edit" id="editModeBtn" disabled><i class="fas fa-pen"></i> Edit Mode</button>
+                        <button class="btn-revert" id="revertBtn" disabled><i class="fas fa-undo-alt"></i> Revert</button>
+                        <button class="btn-save" id="exportBtn" disabled><i class="fas fa-download"></i> Save PDF</button>
+                        <button class="btn-new" id="newTaskBtn"><i class="fas fa-plus-circle"></i> New Task</button>
+                    </div>
+                </div>
+
+                <div class="tool-card-body">
+
+                    <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Select PDF File</h3>
+                        <p>Drag &amp; drop or click to browse</p>
+                        <div class="hint">Supports PDF files &amp; Scanned Documents</div>
+                        <input type="file" id="fileInput" accept="application/pdf" style="display:none;" />
+                    </div>
+
+                    <div class="status-bar" id="statusLabel">
+                        <i class="fas fa-info-circle"></i> Ready — upload a PDF to start
+                    </div>
+
+                    <div class="viewport-wrapper" id="viewportWrapper">
+                        <div id="viewport-container"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="recommended-section">
+                <h3><i class="fas fa-star" style="color:#f59e0b;"></i> Recommended Tools</h3>
+                <div class="recommended-grid">
+                    <a href="pdf-merge.html" class="recommended-item"><i class="fas fa-layer-group"></i> Merge PDF</a>
+                    <a href="pdf-split.html" class="recommended-item"><i class="fas fa-cut"></i> Split PDF</a>
+                    <a href="word-to-pdf.html" class="recommended-item"><i class="fas fa-file-word"></i> Word to PDF</a>
+                    <a href="pdf-size.html" class="recommended-item"><i class="fas fa-compress"></i> PDF Size</a>
+                    <a href="jpg-to-pdf.html" class="recommended-item"><i class="fas fa-image"></i> JPG to PDF</a>
+                    <a href="pdf-to-excel.html" class="recommended-item"><i class="fas fa-file-excel"></i> PDF to Excel</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h4>About PDFSmartCore</h4>
+                    <p>Welcome to <span class="highlight">PDFSmartCore</span> - your all-in-one PDF solution. We're dedicated to providing <span class="highlight">100% free, secure</span>, and powerful PDF tools that work entirely in your browser.</p>
+                    <p style="margin-top:8px;font-size:0.7rem;color:#64748b;">
+                        <i class="fas fa-check-circle" style="color:#10b981;"></i> 100% Free · 
+                        <i class="fas fa-shield-alt" style="color:#10b981;"></i> No Uploads · 
+                        <i class="fas fa-water" style="color:#10b981;"></i> No Watermarks
+                    </p>
+                </div>
+                <div class="footer-col footer-privacy">
+                    <h4>Privacy Policy</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 100% Local Processing</li>
+                        <li><i class="fas fa-check-circle"></i> No Server Uploads</li>
+                        <li><i class="fas fa-check-circle"></i> Auto Data Deletion</li>
+                        <li><i class="fas fa-check-circle"></i> No Tracking</li>
+                        <li><i class="fas fa-check-circle"></i> No Cookies</li>
+                        <li><i class="fas fa-check-circle"></i> Session Storage Only</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Copyright &amp; Terms</h4>
+                    <span class="no-click"><i class="fas fa-code"></i> Software v2.0</span>
+                    <span class="no-click"><i class="fas fa-calendar"></i> © 2026 PDFSmartCore</span>
+                    <span class="no-click"><i class="fas fa-heart"></i> Free to Use</span>
+                    <span class="no-click"><i class="fas fa-gavel"></i> Open Source</span>
+                    <span class="no-click"><i class="fas fa-exclamation-triangle"></i> Disclaimer</span>
+                    <span class="no-click"><i class="fas fa-sync-alt"></i> Regular Updates</span>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <a href="mailto:support@pdfsmartcore.com"><i class="fas fa-envelope"></i> support@pdfsmartcore.com</a>
+                    <a onclick="openPopup('about')"><i class="fas fa-info-circle"></i> About Us</a>
+                    <a onclick="openPopup('privacy')"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+                    <a onclick="openPopup('terms')"><i class="fas fa-gavel"></i> Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                Made with <i class="fas fa-heart"></i> for the Community · 
+                &copy; 2026 <strong>PDFSmartCore</strong> · 
+                All Rights Reserved ·
+                <a href="mailto:support@pdfsmartcore.com" class="email-link">support@pdfsmartcore.com</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ===== POPUPS ===== -->
+    <div class="popup-overlay" id="howToUsePopup">
+        <div class="popup-box">
+            <button class="popup-close" onclick="closeHowToUse()">&times;</button>
+            <h2 class="popup-title">How to Use PDF Text Editor</h2>
+            <p class="popup-subtitle">Step-by-step guide for editing PDF text</p>
+            <div class="popup-section">
+                <h4><i class="fas fa-upload" style="color:#4f46e5;"></i> Step 1: Upload PDF</h4>
+                <p>Click the upload area or drag &amp; drop your PDF file (Supports Scanned PDFs).</p>
+            </div>
+            <div class="popup-section">
+                <h4><i class="fas fa-pen" style="color:#4f46e5;"></i> Step 2: Enable Edit Mode</h4>
+                <p>Click "Edit Mode" to make text clickable.</p>
+            </div>
+            <div class="popup-section">
+                <h4><i class="fas fa-search-plus" style="color:#4f46e5;"></i> Step 3: Zoom PDF on Mobile</h4>
+                <p>Pinch with fingers or use <strong>+ / -</strong> buttons in the toolbar to zoom in &amp; out smoothly.</p>
+            </div>
+            <div class="popup-section">
+                <h4><i class="fas fa-save" style="color:#4f46e5;"></i> Step 4: Save PDF</h4>
+                <p>Click "Save PDF" to download your edited document.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <button class="popup-close" onclick="closePopup()">&times;</button>
+            <div id="popupContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        //  MOBILE SIDEBAR
+        // ============================================================
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileSidebar = document.getElementById('mobileSidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarClose = document.getElementById('sidebarClose');
+
+        function openSidebar() {
+            mobileSidebar.classList.add('open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSidebar() {
+            mobileSidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        mobileBtn.addEventListener('click', function(e) { e.stopPropagation(); openSidebar(); });
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarClose.addEventListener('click', closeSidebar);
+        document.querySelectorAll('.nav-item-mobile').forEach(function(link) {
+            link.addEventListener('click', closeSidebar);
+        });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSidebar(); });
+
+        // ============================================================
+        //  POPUP FUNCTIONS
+        // ============================================================
+        function openHowToUse() {
+            document.getElementById('howToUsePopup').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeHowToUse() {
+            document.getElementById('howToUsePopup').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        document.getElementById('howToUsePopup').addEventListener('click', function(e) {
+            if (e.target === this) closeHowToUse();
+        });
+
+        const popupData = {
+            about: {
+                title: 'About PDFSmartCore',
+                subtitle: 'Your all-in-one PDF solution',
+                sections: [
+                    { title: 'Who We Are', content: 'Welcome to <strong>PDFSmartCore</strong> - your all-in-one PDF solution.' },
+                    { title: 'Our Mission', content: 'Our mission is to make PDF editing accessible to everyone.' },
+                    { title: 'Why We Built This', content: 'We built PDFSmartCore because we believe everyone deserves access to professional-grade PDF tools.' }
+                ]
+            },
+            privacy: {
+                title: 'Privacy Policy',
+                subtitle: 'Your privacy matters to us',
+                sections: [
+                    { title: '100% Local Processing', content: 'All files are processed directly in your browser.' },
+                    { title: 'No Server Uploads', content: 'Your files never leave your computer.' },
+                    { title: 'Auto Data Deletion', content: 'Uploaded files are automatically deleted from memory.' },
+                    { title: 'No Tracking & No Cookies', content: 'We don\'t collect any personal information.' }
+                ]
+            },
+            terms: {
+                title: 'Terms of Service',
+                subtitle: 'Terms & conditions for using PDFSmartCore',
+                sections: [
+                    { title: 'Software Version', content: 'PDFSmartCore v2.0 - Built using open-source libraries.' },
+                    { title: 'Free to Use', content: 'This software is completely free for personal and commercial use.' },
+                    { title: 'Disclaimer', content: 'For personal use only. We are not responsible for any misuse.' }
+                ]
+            }
+        };
+
+        function openPopup(type) {
+            const data = popupData[type];
+            if (!data) return;
+            const container = document.getElementById('popupContent');
+            let html = `<h2>${data.title}</h2>`;
+            if (data.subtitle) html += `<p class="popup-subtitle">${data.subtitle}</p>`;
+            data.sections.forEach(section => {
+                html += `<div class="popup-section"><h4>${section.title}</h4><p>${section.content}</p></div>`;
+            });
+            container.innerHTML = html;
+            document.getElementById('popupOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        document.getElementById('popupOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closePopup();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') { closePopup(); closeHowToUse(); }
+        });
+
+        // ============================================================
+        //  PDF TEXT EDITOR - FULL MOBILE ZOOM & TOUCH COMPATIBILITY
+        // ============================================================
+
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        let pdfBytes = null;
+        let pdfDoc = null;
+        let pageDataMap = {};
+        let textEdits = {};
+        let isEditMode = false;
+        let currentZoomScale = 1.0;
+
+        const elements = {
+            fileInput: document.getElementById('fileInput'),
+            viewportContainer: document.getElementById('viewport-container'),
+            viewportWrapper: document.getElementById('viewportWrapper'),
+            uploadZone: document.getElementById('uploadZone'),
+            statusLabel: document.getElementById('statusLabel'),
+            exportBtn: document.getElementById('exportBtn'),
+            editModeBtn: document.getElementById('editModeBtn'),
+            revertBtn: document.getElementById('revertBtn'),
+            newTaskBtn: document.getElementById('newTaskBtn'),
+            zoomControls: document.getElementById('zoomControls'),
+            zoomVal: document.getElementById('zoomVal')
+        };
+
+        // ZOOM CONTROLS LOGIC FOR MOBILE & DESKTOP
+        function adjustZoom(delta) {
+            currentZoomScale = Math.min(Math.max(0.5, currentZoomScale + delta), 2.5);
+            elements.viewportContainer.style.transform = `scale(${currentZoomScale})`;
+            elements.zoomVal.innerText = `${Math.round(currentZoomScale * 100)}%`;
+        }
+
+        // ===== NEW TASK =====
+        elements.newTaskBtn.addEventListener('click', function() {
+            if (pdfDoc && !confirm('Start a new task? Current PDF will be closed.')) return;
+            startNewTask();
+        });
+
+        function startNewTask() {
+            pdfBytes = null;
+            pdfDoc = null;
+            pageDataMap = {};
+            textEdits = {};
+            isEditMode = false;
+            currentZoomScale = 1.0;
+            elements.viewportContainer.style.transform = 'scale(1.0)';
+            elements.zoomVal.innerText = '100%';
+            elements.zoomControls.classList.remove('show');
+            elements.viewportContainer.innerHTML = '';
+            elements.viewportWrapper.classList.remove('active');
+            elements.uploadZone.classList.remove('hidden');
+            elements.exportBtn.disabled = true;
+            elements.editModeBtn.disabled = true;
+            elements.revertBtn.disabled = true;
+            elements.editModeBtn.classList.remove('active');
+            elements.editModeBtn.innerHTML = '<i class="fas fa-pen"></i> Edit Mode';
+            elements.fileInput.value = '';
+            updateStatus('🔄 New task started — upload a PDF to begin');
+            document.querySelectorAll('.text-block').forEach(block => block.classList.remove('editable'));
+            elements.uploadZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // ===== EDIT MODE =====
+        elements.editModeBtn.addEventListener('click', function() {
+            if (this.disabled) return;
+            isEditMode = !isEditMode;
+            this.classList.toggle('active');
+            this.innerHTML = isEditMode ? '<i class="fas fa-eye"></i> View Mode' : '<i class="fas fa-pen"></i> Edit Mode';
+            document.querySelectorAll('.text-block').forEach(block => {
+                block.classList.toggle('editable', isEditMode);
+            });
+            updateStatus(isEditMode ? '✏️ Edit Mode ON — tap or click text to edit' : '👁️ View Mode — read only');
+        });
+
+        // ===== REVERT =====
+        elements.revertBtn.addEventListener('click', function() {
+            if (this.disabled || !pdfDoc) return;
+            if (Object.keys(textEdits).length === 0) {
+                updateStatus('ℹ️ No edits to revert');
+                return;
+            }
+            if (confirm('Revert all edits? This cannot be undone.')) {
+                textEdits = {};
+                elements.viewportContainer.innerHTML = '';
+                renderAllPages();
+                updateStatus('🔄 All edits reverted successfully');
+            }
+        });
+
+        // ===== FILE INPUT =====
+        elements.fileInput.addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            try {
+                pdfBytes = await file.arrayBuffer();
+                pdfDoc = await pdfjsLib.getDocument({ data: pdfBytes.slice(0) }).promise;
+                elements.uploadZone.classList.add('hidden');
+                elements.viewportWrapper.classList.add('active');
+                elements.zoomControls.classList.add('show');
+                elements.exportBtn.disabled = false;
+                elements.editModeBtn.disabled = false;
+                elements.revertBtn.disabled = false;
+                elements.editModeBtn.classList.remove('active');
+                elements.editModeBtn.innerHTML = '<i class="fas fa-pen"></i> Edit Mode';
+                isEditMode = false;
+                textEdits = {};
+                pageDataMap = {};
+                elements.viewportContainer.innerHTML = '';
+                renderAllPages();
+                updateStatus(`✅ Loaded: ${pdfDoc.numPages} pages — click "Edit Mode" to start editing`, 'success');
+            } catch (err) {
+                alert('Error loading PDF: ' + err.message);
+                updateStatus('❌ Error loading PDF', 'error');
+            }
+        });
+
+        // ===== DRAG & DROP =====
+        elements.uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            elements.uploadZone.style.borderColor = '#4f46e5';
+        });
+        elements.uploadZone.addEventListener('dragleave', () => {
+            elements.uploadZone.style.borderColor = '#e2e8f0';
+        });
+        elements.uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            elements.uploadZone.style.borderColor = '#e2e8f0';
+            if (e.dataTransfer.files.length) {
+                elements.fileInput.files = e.dataTransfer.files;
+                elements.fileInput.dispatchEvent(new Event('change'));
+            }
+        });
+
+        // ===== RENDER FULL VIEWPORT =====
+        async function renderAllPages() {
+            const containerWidth = elements.viewportContainer.clientWidth || window.innerWidth || 800;
+
+            for (let pNum = 1; pNum <= pdfDoc.numPages; pNum++) {
+                const page = await pdfDoc.getPage(pNum);
+                const unscaledViewport = page.getViewport({ scale: 1.0 });
+                const scale = containerWidth / unscaledViewport.width;
+                const viewport = page.getViewport({ scale });
+
+                const pageCard = document.createElement('div');
+                pageCard.className = 'page-card';
+                pageCard.dataset.pageNum = pNum;
+                pageCard.style.width = viewport.width + 'px';
+                pageCard.style.height = viewport.height + 'px';
+
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const renderDPI = 2.0;
+                canvas.width = viewport.width * renderDPI;
+                canvas.height = viewport.height * renderDPI;
+
+                const textLayer = document.createElement('div');
+                textLayer.className = 'text-layer';
+                pageCard.appendChild(canvas);
+                pageCard.appendChild(textLayer);
+                elements.viewportContainer.appendChild(pageCard);
+
+                const renderViewport = page.getViewport({ scale: scale * renderDPI });
+                await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
+
+                pageDataMap[pNum] = {
+                    canvas: canvas,
+                    ctx: ctx,
+                    viewport: viewport,
+                    unscaledViewport: unscaledViewport,
+                    scale: scale,
+                    renderDPI: renderDPI,
+                    pageCard: pageCard
+                };
+
+                const textContent = await page.getTextContent();
+                await buildTextLayer(pNum, textContent, viewport, textLayer, pageCard);
+            }
+        }
+
+        // ===== TEXT LAYER BUILDER WITH OCR FALLBACK =====
+        async function buildTextLayer(pageNum, textContent, viewport, textLayer, pageCard) {
+            let rawItems = textContent.items.filter(item => item.str.trim() !== '');
+
+            // SCANNED PDF OCR FALLBACK
+            if (rawItems.length === 0) {
+                updateStatus(`🔍 Page ${pageNum} is a Scanned PDF. Running OCR... Please wait.`);
+                try {
+                    const pData = pageDataMap[pageNum];
+                    if (pData && window.Tesseract) {
+                        const result = await Tesseract.recognize(pData.canvas, 'eng');
+                        if (result && result.data && result.data.words) {
+                            rawItems = result.data.words.map(w => {
+                                const rDPI = pData.renderDPI;
+                                const left = w.bbox.x0 / rDPI;
+                                const top = w.bbox.y0 / rDPI;
+                                const width = (w.bbox.x1 - w.bbox.x0) / rDPI;
+                                const height = (w.bbox.y1 - w.bbox.y0) / rDPI;
+                                const fontSize = height * 0.85;
+
+                                return {
+                                    str: w.text,
+                                    transform: [fontSize, 0, 0, fontSize, left, top + fontSize],
+                                    width: width / viewport.scale,
+                                    fontName: 'Arial'
+                                };
+                            });
+                            updateStatus(`✅ OCR Processed Page ${pageNum} successfully!`, 'success');
+                        }
+                    }
+                } catch(err) {
+                    console.error("OCR Failed: ", err);
+                }
+            }
+
+            if (rawItems.length === 0) return;
+
+            let parsedBoxes = rawItems.map((item, idx) => {
+                const tx = pdfjsLib.Util.transform(viewport.transform, item.transform);
+                const fontSize = Math.sqrt(tx[0] * tx[0] + tx[1] * tx[1]);
+                const left = tx[4];
+                const top = tx[5] - fontSize;
+                const baseline = tx[5];
+                const width = item.width * viewport.scale;
+                const height = fontSize;
+
+                const styleInfo = (textContent.styles && textContent.styles[item.fontName]) || {};
+                const fontFamilyRaw = (styleInfo.fontFamily || item.fontName || '');
+                const isBold = /bold|black|heavy|Bold/i.test(fontFamilyRaw) || /bold|black|heavy|Bold/i.test(item.fontName || '');
+                const isItalic = /italic|oblique|Italic/i.test(fontFamilyRaw) || /italic|oblique|Italic/i.test(item.fontName || '');
+
+                return {
+                    id: idx,
+                    str: item.str,
+                    left: left,
+                    top: top,
+                    baseline: baseline,
+                    width: width,
+                    height: height,
+                    fontSize: fontSize,
+                    isBold: isBold,
+                    isItalic: isItalic
+                };
+            });
+
+            parsedBoxes.sort((a, b) => Math.abs(a.top - b.top) < 2 ? a.left - b.left : a.top - b.top);
+
+            let groupedBlocks = [];
+            parsedBoxes.forEach(box => {
+                let matchedGroup = groupedBlocks.find(g => {
+                    const sameLine = Math.abs(g.baseline - box.baseline) < 2;
+                    const tightGap = (box.left - (g.left + g.width)) < Math.max(box.fontSize * 0.6, 6);
+                    return sameLine && tightGap && tightGap >= -2;
+                });
+
+                if (matchedGroup) {
+                    matchedGroup.str += (box.left - (matchedGroup.left + matchedGroup.width) > 1 ? ' ' : '') + box.str;
+                    matchedGroup.width = (box.left + box.width) - matchedGroup.left;
+                    matchedGroup.height = Math.max(matchedGroup.height, box.height);
+                    matchedGroup.fontSize = Math.max(matchedGroup.fontSize, box.fontSize);
+                    if (box.isBold) matchedGroup.isBold = true;
+                    if (box.isItalic) matchedGroup.isItalic = true;
+                } else {
+                    groupedBlocks.push({ ...box });
+                }
+            });
+
+            groupedBlocks.forEach((group, index) => {
+                const div = document.createElement('div');
+                div.className = 'text-block';
+                div.innerText = group.str;
+                div.style.left = group.left + 'px';
+                div.style.top = group.top + 'px';
+                div.style.width = Math.max(group.width + 2, 10) + 'px';
+                div.style.height = group.height + 'px';
+                div.style.fontSize = group.fontSize + 'px';
+                div.style.lineHeight = group.height + 'px';
+                if (group.isBold) div.style.fontWeight = 'bold';
+                if (group.isItalic) div.style.fontStyle = 'italic';
+
+                const paraId = `p_${pageNum}_${index}`;
+                div.dataset.paraId = paraId;
+                div.dataset.left = group.left;
+                div.dataset.top = group.top;
+                div.dataset.width = group.width + 2;
+                div.dataset.height = group.height;
+                div.dataset.fontSize = group.fontSize;
+                div.dataset.originalText = group.str;
+                div.dataset.baseline = group.baseline;
+                div.dataset.isBold = group.isBold;
+                div.dataset.isItalic = group.isItalic;
+                div.dataset.pageNum = pageNum;
+
+                if (isEditMode) div.classList.add('editable');
+
+                const triggerEdit = function(e) {
+                    e.stopPropagation();
+                    if (isEditMode) {
+                        enableEditing(div, pageNum);
+                    }
+                };
+
+                div.addEventListener('click', triggerEdit);
+                div.addEventListener('touchstart', function(e) {
+                    if (isEditMode) {
+                        e.preventDefault();
+                        triggerEdit(e);
+                    }
+                }, { passive: false });
+
+                textLayer.appendChild(div);
+            });
+        }
+
+        // ===== EDITING ENGINE WITH FULL MOBILE TOUCH & RESIZE SUPPORT =====
+        function enableEditing(sourceDiv, pageNum) {
+            const left = parseFloat(sourceDiv.dataset.left);
+            const top = parseFloat(sourceDiv.dataset.top);
+            const baseline = parseFloat(sourceDiv.dataset.baseline);
+            
+            let isBold = sourceDiv.dataset.isBold === 'true';
+            let isItalic = sourceDiv.dataset.isItalic === 'true';
+            
+            const fontSize = parseFloat(sourceDiv.dataset.fontSize);
+            const originalText = sourceDiv.dataset.originalText;
+            const paraId = sourceDiv.dataset.paraId;
+            let currentWidth = Math.max(parseFloat(sourceDiv.dataset.width) + 12, 50);
+            let currentHeight = parseFloat(sourceDiv.dataset.height) + 4;
+
+            sourceDiv.style.visibility = 'hidden';
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'edit-input-wrapper';
+            wrapper.style.left = left + 'px';
+            wrapper.style.top = top + 'px';
+            wrapper.style.width = currentWidth + 'px';
+            wrapper.style.height = currentHeight + 'px';
+
+            const textarea = document.createElement('textarea');
+            textarea.value = originalText;
+            textarea.style.fontSize = fontSize + 'px';
+            textarea.style.lineHeight = currentHeight + 'px';
+            textarea.style.fontWeight = isBold ? 'bold' : 'normal';
+            textarea.style.fontStyle = isItalic ? 'italic' : 'normal';
+
+            wrapper.appendChild(textarea);
+
+            const handleE = document.createElement('div');
+            handleE.className = 'handle-dot handle-e';
+            
+            const handleSE = document.createElement('div');
+            handleSE.className = 'handle-dot handle-se';
+
+            wrapper.appendChild(handleE);
+            wrapper.appendChild(handleSE);
+
+            const pageCard = sourceDiv.closest('.page-card');
+            pageCard.appendChild(wrapper);
+
+            setTimeout(() => {
+                textarea.focus();
+                textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+            }, 50);
+
+            let isDragging = false;
+            let startX, startY, startW, startH, activeHandle;
+
+            function getClientPos(e) {
+                if (e.touches && e.touches.length > 0) {
+                    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                }
+                return { x: e.clientX, y: e.clientY };
+            }
+
+            function onDragStart(e, handleType) {
+                e.stopPropagation();
+                if (e.cancelable) e.preventDefault();
+                isDragging = true;
+                activeHandle = handleType;
+                const pos = getClientPos(e);
+                startX = pos.x;
+                startY = pos.y;
+                startW = wrapper.offsetWidth;
+                startH = wrapper.offsetHeight;
+
+                document.addEventListener('mousemove', onDragMove);
+                document.addEventListener('mouseup', onDragEnd);
+                document.addEventListener('touchmove', onDragMove, { passive: false });
+                document.addEventListener('touchend', onDragEnd);
+            }
+
+            function onDragMove(e) {
+                if (!isDragging) return;
+                if (e.cancelable) e.preventDefault();
+                const pos = getClientPos(e);
+                const dx = (pos.x - startX) / currentZoomScale;
+                const dy = (pos.y - startY) / currentZoomScale;
+
+                if (activeHandle === 'e' || activeHandle === 'se') {
+                    currentWidth = Math.max(startW + dx, 30);
+                    wrapper.style.width = currentWidth + 'px';
+                }
+                if (activeHandle === 'se') {
+                    currentHeight = Math.max(startH + dy, 15);
+                    wrapper.style.height = currentHeight + 'px';
+                }
+            }
+
+            function onDragEnd() {
+                isDragging = false;
+                document.removeEventListener('mousemove', onDragMove);
+                document.removeEventListener('mouseup', onDragEnd);
+                document.removeEventListener('touchmove', onDragMove);
+                document.removeEventListener('touchend', onDragEnd);
+            }
+
+            handleE.addEventListener('mousedown', (e) => onDragStart(e, 'e'));
+            handleE.addEventListener('touchstart', (e) => onDragStart(e, 'e'), { passive: false });
+            
+            handleSE.addEventListener('mousedown', (e) => onDragStart(e, 'se'));
+            handleSE.addEventListener('touchstart', (e) => onDragStart(e, 'se'), { passive: false });
+
+            textarea.addEventListener('input', function() {
+                const newWidth = Math.max(this.scrollWidth + 6, 30);
+                wrapper.style.width = Math.min(newWidth, pageCard.clientWidth - left) + 'px';
+                currentWidth = parseFloat(wrapper.style.width);
+            });
+
+            textarea.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+                    e.preventDefault();
+                    isBold = !isBold;
+                    textarea.style.fontWeight = isBold ? 'bold' : 'normal';
+                    updateStatus(`Font Style: ${isBold ? 'Bold ON' : 'Bold OFF'}`);
+                }
+                if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'i') {
+                    e.preventDefault();
+                    isItalic = !isItalic;
+                    textarea.style.fontStyle = isItalic ? 'italic' : 'normal';
+                    updateStatus(`Font Style: ${isItalic ? 'Italic ON' : 'Italic OFF'}`);
+                }
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    textarea.blur();
+                }
+                if (e.key === 'Escape') {
+                    sourceDiv.style.visibility = 'visible';
+                    wrapper.remove();
+                }
+            });
+
+            const saveHandler = function() {
+                if (isDragging) return;
+                
+                const newText = textarea.value;
+                if (!textEdits[pageNum]) textEdits[pageNum] = [];
+                textEdits[pageNum] = textEdits[pageNum].filter(e => e.paraId !== paraId);
+
+                if (newText !== originalText || Math.abs(parseFloat(wrapper.style.width) - parseFloat(sourceDiv.dataset.width)) > 2 || isBold !== (sourceDiv.dataset.isBold === 'true') || isItalic !== (sourceDiv.dataset.isItalic === 'true')) {
+                    
+                    sourceDiv.style.fontWeight = isBold ? 'bold' : 'normal';
+                    sourceDiv.style.fontStyle = isItalic ? 'italic' : 'normal';
+                    sourceDiv.dataset.isBold = isBold;
+                    sourceDiv.dataset.isItalic = isItalic;
+
+                    textEdits[pageNum].push({
+                        paraId: paraId,
+                        x: left,
+                        y: top,
+                        baseline: baseline,
+                        width: currentWidth,
+                        height: currentHeight,
+                        fontSize: fontSize,
+                        isBold: isBold,
+                        isItalic: isItalic,
+                        originalText: originalText,
+                        newText: newText
+                    });
+                    applyCanvasEdits(pageNum);
+                    sourceDiv.innerText = newText;
+                    sourceDiv.dataset.width = currentWidth;
+                    sourceDiv.dataset.height = currentHeight;
+                    sourceDiv.style.width = currentWidth + 'px';
+                    sourceDiv.style.height = currentHeight + 'px';
+                    sourceDiv.style.visibility = 'visible';
+                    updateStatus(`✏️ Text updated on page ${pageNum}`, 'success');
+                } else {
+                    sourceDiv.style.visibility = 'visible';
+                }
+                wrapper.remove();
+            };
+
+            textarea.addEventListener('blur', saveHandler);
+        }
+
+        // ===== CANVAS DRAWING WITH DYNAMIC FONTS =====
+        function applyCanvasEdits(pageNum) {
+            const pData = pageDataMap[pageNum];
+            const edits = textEdits[pageNum];
+            if (!pData || !edits) return;
+            const rDPI = pData.renderDPI;
+
+            edits.forEach(edit => {
+                pData.ctx.save();
+                
+                const paddingY = 1;
+                pData.ctx.fillStyle = '#ffffff';
+                pData.ctx.fillRect(
+                    edit.x * rDPI,
+                    (edit.y + paddingY) * rDPI,
+                    edit.width * rDPI,
+                    (edit.height - paddingY * 2) * rDPI
+                );
+
+                if (edit.newText && edit.newText.length > 0) {
+                    let fontStyle = '';
+                    if (edit.isItalic) fontStyle += 'italic ';
+                    if (edit.isBold) fontStyle += 'bold ';
+                    pData.ctx.fillStyle = '#0f172a';
+                    pData.ctx.font = `${fontStyle}${edit.fontSize * rDPI}px Arial, sans-serif`;
+                    pData.ctx.textBaseline = 'alphabetic';
+                    
+                    const baselineY = edit.baseline * rDPI;
+                    pData.ctx.fillText(edit.newText, edit.x * rDPI, baselineY);
+                }
+                pData.ctx.restore();
+            });
+        }
+
+        // ===== EXPORT HIGH QUALITY EDITED PDF =====
+        async function exportPDF() {
+            if (!pdfBytes) return;
+            try {
+                elements.exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+                elements.exportBtn.disabled = true;
+
+                let exportPdfDoc = null;
+
+                for (let pNum = 1; pNum <= pdfDoc.numPages; pNum++) {
+                    updateStatus(`Generating PDF Page ${pNum} of ${pdfDoc.numPages}...`);
+                    
+                    applyCanvasEdits(pNum);
+
+                    const pData = pageDataMap[pNum];
+                    const canvas = pData.canvas;
+                    const imgData = canvas.toDataURL('image/jpeg', 0.98);
+
+                    const pdfPage = await pdfDoc.getPage(pNum);
+                    const unscaledViewport = pdfPage.getViewport({ scale: 1.0 });
+                    
+                    const pageWidthPt = unscaledViewport.width;
+                    const pageHeightPt = unscaledViewport.height;
+
+                    if (pNum === 1) {
+                        exportPdfDoc = new window.jspdf.jsPDF({
+                            orientation: pageWidthPt > pageHeightPt ? 'landscape' : 'portrait',
+                            unit: 'pt',
+                            format: [pageWidthPt, pageHeightPt]
+                        });
+                    } else {
+                        exportPdfDoc.addPage([pageWidthPt, pageHeightPt], pageWidthPt > pageHeightPt ? 'landscape' : 'portrait');
+                    }
+
+                    exportPdfDoc.addImage(imgData, 'JPEG', 0, 0, pageWidthPt, pageHeightPt, undefined, 'FAST');
+                }
+
+                const pdfBlob = exportPdfDoc.output('blob');
+                const url = URL.createObjectURL(pdfBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = "Edited_Document.pdf";
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1000);
+                updateStatus('✅ PDF saved successfully!', 'success');
+            } catch (err) {
+                console.error(err);
+                alert("Export Error: " + err.message);
+                updateStatus('❌ Export failed', 'error');
+            } finally {
+                elements.exportBtn.innerHTML = '<i class="fas fa-download"></i> Save PDF';
+                elements.exportBtn.disabled = false;
+            }
+        }
+
+        function updateStatus(message, type = '') {
+            elements.statusLabel.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+            elements.statusLabel.className = 'status-bar' + (type ? ' ' + type : '');
+        }
+
+        elements.exportBtn.addEventListener('click', exportPDF);
+
+        document.getElementById('navLogo').onerror = function() { this.style.display = 'none'; };
+    </script>
+
+</body>
+</html>
